@@ -10,7 +10,7 @@ import { Game } from "../../../../entities/entities";
 import { useGamesStore } from "../../../../hooks/useGamesStore";
 import { store } from "../../../../store/store";
 
-import { mockRequestGames } from "../../../../tests/jest.constants";
+import { mockRequestGames } from "../../../../../tests/jest.constants";
 
 type RenderComponent = {
   props: {

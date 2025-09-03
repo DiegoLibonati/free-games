@@ -10,7 +10,7 @@ import { useUiStore } from "../../../hooks/useUiStore";
 import { useAuthStore } from "../../../hooks/useAuthStore";
 import { store } from "../../../store/store";
 
-import { mockAssetsImage } from "../../../tests/jest.constants";
+import { mockAssetsImage } from "../../../../tests/jest.constants";
 
 type RenderComponent = {
   container: HTMLElement;

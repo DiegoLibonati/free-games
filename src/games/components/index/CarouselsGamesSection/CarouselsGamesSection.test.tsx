@@ -9,7 +9,7 @@ import { useGamesStore } from "../../../../hooks/useGamesStore";
 import { store } from "../../../../store/store";
 import { gamesApi } from "../../../../api/gamesApi";
 
-import { mockRequestGames } from "../../../../tests/jest.constants";
+import { mockRequestGames } from "../../../../../tests/jest.constants";
 
 type RenderComponent = {
   container: HTMLElement;

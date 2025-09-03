@@ -10,7 +10,7 @@ import { CardGame } from "./CardGame";
 import { useGamesStore } from "../../../../hooks/useGamesStore";
 import { store } from "../../../../store/store";
 
-import { mockRequestGames } from "../../../../tests/jest.constants";
+import { mockRequestGames } from "../../../../../tests/jest.constants";
 
 type RenderComponent = {
   props: { game: Game };

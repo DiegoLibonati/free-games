@@ -11,7 +11,7 @@ import { useUiStore } from "../../../hooks/useUiStore";
 import { useGamesStore } from "../../../hooks/useGamesStore";
 import { store } from "../../../store/store";
 
-import { mockRequestGames } from "../../../tests/jest.constants";
+import { mockRequestGames } from "../../../../tests/jest.constants";
 
 type RenderComponent = {
   container: HTMLElement;

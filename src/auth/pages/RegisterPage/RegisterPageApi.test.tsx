@@ -13,7 +13,7 @@ import { store } from "../../../store/store";
 import {
   mockRequestGames,
   mockSlideImagesAuth,
-} from "../../../tests/jest.constants";
+} from "../../../../tests/jest.constants";
 
 type RenderComponent = {
   container: HTMLElement;

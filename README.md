@@ -29,22 +29,19 @@ Everything else I leave in your hands
 #### Dependencies
 
 ```
-"@types/jest": "^28.1.4"
-"@types/react": "^18.0.0"
-"@types/react-dom": "^18.0.0"
+"axios": "^0.27.2"
+"firebase": "^9.9.4"
+"query-string": "^7.1.1"
+"@reduxjs/toolkit": "^2.5.0"
 "react": "^18.2.0"
 "react-dom": "^18.2.0"
 "react-icons": "^4.4.0"
-"react-router-dom": "^6.4.0"
-"react-scripts": "^5.0.1"
-"web-vitals": "^2.1.4"
-"firebase": "^9.9.4"
-"axios": "^0.27.2"
-"query-string": "^7.1.1"
-"@reduxjs/toolkit": "^2.5.0"
 "react-redux": "^9.2.0"
+"react-router-dom": "^6.4.0"
+"react-scripts": "5.0.1"
 "react-wavify": "^1.6.2"
 "sweetalert2": "^11.4.33"
+"web-vitals": "^2.1.4"
 ```
 
 #### devDependencies
@@ -54,11 +51,14 @@ Everything else I leave in your hands
 "@testing-library/jest-dom": "^6.6.2"
 "@testing-library/react": "^16.0.1"
 "@testing-library/user-event": "^14.5.2"
+"@types/jest": "^28.1.4"
+"@types/react": "^18.0.0"
+"@types/react-dom": "^18.0.0"
 "axios-mock-adapter": "^2.1.0"
 "jest": "^29.7.0"
 "jest-environment-jsdom": "^29.7.0"
 "ts-jest": "^29.2.5"
-"typescript": "^5.3.3"
+"typescript": "^4.9.5"
 ```
 
 ## Portfolio Link

@@ -2,7 +2,7 @@ import { screen, render } from "@testing-library/react";
 
 import { SlideButtonList } from "./SlideButtonList";
 
-import { mockSlideImagesAuth } from "../../../tests/jest.constants";
+import { mockSlideImagesAuth } from "../../../../tests/jest.constants";
 
 type RenderComponent = {
   props: { index: number; handleSetIndex: jest.Mock };

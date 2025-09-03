@@ -9,7 +9,7 @@ import { IndexPage } from "./IndexPage";
 import { gamesApi } from "../../../api/gamesApi";
 import { store } from "../../../store/store";
 
-import { mockRequestGames } from "../../../tests/jest.constants";
+import { mockRequestGames } from "../../../../tests/jest.constants";
 
 type RenderComponent = {
   container: HTMLElement;
