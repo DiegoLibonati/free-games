@@ -3,15 +3,15 @@ import { screen, render } from "@testing-library/react";
 import { MemoryRouter, useLocation } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import { Game } from "../../../entities/entities";
+import { Game } from "@src/entities/entities";
 
-import { GamesPage } from "./GamesPage";
+import { GamesPage } from "@src/games/pages/GamesPage/GamesPage";
 
-import { useUiStore } from "../../../hooks/useUiStore";
-import { useGamesStore } from "../../../hooks/useGamesStore";
-import { store } from "../../../store/store";
+import { useUiStore } from "@src/hooks/useUiStore";
+import { useGamesStore } from "@src/hooks/useGamesStore";
+import { store } from "@src/store/store";
 
-import { mockRequestGames } from "../../../../tests/jest.constants";
+import { mockRequestGames } from "@tests/jest.constants";
 
 type RenderComponent = {
   container: HTMLElement;
@@ -51,12 +51,12 @@ const asyncRenderComponent = async (): Promise<RenderComponent> => {
   };
 };
 
-jest.mock("../../../hooks/useGamesStore", () => ({
-  ...jest.requireActual("../../../hooks/useGamesStore"),
+jest.mock("@src/hooks/useGamesStore", () => ({
+  ...jest.requireActual("@src/hooks/useGamesStore"),
   useGamesStore: jest.fn(),
 }));
-jest.mock("../../../hooks/useUiStore", () => ({
-  ...jest.requireActual("../../../hooks/useUiStore"),
+jest.mock("@src/hooks/useUiStore", () => ({
+  ...jest.requireActual("@src/hooks/useUiStore"),
   useUiStore: jest.fn(),
 }));
 

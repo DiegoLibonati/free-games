@@ -3,14 +3,14 @@ import user from "@testing-library/user-event";
 
 import { Provider } from "react-redux";
 
-import { CardGame } from "./CardGame";
+import { CardGame } from "@src/games/components/games/CardGame/CardGame";
 
-import { Game } from "../../../../entities/entities";
+import { Game } from "@src/entities/entities";
 
-import { useGamesStore } from "../../../../hooks/useGamesStore";
-import { store } from "../../../../store/store";
+import { useGamesStore } from "@src/hooks/useGamesStore";
+import { store } from "@src/store/store";
 
-import { mockRequestGames } from "../../../../../tests/jest.constants";
+import { mockRequestGames } from "@tests/jest.constants";
 
 type RenderComponent = {
   props: {
@@ -36,8 +36,8 @@ const renderComponent = (): RenderComponent => {
   };
 };
 
-jest.mock("../../../../hooks/useGamesStore", () => ({
-  ...jest.requireActual("../../../../hooks/useGamesStore"),
+jest.mock("@src/hooks/useGamesStore", () => ({
+  ...jest.requireActual("@src/hooks/useGamesStore"),
   useGamesStore: jest.fn(),
 }));
 

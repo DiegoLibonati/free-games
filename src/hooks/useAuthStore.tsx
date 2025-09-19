@@ -3,7 +3,7 @@ import {
   User,
   UserLogin,
   UserLoginWithoutUsername,
-} from "../entities/entities";
+} from "@src/entities/entities";
 
 import {
   startCreatingUserWithEmail,
@@ -11,9 +11,9 @@ import {
   startGoogleSignIn,
   startLoginWithEmailPassword,
   startLogOutWithButton,
-} from "../store/auth/thunks";
-import { login } from "../store/auth/authSlice";
-import { useAppDispatch, useAppSelector } from "../constants/redux";
+} from "@src/store/auth/thunks";
+import { login } from "@src/store/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "@src/constants/redux";
 
 type UseAuthStore = {
   images: string[];

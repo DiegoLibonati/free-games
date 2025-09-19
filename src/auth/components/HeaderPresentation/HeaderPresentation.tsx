@@ -1,6 +1,6 @@
-import { GeneralProps } from "../../../entities/entities";
+import { GeneralProps } from "@src/entities/entities";
 
-import "./HeaderPresentation.css";
+import "@src/auth/components/HeaderPresentation/HeaderPresentation.css";
 
 interface HeaderPresentationProps extends GeneralProps {}
 

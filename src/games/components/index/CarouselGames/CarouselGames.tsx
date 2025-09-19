@@ -1,8 +1,8 @@
-import { Game } from "../../../../entities/entities";
+import { Game } from "@src/entities/entities";
 
-import { useGamesStore } from "../../../../hooks/useGamesStore";
+import { useGamesStore } from "@src/hooks/useGamesStore";
 
-import "./CarouselGames.css";
+import "@src/games/components/index/CarouselGames/CarouselGames.css";
 
 interface CarouselGamesProps {
   name: string;

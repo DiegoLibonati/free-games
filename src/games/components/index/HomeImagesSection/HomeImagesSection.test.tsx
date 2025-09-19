@@ -2,10 +2,10 @@ import { screen, render } from "@testing-library/react";
 
 import { Provider } from "react-redux";
 
-import { HomeImagesSection } from "./HomeImagesSection";
+import { HomeImagesSection } from "@src/games/components/index/HomeImagesSection/HomeImagesSection";
 
-import { imagesOfGames } from "../../../../constants/games";
-import { store } from "../../../../store/store";
+import { imagesOfGames } from "@src/constants/games";
+import { store } from "@src/store/store";
 
 type RenderComponent = {
   container: HTMLElement;

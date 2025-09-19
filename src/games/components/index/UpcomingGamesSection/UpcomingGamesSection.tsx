@@ -1,8 +1,8 @@
-import { UpcomingGame } from "../UpcomingGame/UpcomingGame";
+import { UpcomingGame } from "@src/games/components/index/UpcomingGame/UpcomingGame";
 
-import { upcomingGames } from "../../../../constants/games";
+import { upcomingGames } from "@src/constants/games";
 
-import "./UpcomingGamesSection.css";
+import "@src/games/components/index/UpcomingGamesSection/UpcomingGamesSection.css";
 
 export const UpcomingGamesSection = (): JSX.Element => {
   return (

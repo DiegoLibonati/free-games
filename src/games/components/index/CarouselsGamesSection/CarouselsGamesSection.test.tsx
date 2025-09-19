@@ -3,13 +3,13 @@ import { screen, render } from "@testing-library/react";
 import MockAdapter from "axios-mock-adapter";
 import { Provider } from "react-redux";
 
-import { CarouselsGamesSection } from "./CarouselsGamesSection";
+import { CarouselsGamesSection } from "@src/games/components/index/CarouselsGamesSection/CarouselsGamesSection";
 
-import { useGamesStore } from "../../../../hooks/useGamesStore";
-import { store } from "../../../../store/store";
-import { gamesApi } from "../../../../api/gamesApi";
+import { useGamesStore } from "@src/hooks/useGamesStore";
+import { store } from "@src/store/store";
+import { gamesApi } from "@src/api/gamesApi";
 
-import { mockRequestGames } from "../../../../../tests/jest.constants";
+import { mockRequestGames } from "@tests/jest.constants";
 
 type RenderComponent = {
   container: HTMLElement;
@@ -43,8 +43,8 @@ const asyncRenderComponent = async (): Promise<RenderComponent> => {
   };
 };
 
-jest.mock("../../../../hooks/useGamesStore", () => ({
-  ...jest.requireActual("../../../../hooks/useGamesStore"),
+jest.mock("@src/hooks/useGamesStore", () => ({
+  ...jest.requireActual("@src/hooks/useGamesStore"),
   useGamesStore: jest.fn(),
 }));
 

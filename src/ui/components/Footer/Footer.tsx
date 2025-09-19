@@ -5,9 +5,9 @@ import {
   FaGithub,
 } from "react-icons/fa";
 
-import { rootCss } from "../../../constants/configCss";
+import { rootCss } from "@src/constants/configCss";
 
-import "./Footer.css";
+import "@src/ui/components/Footer/Footer.css";
 
 export const Footer = (): JSX.Element => {
   return (

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import Swal from "sweetalert2";
 
-import { AppRouter } from "./router/AppRouter";
-import { useAuthStore } from "./hooks/useAuthStore";
+import { AppRouter } from "@src/router/AppRouter";
+import { useAuthStore } from "@src/hooks/useAuthStore";
 
 function App(): JSX.Element {
   const { errorMessage } = useAuthStore();

@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 
-import { Status } from "../entities/entities";
+import { Status } from "@src/entities/entities";
 
-import { useAuthStore } from "./useAuthStore";
-import { FirebaseAuth } from "../firebase/config";
+import { useAuthStore } from "@src/hooks/useAuthStore";
+import { FirebaseAuth } from "@src/firebase/config";
 
 type UseCheckAuth = {
   status: Status;

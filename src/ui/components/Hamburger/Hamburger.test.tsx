@@ -3,10 +3,10 @@ import user from "@testing-library/user-event";
 
 import { Provider } from "react-redux";
 
-import { Hamburger } from "./Hamburger";
+import { Hamburger } from "@src/ui/components/Hamburger/Hamburger";
 
-import { useUiStore } from "../../../hooks/useUiStore";
-import { store } from "../../../store/store";
+import { useUiStore } from "@src/hooks/useUiStore";
+import { store } from "@src/store/store";
 
 type RenderComponent = {
   container: HTMLElement;
@@ -24,8 +24,8 @@ const renderComponent = (): RenderComponent => {
   };
 };
 
-jest.mock("../../../hooks/useUiStore", () => ({
-  ...jest.requireActual("../../../hooks/useUiStore"),
+jest.mock("@src/hooks/useUiStore", () => ({
+  ...jest.requireActual("@src/hooks/useUiStore"),
   useUiStore: jest.fn(),
 }));
 

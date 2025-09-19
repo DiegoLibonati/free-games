@@ -1,4 +1,4 @@
-import "./CheckingAuth.css";
+import "@src/auth/components/CheckingAuth/CheckingAuth.css";
 
 export const CheckingAuth = (): JSX.Element => {
   return (

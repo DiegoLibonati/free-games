@@ -5,16 +5,16 @@ import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import Swal from "sweetalert2";
 
-import { RegisterPage } from "./RegisterPage";
+import { RegisterPage } from "@src/auth/pages/RegisterPage/RegisterPage";
 
-import { useAuthStore } from "../../../hooks/useAuthStore";
-import { store } from "../../../store/store";
+import { useAuthStore } from "@src/hooks/useAuthStore";
+import { store } from "@src/store/store";
 
 import {
   mockAssetsImage,
   mockImages,
   mockSlideImagesAuth,
-} from "../../../../tests/jest.constants";
+} from "@tests/jest.constants";
 
 type RenderComponent = {
   container: HTMLElement;
@@ -36,8 +36,8 @@ const renderComponent = (): RenderComponent => {
   };
 };
 
-jest.mock("../../../hooks/useAuthStore", () => ({
-  ...jest.requireActual("../../../hooks/useAuthStore"),
+jest.mock("@src/hooks/useAuthStore", () => ({
+  ...jest.requireActual("@src/hooks/useAuthStore"),
   useAuthStore: jest.fn(),
 }));
 

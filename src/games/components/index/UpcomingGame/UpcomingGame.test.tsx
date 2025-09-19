@@ -1,6 +1,6 @@
 import { screen, render } from "@testing-library/react";
 
-import { UpcomingGame } from "./UpcomingGame";
+import { UpcomingGame } from "@src/games/components/index/UpcomingGame/UpcomingGame";
 
 type RenderComponent = {
   props: {

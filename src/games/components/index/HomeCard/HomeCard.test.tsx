@@ -3,12 +3,12 @@ import user from "@testing-library/user-event";
 
 import { Provider } from "react-redux";
 
-import { HomeCard } from "./HomeCard";
+import { HomeCard } from "@src/games/components/index/HomeCard/HomeCard";
 
-import { useGamesStore } from "../../../../hooks/useGamesStore";
-import { store } from "../../../../store/store";
+import { useGamesStore } from "@src/hooks/useGamesStore";
+import { store } from "@src/store/store";
 
-import { mockRequestGames } from "../../../../../tests/jest.constants";
+import { mockRequestGames } from "@tests/jest.constants";
 
 type RenderComponent = {
   container: HTMLElement;
@@ -26,8 +26,8 @@ const renderComponent = (): RenderComponent => {
   };
 };
 
-jest.mock("../../../../hooks/useGamesStore", () => ({
-  ...jest.requireActual("../../../../hooks/useGamesStore"),
+jest.mock("@src/hooks/useGamesStore", () => ({
+  ...jest.requireActual("@src/hooks/useGamesStore"),
   useGamesStore: jest.fn(),
 }));
 

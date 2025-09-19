@@ -2,16 +2,16 @@ import { Fragment, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import queryString from "query-string";
 
-import { NavBar } from "../../../ui/components/NavBar/NavBar";
-import { Footer } from "../../../ui/components/Footer/Footer";
-import { Loader } from "../../../ui/components/Loader/Loader";
-import { CardGame } from "../../components/games/CardGame/CardGame";
-import { OptionFilter } from "../../components/games/OptionFilter/OptionFilter";
+import { NavBar } from "@src/ui/components/NavBar/NavBar";
+import { Footer } from "@src/ui/components/Footer/Footer";
+import { Loader } from "@src/ui/components/Loader/Loader";
+import { CardGame } from "@src/games/components/games/CardGame/CardGame";
+import { OptionFilter } from "@src/games/components/games/OptionFilter/OptionFilter";
 
-import { useGamesStore } from "../../../hooks/useGamesStore";
-import { useUiStore } from "../../../hooks/useUiStore";
+import { useGamesStore } from "@src/hooks/useGamesStore";
+import { useUiStore } from "@src/hooks/useUiStore";
 
-import "./GamesPage.css";
+import "@src/games/pages/GamesPage/GamesPage.css";
 
 export const GamesPage = (): JSX.Element => {
   const {

@@ -1,8 +1,8 @@
-import { Game } from "../../../../entities/entities";
+import { Game } from "@src/entities/entities";
 
-import { useGamesStore } from "../../../../hooks/useGamesStore";
+import { useGamesStore } from "@src/hooks/useGamesStore";
 
-import "./CardFavoriteGame.css";
+import "@src/games/components/favorite/CardFavoriteGame/CardFavoriteGame.css";
 
 interface CardFavoriteGameProps {
   game: Game;

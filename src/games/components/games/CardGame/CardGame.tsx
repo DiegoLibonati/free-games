@@ -1,8 +1,8 @@
-import { useGamesStore } from "../../../../hooks/useGamesStore";
+import { useGamesStore } from "@src/hooks/useGamesStore";
 
-import { Game } from "../../../../entities/entities";
+import { Game } from "@src/entities/entities";
 
-import "./CardGame.css";
+import "@src/games/components/games/CardGame/CardGame.css";
 
 interface CardGameProps {
   game: Game;

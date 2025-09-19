@@ -1,4 +1,4 @@
-import "./Loader.css";
+import "@src/ui/components/Loader/Loader.css";
 
 export const Loader = (): JSX.Element => {
   return (

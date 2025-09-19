@@ -1,8 +1,8 @@
 import { screen, render } from "@testing-library/react";
 
-import { UpcomingGamesSection } from "./UpcomingGamesSection";
+import { UpcomingGamesSection } from "@src/games/components/index/UpcomingGamesSection/UpcomingGamesSection";
 
-import { upcomingGames } from "../../../../constants/games";
+import { upcomingGames } from "@src/constants/games";
 
 type RenderComponent = {
   container: HTMLElement;

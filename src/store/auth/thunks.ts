@@ -2,22 +2,22 @@ import {
   AppDispatch,
   UserLogin,
   UserLoginWithoutUsername,
-} from "../../entities/entities";
+} from "@src/entities/entities";
 
 import {
   loginWithEmailPassword,
   logoutFirebase,
   registerUserWithEmail,
   signInWithGoogle,
-} from "../../firebase/providers";
+} from "@src/firebase/providers";
 import {
   setImagesLoginAndRegister,
   setLoadingImages,
   checkingCredentials,
   logout,
   login,
-} from "./authSlice";
-import { getGames } from "../../api/getGames";
+} from "@src/store/auth/authSlice";
+import { getGames } from "@src/api/getGames";
 
 export const startGettingImagesToLoginAndRegisterPage = () => {
   return async (dispatch: AppDispatch) => {

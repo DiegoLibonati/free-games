@@ -1,6 +1,6 @@
 import { screen, render } from "@testing-library/react";
 
-import { HeaderPresentation } from "./HeaderPresentation";
+import { HeaderPresentation } from "@src/auth/components/HeaderPresentation/HeaderPresentation";
 
 type RenderComponent = {
   text: string;

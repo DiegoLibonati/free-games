@@ -11,9 +11,9 @@ import {
   LoginWithEmailPassword,
   RegisterUserWithEmail,
   SignInWithGoogle,
-} from "../entities/entities";
+} from "@src/entities/entities";
 
-import { FirebaseAuth } from "./config";
+import { FirebaseAuth } from "@src/firebase/config";
 
 const googleProvider = new GoogleAuthProvider();
 

@@ -1,4 +1,4 @@
-import { Game } from "../entities/entities";
+import { Game } from "@src/entities/entities";
 
 import {
   startDeletingFavoriteGame,
@@ -6,13 +6,13 @@ import {
   startGettingGames,
   startGettingGamesByCategory,
   startSaveNewGameToFavorite,
-} from "../store/games/thunks";
+} from "@src/store/games/thunks";
 import {
   clearActiveGame,
   setActiveGame,
   stateToInitialValue,
-} from "../store/games/gamesSlice";
-import { useAppDispatch, useAppSelector } from "../constants/redux";
+} from "@src/store/games/gamesSlice";
+import { useAppDispatch, useAppSelector } from "@src/constants/redux";
 
 type UseGameStore = {
   games: Game[];

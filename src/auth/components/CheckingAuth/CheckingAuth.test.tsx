@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 
-import { CheckingAuth } from "./CheckingAuth";
+import { CheckingAuth } from "@src/auth/components/CheckingAuth/CheckingAuth";
 
 type RenderComponent = {
   container: HTMLElement;

@@ -1,4 +1,4 @@
-import { Config, Game } from "../src/entities/entities";
+import { Config, Game } from "@src/entities/entities";
 
 export const mockConfig: Config = {
   xRapid: {

@@ -1,4 +1,4 @@
-import "./OptionFilterListItem.css";
+import "@src/games/components/games/OptionFilterListItem/OptionFilterListItem.css";
 
 interface OptionFilterListItemProps {
   filter: string;

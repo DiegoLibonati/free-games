@@ -1,4 +1,4 @@
-import "./UpcomingGame.css";
+import "@src/games/components/index/UpcomingGame/UpcomingGame.css";
 
 interface UpcomingGameProps {
   img: string;

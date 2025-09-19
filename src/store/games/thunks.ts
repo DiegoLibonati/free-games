@@ -6,19 +6,19 @@ import {
   deleteDoc,
 } from "firebase/firestore/lite";
 
-import { AppDispatch, Game, RootState } from "../../entities/entities";
+import { AppDispatch, Game, RootState } from "@src/entities/entities";
 
-import { getGames } from "../../api/getGames";
-import { getGamesByCategory } from "../../api/getGamesByCategory";
-import { FirebaseDB } from "../../firebase/config";
+import { getGames } from "@src/api/getGames";
+import { getGamesByCategory } from "@src/api/getGamesByCategory";
+import { FirebaseDB } from "@src/firebase/config";
 import {
   setCategories,
   setFavoritesGames,
   setGames,
   setLoadingFavoritesGames,
   setLoadingGames,
-} from "./gamesSlice";
-import { openAlert } from "../ui/uiSlice";
+} from "@src/store/games/gamesSlice";
+import { openAlert } from "@src/store/ui/uiSlice";
 
 // --- NEW ---
 

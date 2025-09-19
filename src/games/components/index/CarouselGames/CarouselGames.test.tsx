@@ -1,16 +1,16 @@
 import { screen, render } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { Game } from "../../../../entities/entities";
+import { Game } from "@src/entities/entities";
 
 import { Provider } from "react-redux";
 
-import { CarouselGames } from "./CarouselGames";
+import { CarouselGames } from "@src/games/components/index/CarouselGames/CarouselGames";
 
-import { useGamesStore } from "../../../../hooks/useGamesStore";
-import { store } from "../../../../store/store";
+import { useGamesStore } from "@src/hooks/useGamesStore";
+import { store } from "@src/store/store";
 
-import { mockRequestGames } from "../../../../../tests/jest.constants";
+import { mockRequestGames } from "@tests/jest.constants";
 
 type RenderComponent = {
   props: { name: string; games: Game[] };
@@ -35,8 +35,8 @@ const renderComponent = (): RenderComponent => {
   };
 };
 
-jest.mock("../../../../hooks/useGamesStore", () => ({
-  ...jest.requireActual("../../../../hooks/useGamesStore"),
+jest.mock("@src/hooks/useGamesStore", () => ({
+  ...jest.requireActual("@src/hooks/useGamesStore"),
   useGamesStore: jest.fn(),
 }));
 

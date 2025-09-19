@@ -2,12 +2,12 @@ import { Fragment } from "react/jsx-runtime";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { IoMdRocket } from "react-icons/io";
 
-import { ActiveGame } from "../../ui/components/ActiveGame/ActiveGame";
-import { IndexPage } from "../pages/IndexPage/IndexPage";
-import { FavoritePage } from "../pages/FavoritePage/FavoritePage";
-import { GamesPage } from "../pages/GamesPage/GamesPage";
+import { ActiveGame } from "@src/ui/components/ActiveGame/ActiveGame";
+import { IndexPage } from "@src/games/pages/IndexPage/IndexPage";
+import { FavoritePage } from "@src/games/pages/FavoritePage/FavoritePage";
+import { GamesPage } from "@src/games/pages/GamesPage/GamesPage";
 
-import { useGamesStore } from "../../hooks/useGamesStore";
+import { useGamesStore } from "@src/hooks/useGamesStore";
 
 export const GamesRoutes = (): JSX.Element => {
   const { activeGame } = useGamesStore();

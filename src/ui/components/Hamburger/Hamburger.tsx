@@ -1,6 +1,6 @@
-import { useUiStore } from "../../../hooks/useUiStore";
+import { useUiStore } from "@src/hooks/useUiStore";
 
-import "./Hamburger.css";
+import "@src/ui/components/Hamburger/Hamburger.css";
 
 export const Hamburger = (): JSX.Element => {
   const { isNavBarOpen, handleOpenNavBar, handleCloseNavBar } = useUiStore();

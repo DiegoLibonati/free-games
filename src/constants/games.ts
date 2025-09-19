@@ -1,14 +1,14 @@
-import { UpcomingGames } from "../entities/entities";
+import { UpcomingGames } from "@src/entities/entities";
 
-import image1 from "../assets/genshin1920.jpg";
-import image2 from "../assets/fury1920.jpg";
-import image3 from "../assets/enlisted1920.jpg";
-import image4 from "../assets/shatterline.jpg";
-import image5 from "../assets/warframe.jpg";
-import image6 from "../assets/albion.jpeg";
-import image7 from "../assets/pathofexile.png";
-import image8 from "../assets/apex.jpg";
-import image9 from "../assets/fortnite.jpg";
+import image1 from "@src/assets/genshin1920.jpg";
+import image2 from "@src/assets/fury1920.jpg";
+import image3 from "@src/assets/enlisted1920.jpg";
+import image4 from "@src/assets/shatterline.jpg";
+import image5 from "@src/assets/warframe.jpg";
+import image6 from "@src/assets/albion.jpeg";
+import image7 from "@src/assets/pathofexile.png";
+import image8 from "@src/assets/apex.jpg";
+import image9 from "@src/assets/fortnite.jpg";
 
 export const imagesOfGames = [
   image5,

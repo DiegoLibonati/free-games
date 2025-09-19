@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import Wave from "react-wavify";
 
-import { Loader } from "../../../ui/components/Loader/Loader";
-import { SlideButtonList } from "../../../ui/components/SlideButtonList/SlideButtonList";
-import { HeaderPresentation } from "../../components/HeaderPresentation/HeaderPresentation";
-import { InputForm } from "../../components/InputForm/InputForm";
+import { Loader } from "@src/ui/components/Loader/Loader";
+import { SlideButtonList } from "@src/ui/components/SlideButtonList/SlideButtonList";
+import { HeaderPresentation } from "@src/auth/components/HeaderPresentation/HeaderPresentation";
+import { InputForm } from "@src/auth/components/InputForm/InputForm";
 
-import { useSlide } from "../../../hooks/useSlide";
-import { useAuthStore } from "../../../hooks/useAuthStore";
-import { useForm } from "../../../hooks/useForm";
-import { rootCss } from "../../../constants/configCss";
+import { useSlide } from "@src/hooks/useSlide";
+import { useAuthStore } from "@src/hooks/useAuthStore";
+import { useForm } from "@src/hooks/useForm";
+import { rootCss } from "@src/constants/configCss";
 
-import logo from "../../../assets/logo.png";
-import "./RegisterPage.css";
+import logo from "@src/assets/logo.png";
+import "@src/auth/pages/RegisterPage/RegisterPage.css";
 
 type FormDataRegister = {
   email: string;

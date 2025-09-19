@@ -5,15 +5,15 @@ import MockAdapter from "axios-mock-adapter";
 import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import { LoginPage } from "./LoginPage";
+import { LoginPage } from "@src/auth/pages/LoginPage/LoginPage";
 
-import { gamesApi } from "../../../api/gamesApi";
-import { store } from "../../../store/store";
+import { gamesApi } from "@src/api/gamesApi";
+import { store } from "@src/store/store";
 
 import {
   mockRequestGames,
   mockSlideImagesAuth,
-} from "../../../../tests/jest.constants";
+} from "@tests/jest.constants";
 
 type RenderComponent = {
   container: HTMLElement;

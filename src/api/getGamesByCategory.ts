@@ -1,9 +1,9 @@
-import { Game } from "../entities/entities";
+import { Game } from "@src/entities/entities";
 
-import { gamesApi } from "./gamesApi";
+import { gamesApi } from "@src/api/gamesApi";
 
 export const getGamesByCategory = async (category: string): Promise<Game[]> => {
-  const response = await gamesApi.get(`/api/games?category=${category}`, {
+  const response = await gamesApi.get(`/games?category=${category}`, {
     method: "GET",
     params: { id: "452" },
   });

@@ -1,4 +1,4 @@
-import "./SlideButtonList.css";
+import "@src/ui/components/SlideButtonList/SlideButtonList.css";
 
 interface SlideButtonListProps {
   index: number;

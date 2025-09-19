@@ -1,9 +1,9 @@
-import { HomeCard } from "../HomeCard/HomeCard";
+import { HomeCard } from "@src/games/components/index/HomeCard/HomeCard";
 
-import { useAutoSlide } from "../../../../hooks/useAutoSlide";
-import { imagesOfGames } from "../../../../constants/games";
+import { useAutoSlide } from "@src/hooks/useAutoSlide";
+import { imagesOfGames } from "@src/constants/games";
 
-import "./HomeImagesSection.css";
+import "@src/games/components/index/HomeImagesSection/HomeImagesSection.css";
 
 export const HomeImagesSection = (): JSX.Element => {
   const autoIndex = useAutoSlide(imagesOfGames);

@@ -1,7 +1,7 @@
 import { screen, render } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { InputForm } from "./InputForm";
+import { InputForm } from "@src/auth/components/InputForm/InputForm";
 
 type RenderComponent = {
   props: {

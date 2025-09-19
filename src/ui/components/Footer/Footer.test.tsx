@@ -1,6 +1,6 @@
 import { screen, render } from "@testing-library/react";
 
-import { Footer } from "./Footer";
+import { Footer } from "@src/ui/components/Footer/Footer";
 
 type RenderComponent = {
   container: HTMLElement;

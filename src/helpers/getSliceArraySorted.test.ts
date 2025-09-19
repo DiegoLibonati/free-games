@@ -1,4 +1,4 @@
-import { getSliceArraySorted } from "./getSliceArraySorted";
+import { getSliceArraySorted } from "@src/helpers/getSliceArraySorted";
 
 describe("getSliceArraySorted.ts", () => {
   describe("General Tests.", () => {

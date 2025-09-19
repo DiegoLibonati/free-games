@@ -1,7 +1,7 @@
 import { screen, render } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { OptionFilterListItem } from "./OptionFilterListItem";
+import { OptionFilterListItem } from "@src/games/components/games/OptionFilterListItem/OptionFilterListItem";
 
 type RenderComponent = {
   props: {

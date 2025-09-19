@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 
-import { useAuthStore } from "../../../hooks/useAuthStore";
-import { useUiStore } from "../../../hooks/useUiStore";
-import { Hamburger } from "../Hamburger/Hamburger";
+import { useAuthStore } from "@src/hooks/useAuthStore";
+import { useUiStore } from "@src/hooks/useUiStore";
+import { Hamburger } from "@src/ui/components/Hamburger/Hamburger";
 
-import logo from "../../../assets/logo.png";
-import "./NavBar.css";
+import logo from "@src/assets/logo.png";
+import "@src/ui/components/NavBar/NavBar.css";
 
 export const NavBar = (): JSX.Element => {
   const { isNavBarOpen } = useUiStore();

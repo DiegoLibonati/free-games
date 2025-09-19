@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Swal, { SweetAlertIcon } from "sweetalert2";
 
-import { CheckingAuth } from "../auth/components/CheckingAuth/CheckingAuth";
+import { CheckingAuth } from "@src/auth/components/CheckingAuth/CheckingAuth";
 
-import { useCheckAuth } from "../hooks/useCheckAuth";
-import { AuthRoutes } from "../auth/routes/AuthRoutes";
-import { GamesRoutes } from "../games/routes/GamesRoutes";
+import { useCheckAuth } from "@src/hooks/useCheckAuth";
+import { AuthRoutes } from "@src/auth/routes/AuthRoutes";
+import { GamesRoutes } from "@src/games/routes/GamesRoutes";
 
-import { useUiStore } from "../hooks/useUiStore";
+import { useUiStore } from "@src/hooks/useUiStore";
 
 export const AppRouter = (): JSX.Element => {
   const { alert, handleCloseAlert } = useUiStore();

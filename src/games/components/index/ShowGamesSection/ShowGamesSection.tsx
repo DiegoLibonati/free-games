@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 
-import { CardGame } from "../CardGame/CardGame";
+import { CardGame } from "@src/games/components/index/CardGame/CardGame";
 
-import { useGamesStore } from "../../../../hooks/useGamesStore";
-import { getSliceArraySorted } from "../../../../helpers/getSliceArraySorted";
+import { useGamesStore } from "@src/hooks/useGamesStore";
+import { getSliceArraySorted } from "@src/helpers/getSliceArraySorted";
 
-import "./ShowGamesSection.css";
+import "@src/games/components/index/ShowGamesSection/ShowGamesSection.css";
 
 export const ShowGamesSection = (): JSX.Element => {
   const { games } = useGamesStore();

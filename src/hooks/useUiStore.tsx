@@ -1,4 +1,4 @@
-import { Alert } from "../entities/entities";
+import { Alert } from "@src/entities/entities";
 
 import {
   openNavBar,
@@ -7,8 +7,8 @@ import {
   closeFilterCategories,
   closeAlert,
   openAlert,
-} from "../store/ui/uiSlice";
-import { useAppDispatch, useAppSelector } from "../constants/redux";
+} from "@src/store/ui/uiSlice";
+import { useAppDispatch, useAppSelector } from "@src/constants/redux";
 
 type UseUiStore = {
   alert: Alert;

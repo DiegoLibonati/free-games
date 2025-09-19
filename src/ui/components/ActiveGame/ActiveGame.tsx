@@ -2,12 +2,12 @@ import { useLocation } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import { GrClose, GrFavorite } from "react-icons/gr";
 
-import { Game } from "../../../entities/entities";
+import { Game } from "@src/entities/entities";
 
-import { useGamesStore } from "../../../hooks/useGamesStore";
-import { useUiStore } from "../../../hooks/useUiStore";
+import { useGamesStore } from "@src/hooks/useGamesStore";
+import { useUiStore } from "@src/hooks/useUiStore";
 
-import "./ActiveGame.css";
+import "@src/ui/components/ActiveGame/ActiveGame.css";
 
 export const ActiveGame = (): JSX.Element => {
   const { pathname } = useLocation();

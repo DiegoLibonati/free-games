@@ -4,13 +4,13 @@ import user from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import { NavBar } from "./NavBar";
+import { NavBar } from "@src/ui/components/NavBar/NavBar";
 
-import { useUiStore } from "../../../hooks/useUiStore";
-import { useAuthStore } from "../../../hooks/useAuthStore";
-import { store } from "../../../store/store";
+import { useUiStore } from "@src/hooks/useUiStore";
+import { useAuthStore } from "@src/hooks/useAuthStore";
+import { store } from "@src/store/store";
 
-import { mockAssetsImage } from "../../../../tests/jest.constants";
+import { mockAssetsImage } from "@tests/jest.constants";
 
 type RenderComponent = {
   container: HTMLElement;
@@ -32,13 +32,13 @@ const renderComponent = (): RenderComponent => {
   };
 };
 
-jest.mock("../../../hooks/useUiStore", () => ({
-  ...jest.requireActual("../../../hooks/useUiStore"),
+jest.mock("@src/hooks/useUiStore", () => ({
+  ...jest.requireActual("@src/hooks/useUiStore"),
   useUiStore: jest.fn(),
 }));
 
-jest.mock("../../../hooks/useAuthStore", () => ({
-  ...jest.requireActual("../../../hooks/useAuthStore"),
+jest.mock("@src/hooks/useAuthStore", () => ({
+  ...jest.requireActual("@src/hooks/useAuthStore"),
   useAuthStore: jest.fn(),
 }));
 

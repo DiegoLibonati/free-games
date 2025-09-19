@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import { Game } from "../../../../entities/entities";
+import { Game } from "@src/entities/entities";
 
-import { useGamesStore } from "../../../../hooks/useGamesStore";
+import { useGamesStore } from "@src/hooks/useGamesStore";
 
-import "./CardGame.css";
+import "@src/games/components/index/CardGame/CardGame.css";
 
 interface CardGameProps {
   game: Game;

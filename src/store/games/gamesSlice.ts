@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { Game, GamesState } from "../../entities/entities";
+import { Game, GamesState } from "@src/entities/entities";
 
 const initialState: GamesState = {
   games: {

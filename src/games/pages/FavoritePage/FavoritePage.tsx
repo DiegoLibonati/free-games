@@ -1,13 +1,13 @@
 import { Fragment, useEffect } from "react";
 
-import { NavBar } from "../../../ui/components/NavBar/NavBar";
-import { Footer } from "../../../ui/components/Footer/Footer";
-import { Loader } from "../../../ui/components/Loader/Loader";
-import { CardFavoriteGame } from "../../components/favorite/CardFavoriteGame/CardFavoriteGame";
+import { NavBar } from "@src/ui/components/NavBar/NavBar";
+import { Footer } from "@src/ui/components/Footer/Footer";
+import { Loader } from "@src/ui/components/Loader/Loader";
+import { CardFavoriteGame } from "@src/games/components/favorite/CardFavoriteGame/CardFavoriteGame";
 
-import { useGamesStore } from "../../../hooks/useGamesStore";
+import { useGamesStore } from "@src/hooks/useGamesStore";
 
-import "./FavoritePage.css";
+import "@src/games/pages/FavoritePage/FavoritePage.css";
 
 export const FavoritePage = (): JSX.Element => {
   const {

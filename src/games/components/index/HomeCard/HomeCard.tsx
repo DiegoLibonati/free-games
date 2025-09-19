@@ -1,12 +1,12 @@
 import { Fragment, useMemo } from "react";
 
-import { Game } from "../../../../entities/entities";
+import { Game } from "@src/entities/entities";
 
-import { Loader } from "../../../../ui/components/Loader/Loader";
+import { Loader } from "@src/ui/components/Loader/Loader";
 
-import { useGamesStore } from "../../../../hooks/useGamesStore";
+import { useGamesStore } from "@src/hooks/useGamesStore";
 
-import "./HomeCard.css";
+import "@src/games/components/index/HomeCard/HomeCard.css";
 
 export const HomeCard = (): JSX.Element => {
   const { games, handleSetNewGameToFavorite } = useGamesStore();

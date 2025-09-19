@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 
-import { Game, Carousel } from "../../../../entities/entities";
+import { Game, Carousel } from "@src/entities/entities";
 
-import { Loader } from "../../../../ui/components/Loader/Loader";
-import { CarouselGames } from "../CarouselGames/CarouselGames";
+import { Loader } from "@src/ui/components/Loader/Loader";
+import { CarouselGames } from "@src/games/components/index/CarouselGames/CarouselGames";
 
-import { useGamesStore } from "../../../../hooks/useGamesStore";
-import { getSliceArraySorted } from "../../../../helpers/getSliceArraySorted";
-import { getGamesByCategory } from "../../../../api/getGamesByCategory";
+import { useGamesStore } from "@src/hooks/useGamesStore";
+import { getSliceArraySorted } from "@src/helpers/getSliceArraySorted";
+import { getGamesByCategory } from "@src/api/getGamesByCategory";
 
-import "./CarouselsGamesSection.css";
+import "@src/games/components/index/CarouselsGamesSection/CarouselsGamesSection.css";
 
 export const CarouselsGamesSection = (): JSX.Element => {
   const [carousels, setCarousels] = useState<Carousel<Game>[]>([]);

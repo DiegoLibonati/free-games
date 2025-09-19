@@ -1,7 +1,8 @@
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import { OptionFilterListItem } from "../OptionFilterListItem/OptionFilterListItem";
 
-import "./OptionFilter.css";
+import { OptionFilterListItem } from "@src/games/components/games/OptionFilterListItem/OptionFilterListItem";
+
+import "@src/games/components/games/OptionFilter/OptionFilter.css";
 
 interface OptionFilterProps {
   name: string;

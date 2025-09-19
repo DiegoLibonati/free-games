@@ -1,6 +1,4 @@
-import { SweetAlertIcon } from "sweetalert2";
-
-import { store } from "../store/store";
+import { store } from "@src/store/store";
 
 export type UpcomingGames = {
   img: string;

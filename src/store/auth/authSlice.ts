@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { AuthState, User } from "../../entities/entities";
+import { AuthState, User } from "@src/entities/entities";
 
 const initialState: AuthState = {
   images: { images: [], isLoadingImages: false },

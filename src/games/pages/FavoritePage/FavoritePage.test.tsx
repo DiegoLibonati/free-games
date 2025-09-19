@@ -3,14 +3,14 @@ import { screen, render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import { Game } from "../../../entities/entities";
+import { Game } from "@src/entities/entities";
 
-import { FavoritePage } from "./FavoritePage";
+import { FavoritePage } from "@src/games/pages/FavoritePage/FavoritePage";
 
-import { useGamesStore } from "../../../hooks/useGamesStore";
-import { store } from "../../../store/store";
+import { useGamesStore } from "@src/hooks/useGamesStore";
+import { store } from "@src/store/store";
 
-import { mockRequestGames } from "../../../../tests/jest.constants";
+import { mockRequestGames } from "@tests/jest.constants";
 
 type RenderComponent = {
   container: HTMLElement;
@@ -50,8 +50,8 @@ const asyncRenderComponent = async (): Promise<RenderComponent> => {
   };
 };
 
-jest.mock("../../../hooks/useGamesStore", () => ({
-  ...jest.requireActual("../../../hooks/useGamesStore"),
+jest.mock("@src/hooks/useGamesStore", () => ({
+  ...jest.requireActual("@src/hooks/useGamesStore"),
   useGamesStore: jest.fn(),
 }));
 
