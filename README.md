@@ -29,6 +29,7 @@ Everything else I leave in your hands
 4. TYPESCRIPT
 5. FIREBASE
 6. FIRESTORE
+7. Vite
 
 ## Libraries used
 
