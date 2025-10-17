@@ -1,9 +1,5 @@
-import {
-  Status,
-  User,
-  UserLogin,
-  UserLoginWithoutUsername,
-} from "@src/entities/entities";
+import { User, UserLogin, UserLoginWithoutUsername } from "@src/entities/app";
+import { UseAuthStore } from "@src/entities/hooks";
 
 import {
   startCreatingUserWithEmail,
@@ -11,27 +7,10 @@ import {
   startGoogleSignIn,
   startLoginWithEmailPassword,
   startLogOutWithButton,
-} from "@src/store/auth/thunks";
-import { login } from "@src/store/auth/authSlice";
-import { useAppDispatch, useAppSelector } from "@src/constants/redux";
+} from "@src/features/auth/thunks";
+import { login } from "@src/features/auth/authSlice";
 
-type UseAuthStore = {
-  images: string[];
-  isLoadingImages: boolean;
-  isChecking: boolean;
-  status: Status;
-  uid: string;
-  email: string;
-  displayName: string;
-  photoURL: string;
-  errorMessage: string;
-  handleLogOut: () => void;
-  handleLogin: (user: User) => void;
-  handleLoginWithEmailAndPassword: (user: UserLoginWithoutUsername) => void;
-  handleLoginWithGoogle: () => void;
-  handleCreateNewUserWithEmailAndPassword: (user: UserLogin) => void;
-  handleGetImages: () => void;
-};
+import { useAppDispatch, useAppSelector } from "@src/app/hooks";
 
 export const useAuthStore = (): UseAuthStore => {
   const { user, auth, images } = useAppSelector((state) => state.auth);

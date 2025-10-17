@@ -1,0 +1,209 @@
+.disk-game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding: 1rem;
+}
+
+.disk-game__img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 30rem;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: var(--white-color);
+  border: 0.1rem solid var(--gray-color);
+  transition: opacity 1s, border-radius 1s;
+}
+
+.disk-game__img-circle {
+  background-color: var(--secondary-color);
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  border: 0.1rem solid var(--gray-color);
+}
+
+.disk-game__img:hover {
+  opacity: 0.5;
+  transition: opacity 1s;
+}
+
+.disk-game__img--open {
+  border-radius: 0;
+  transition: border-radius 1s;
+}
+
+.disk-game__information {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-flow: column nowrap;
+  width: 100%;
+  height: auto;
+  max-height: 0;
+  padding: 0 1rem 0 1rem;
+  background-color: var(--secondary-color);
+  overflow: hidden;
+  transition: max-height 1s;
+}
+
+.disk-game__information--open {
+  max-height: 100rem;
+  transition: max-height 1s;
+}
+
+.disk-game__title {
+  font-size: 3rem;
+  color: var(--white-color);
+  font-family: var(--font-montserrat);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.disk-game__description {
+  font-size: 2.5rem;
+  color: var(--white-color);
+  font-family: var(--font-montserrat);
+  margin-bottom: 1rem;
+}
+
+.disk-game__genre,
+.disk-game__platform,
+.disk-game__published-by,
+.disk-game__developed-by,
+.disk-game__release-date {
+  font-size: 2rem;
+  color: var(--white-color);
+  font-family: var(--font-montserrat);
+  margin-bottom: 1rem;
+}
+
+.disk-game__genre-span,
+.disk-game__platform-span,
+.disk-game__published-by-span,
+.disk-game__developed-by-span,
+.disk-game__release-date-span {
+  font-size: 1.5rem;
+  color: var(--white-color);
+  font-family: var(--font-montserrat);
+}
+
+.disk-game__links {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+  width: 100%;
+  height: auto;
+  padding-bottom: 1rem;
+}
+
+.disk-game__link-official-website {
+  width: auto;
+  font-size: 1.5rem;
+  padding: 1rem;
+  color: var(--white-color);
+  background: var(--primary-color);
+  text-decoration: none;
+  border: none;
+  text-align: end;
+  font-family: var(--font-montserrat);
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.disk-game__link-official-website:hover {
+  background-image: linear-gradient(
+    to right,
+    var(--black-color),
+    var(--black-color) 16.65%,
+    var(--primary-color) 49.95%,
+    var(--secondary-color) 100%
+  );
+  animation: slidebg 2s linear infinite;
+}
+
+.disk-game__btn-favorite {
+  width: auto;
+  font-size: 1.5rem;
+  padding: 1rem;
+  color: var(--white-color);
+  background: var(--primary-color);
+  text-decoration: none;
+  border: none;
+  text-align: end;
+  font-family: var(--font-montserrat);
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.disk-game__btn-favorite:hover {
+  background-image: linear-gradient(
+    to right,
+    var(--black-color),
+    var(--black-color) 16.65%,
+    var(--primary-color) 49.95%,
+    var(--secondary-color) 100%
+  );
+  animation: slidebg 2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes nospin {
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes slidebg {
+  to {
+    background-position: 20vw;
+  }
+}
+
+@media only screen and (min-width: 540px) {
+  .disk-game {
+    width: auto;
+    margin: 0;
+  }
+
+  .disk-game__img {
+    height: 40rem;
+    width: 40rem;
+  }
+
+  .disk-game__information {
+    width: 40rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .disk-game {
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+}

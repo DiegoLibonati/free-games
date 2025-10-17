@@ -1,4 +1,6 @@
-import { Alert } from "@src/entities/entities";
+import { Alert } from "@src/entities/app";
+
+import { UseUiStore } from "@src/entities/hooks";
 
 import {
   openNavBar,
@@ -7,20 +9,9 @@ import {
   closeFilterCategories,
   closeAlert,
   openAlert,
-} from "@src/store/ui/uiSlice";
-import { useAppDispatch, useAppSelector } from "@src/constants/redux";
+} from "@src/features/ui/uiSlice";
 
-type UseUiStore = {
-  alert: Alert;
-  isNavBarOpen: boolean;
-  isFilterCategoriesOpen: boolean;
-  handleOpenNavBar: () => void;
-  handleCloseNavBar: () => void;
-  handleOpenFilterCategories: () => void;
-  handleCloseFilterCategories: () => void;
-  handleOpenAlert: (alert: Alert) => void;
-  handleCloseAlert: () => void;
-};
+import { useAppDispatch, useAppSelector } from "@src/app/hooks";
 
 export const useUiStore = (): UseUiStore => {
   const dispatch = useAppDispatch();

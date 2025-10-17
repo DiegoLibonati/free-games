@@ -11,7 +11,7 @@ import {
   LoginWithEmailPassword,
   RegisterUserWithEmail,
   SignInWithGoogle,
-} from "@src/entities/entities";
+} from "@src/entities/firebase";
 
 import { FirebaseAuth } from "@src/firebase/config";
 

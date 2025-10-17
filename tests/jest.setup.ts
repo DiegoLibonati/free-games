@@ -1,12 +1,9 @@
 import "@testing-library/jest-dom";
 
-import { mockConfig } from "@tests/jest.constants";
-
-jest.mock("@src/constants/config.ts", () => ({
-  get CONFIG() {
-    return mockConfig;
-  },
-}));
+jest.mock("@src/constants/envs.ts", () => {
+  const { mockConfig } = jest.requireActual("@tests/jest.constants");
+  return { __esModule: true, default: mockConfig };
+});
 
 jest.mock("sweetalert2", () => ({
   fire: jest.fn(),

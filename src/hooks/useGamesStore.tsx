@@ -1,4 +1,5 @@
-import { Game } from "@src/entities/entities";
+import { Game } from "@src/entities/app";
+import { UseGameStore } from "@src/entities/hooks";
 
 import {
   startDeletingFavoriteGame,
@@ -6,31 +7,14 @@ import {
   startGettingGames,
   startGettingGamesByCategory,
   startSaveNewGameToFavorite,
-} from "@src/store/games/thunks";
+} from "@src/features/games/thunks";
 import {
   clearActiveGame,
   setActiveGame,
   stateToInitialValue,
-} from "@src/store/games/gamesSlice";
-import { useAppDispatch, useAppSelector } from "@src/constants/redux";
+} from "@src/features/games/gamesSlice";
 
-type UseGameStore = {
-  games: Game[];
-  isLoadingGames: boolean;
-  categories: string[];
-  isLoadingCategories: boolean;
-  favoritesGames: Game[];
-  isLoadingFavoritesGames: boolean;
-  activeGame: Game;
-  handleGetGames: () => void;
-  handleGetFavoriteGames: () => void;
-  handleSetNewGameToFavorite: (game: Game) => void;
-  handleSetToInitialState: () => void;
-  handleSetActiveGame: (game: Game) => void;
-  handleClearActiveGame: () => void;
-  handleDeleteFavoriteGame: (game: Game) => void;
-  handleGetGamesByCategory: (category: string) => void;
-};
+import { useAppDispatch, useAppSelector } from "@src/app/hooks";
 
 export const useGamesStore = (): UseGameStore => {
   const { games, categories, favorites, activeGame } = useAppSelector(

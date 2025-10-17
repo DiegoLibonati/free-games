@@ -2,13 +2,19 @@ import { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Swal, { SweetAlertIcon } from "sweetalert2";
 
-import { CheckingAuth } from "@src/auth/components/CheckingAuth/CheckingAuth";
+import { CheckingAuth } from "@src/components/CheckingAuth/CheckingAuth";
+
+import { LoginPage } from "@src/pages/LoginPage/LoginPage";
+import { RegisterPage } from "@src/pages/RegisterPage/RegisterPage";
+import { IndexPage } from "@src/pages/IndexPage/IndexPage";
+import { FavoritePage } from "@src/pages/FavoritePage/FavoritePage";
+import { GamesPage } from "@src/pages/GamesPage/GamesPage";
 
 import { useCheckAuth } from "@src/hooks/useCheckAuth";
-import { AuthRoutes } from "@src/auth/routes/AuthRoutes";
-import { GamesRoutes } from "@src/games/routes/GamesRoutes";
-
 import { useUiStore } from "@src/hooks/useUiStore";
+
+import { AuthRoute } from "@src/router/AuthRoute";
+import { GamesRoute } from "@src/router/GamesRoute";
 
 export const AppRouter = (): JSX.Element => {
   const { alert, handleCloseAlert } = useUiStore();
@@ -25,11 +31,27 @@ export const AppRouter = (): JSX.Element => {
 
   return (
     <Routes>
-      {status === "authenticated" ? (
-        <Route path="/*" element={<GamesRoutes></GamesRoutes>}></Route>
-      ) : (
-        <Route path="/auth/*" element={<AuthRoutes></AuthRoutes>}></Route>
-      )}
+      <Route element={<AuthRoute />}>
+        <Route path="/auth/login" element={<LoginPage></LoginPage>}></Route>
+        <Route
+          path="/auth/register"
+          element={<RegisterPage></RegisterPage>}
+        ></Route>
+      </Route>
+
+      <Route element={<GamesRoute />}>
+        <Route path="/games/home" element={<IndexPage></IndexPage>}></Route>
+
+        <Route
+          path="/games/favorite"
+          element={<FavoritePage></FavoritePage>}
+        ></Route>
+
+        <Route
+          path={`/games/explore`}
+          element={<GamesPage></GamesPage>}
+        ></Route>
+      </Route>
 
       <Route path="/*" element={<Navigate to="/auth/login"></Navigate>}></Route>
     </Routes>
