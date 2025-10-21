@@ -17,7 +17,7 @@ export const NavBar = (): JSX.Element => {
     <header className="header-wrapper">
       <div className="header-wrapper__menu">
         <img
-          src={assets.pngs.LogoPng}
+          src={assets.images.LogoPng}
           alt="logo"
           className="header-wrapper__logo"
         ></img>

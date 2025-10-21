@@ -101,7 +101,7 @@ export const RegisterPage = (): JSX.Element => {
 
         <form className="register-wrapper__form" onSubmit={onSubmitForm}>
           <img
-            src={assets.pngs.LogoPng}
+            src={assets.images.LogoPng}
             alt="logo"
             className="register-wrapper__logo"
           ></img>

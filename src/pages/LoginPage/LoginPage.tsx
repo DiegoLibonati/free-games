@@ -97,7 +97,7 @@ export const LoginPage = (): JSX.Element => {
 
         <form className="login-wrapper__form" onSubmit={onSubmitForm}>
           <img
-            src={assets.pngs.LogoPng}
+            src={assets.images.LogoPng}
             alt="logo"
             className="login-wrapper__logo"
           ></img>

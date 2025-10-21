@@ -3,15 +3,15 @@ import { UpcomingGames } from "@src/entities/app";
 import assets from "@src/assets/export";
 
 export const imagesOfGames = [
-  assets.jpgs.ApexJpg,
-  assets.jpgs.EnlistedJpg,
-  assets.jpgs.FortniteJpg,
-  assets.jpgs.FuryJpg,
-  assets.jpgs.GenshinJpg,
-  assets.jpgs.ShatterlineJpg,
-  assets.jpgs.WarframeJpg,
-  assets.jpegs.AlbionJpeg,
-  assets.pngs.ParhOfExilePng,
+  assets.images.ApexJpg,
+  assets.images.EnlistedJpg,
+  assets.images.FortniteJpg,
+  assets.images.FuryJpg,
+  assets.images.GenshinJpg,
+  assets.images.ShatterlineJpg,
+  assets.images.WarframeJpg,
+  assets.images.AlbionJpeg,
+  assets.images.ParhOfExilePng,
 ];
 
 export const upcomingGames: UpcomingGames[] = [
