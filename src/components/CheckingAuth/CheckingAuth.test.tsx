@@ -19,12 +19,11 @@ describe("CheckingAuth.tsx", () => {
     test("It must render the auth loader.", () => {
       const { container } = renderComponent();
 
-      const loaderRoot = container.querySelector(
-        ".loader-wrapper"
-      ) as HTMLDivElement;
-      const loaderAuth = loaderRoot!.querySelector(
+      const loaderRoot =
+        container.querySelector<HTMLDivElement>(".loader-wrapper");
+      const loaderAuth = loaderRoot!.querySelector<HTMLDivElement>(
         ".loader-wrapper__auth"
-      ) as HTMLDivElement;
+      );
 
       expect(loaderRoot).toBeInTheDocument();
       expect(loaderAuth).toBeInTheDocument();

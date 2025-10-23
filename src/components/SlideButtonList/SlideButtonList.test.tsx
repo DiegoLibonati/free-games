@@ -39,9 +39,8 @@ describe("SlideButtonList.tsx", () => {
     test("It must render the root of the slide buttons.", () => {
       const { container } = renderComponent({ index: 0 });
 
-      const root = container.querySelector(
-        ".slide-button-list"
-      ) as HTMLDivElement;
+      const root =
+        container.querySelector<HTMLDivElement>(".slide-button-list");
 
       expect(root).toBeInTheDocument();
     });

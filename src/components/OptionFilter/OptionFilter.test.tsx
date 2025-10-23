@@ -90,9 +90,9 @@ describe("OptionFilter.tsx", () => {
     test("It must render the root of the filter header.", () => {
       const { container } = renderComponent({ isOpen: false });
 
-      const header = container.querySelector(
+      const header = container.querySelector<HTMLDivElement>(
         ".option-filter__header"
-      ) as HTMLDivElement;
+      );
 
       expect(header).toBeInTheDocument();
       expect(header).toHaveClass("option-filter__header");
@@ -101,13 +101,13 @@ describe("OptionFilter.tsx", () => {
     test("It should execute the relevant function when the header is clicked.", async () => {
       const { container, props } = renderComponent({ isOpen: false });
 
-      const header = container.querySelector(
+      const header = container.querySelector<HTMLDivElement>(
         ".option-filter__header"
-      ) as HTMLDivElement;
+      );
 
       expect(header).toBeInTheDocument();
 
-      await user.click(header);
+      await user.click(header!);
 
       expect(props.handleClickOpenAndClose).toHaveBeenCalledTimes(1);
     });

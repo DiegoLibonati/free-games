@@ -78,12 +78,11 @@ describe("FavoritePage.tsx", () => {
     test("It must render the loader.", () => {
       const { container } = renderComponent();
 
-      const loaderRoot = container.querySelector(
+      const loaderRoot = container.querySelector<HTMLDivElement>(
         ".loader-all-wrapper"
-      ) as HTMLDivElement;
-      const loaderChild = loaderRoot!.querySelector(
-        ".loader-all"
-      ) as HTMLDivElement;
+      );
+      const loaderChild =
+        loaderRoot!.querySelector<HTMLDivElement>(".loader-all");
 
       expect(loaderRoot).toBeInTheDocument();
       expect(loaderChild).toBeInTheDocument();
@@ -170,7 +169,7 @@ describe("FavoritePage.tsx", () => {
     test("It must render the navbar.", async () => {
       const { container } = await asyncRenderComponent();
 
-      const header = container.querySelector(".header-wrapper") as HTMLElement;
+      const header = container.querySelector<HTMLElement>(".header-wrapper");
       const nav = screen.getByRole("navigation");
 
       expect(header).toBeInTheDocument();
@@ -188,7 +187,7 @@ describe("FavoritePage.tsx", () => {
     test("It must render the footer.", async () => {
       const { container } = await asyncRenderComponent();
 
-      const footer = container.querySelector("footer") as HTMLElement;
+      const footer = container.querySelector<HTMLElement>("footer");
 
       expect(footer).toBeInTheDocument();
       expect(footer).toHaveClass("footer-wrapper");

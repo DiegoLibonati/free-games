@@ -63,9 +63,9 @@ describe("LoginPage.tsx", () => {
     test("It must render the loading of the images.", () => {
       const { container } = renderComponent();
 
-      const loader = container.querySelector(
+      const loader = container.querySelector<HTMLDivElement>(
         ".loader-all-wrapper"
-      ) as HTMLDivElement;
+      );
 
       expect(loader).toBeInTheDocument();
     });
@@ -91,9 +91,9 @@ describe("LoginPage.tsx", () => {
     test("It must not render the loading of the images.", () => {
       const { container } = renderComponent();
 
-      const loader = container.querySelector(
+      const loader = container.querySelector<HTMLDivElement>(
         ".loader-all-wrapper"
-      ) as HTMLDivElement;
+      );
 
       expect(loader).not.toBeInTheDocument();
     });
@@ -240,7 +240,7 @@ describe("LoginPage.tsx", () => {
     test("It must render the wave.", () => {
       const { container } = renderComponent();
 
-      const wave = container.querySelector(".login-wave") as HTMLElement;
+      const wave = container.querySelector<HTMLElement>(".login-wave");
 
       expect(wave).toBeInTheDocument();
     });

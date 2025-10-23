@@ -19,7 +19,7 @@ describe("Footer.tsx", () => {
     test("It must render the footer.", () => {
       const { container } = renderComponent();
 
-      const footer = container.querySelector(".footer-wrapper") as HTMLElement;
+      const footer = container.querySelector<HTMLElement>(".footer-wrapper");
 
       expect(footer).toBeInTheDocument();
     });

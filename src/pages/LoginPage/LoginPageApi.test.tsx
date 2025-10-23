@@ -62,7 +62,9 @@ describe("LoginPage.tsx - API", () => {
     test("It should show the loader.", async () => {
       const { container } = renderComponent();
 
-      const loader = container.querySelector(".loader-all-wrapper");
+      const loader = container.querySelector<HTMLDivElement>(
+        ".loader-all-wrapper"
+      );
 
       expect(loader).toBeInTheDocument();
 

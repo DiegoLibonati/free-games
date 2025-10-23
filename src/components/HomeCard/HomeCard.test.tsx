@@ -48,12 +48,11 @@ describe("HomeCard.tsx", () => {
     test("It must render the loader.", () => {
       const { container } = renderComponent();
 
-      const loaderRoot = container.querySelector(
+      const loaderRoot = container.querySelector<HTMLDivElement>(
         ".loader-all-wrapper"
-      ) as HTMLDivElement;
-      const loaderChild = loaderRoot!.querySelector(
-        ".loader-all"
-      ) as HTMLDivElement;
+      );
+      const loaderChild =
+        loaderRoot!.querySelector<HTMLDivElement>(".loader-all");
 
       expect(loaderRoot).toBeInTheDocument();
       expect(loaderChild).toBeInTheDocument();

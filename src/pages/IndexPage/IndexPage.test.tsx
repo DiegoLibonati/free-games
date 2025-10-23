@@ -51,7 +51,7 @@ describe("IndexPage.tsx", () => {
     test("It must render the navbar.", async () => {
       const { container } = await asyncRenderComponent();
 
-      const header = container.querySelector(".header-wrapper") as HTMLElement;
+      const header = container.querySelector<HTMLElement>(".header-wrapper");
       const nav = screen.getByRole("navigation");
 
       expect(header).toBeInTheDocument();
@@ -69,9 +69,8 @@ describe("IndexPage.tsx", () => {
     test("It must render the 'HomeImagesSection' section.", async () => {
       const { container } = await asyncRenderComponent();
 
-      const homeImagesSection = container.querySelector(
-        ".home-images"
-      ) as HTMLElement;
+      const homeImagesSection =
+        container.querySelector<HTMLElement>(".home-images");
 
       expect(homeImagesSection).toBeInTheDocument();
     });
@@ -79,9 +78,8 @@ describe("IndexPage.tsx", () => {
     test("It must render the 'CarouselsGamesSection' section.", async () => {
       const { container } = await asyncRenderComponent();
 
-      const carouselsGamesSection = container.querySelector(
-        ".carousels"
-      ) as HTMLElement;
+      const carouselsGamesSection =
+        container.querySelector<HTMLElement>(".carousels");
 
       expect(carouselsGamesSection).toBeInTheDocument();
     });
@@ -89,9 +87,8 @@ describe("IndexPage.tsx", () => {
     test("It must render the 'ShowGamesSection' section.", async () => {
       const { container } = await asyncRenderComponent();
 
-      const showGamesSection = container.querySelector(
-        ".show-games"
-      ) as HTMLElement;
+      const showGamesSection =
+        container.querySelector<HTMLElement>(".show-games");
 
       expect(showGamesSection).toBeInTheDocument();
     });
@@ -99,9 +96,8 @@ describe("IndexPage.tsx", () => {
     test("It must render the 'UpcomingGamesSection' section.", async () => {
       const { container } = await asyncRenderComponent();
 
-      const upcomingGamesSection = container.querySelector(
-        ".upcoming-games"
-      ) as HTMLElement;
+      const upcomingGamesSection =
+        container.querySelector<HTMLElement>(".upcoming-games");
 
       expect(upcomingGamesSection).toBeInTheDocument();
     });
@@ -109,7 +105,7 @@ describe("IndexPage.tsx", () => {
     test("It must render the footer.", async () => {
       const { container } = await asyncRenderComponent();
 
-      const footer = container.querySelector("footer") as HTMLElement;
+      const footer = container.querySelector<HTMLElement>("footer");
 
       expect(footer).toBeInTheDocument();
       expect(footer).toHaveClass("footer-wrapper");

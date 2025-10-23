@@ -48,12 +48,12 @@ describe("Hamburger.tsx", () => {
     test("It should render the root with the relevant classes and when clicked it should execute the relevant functions.", async () => {
       const { container } = renderComponent();
 
-      const hamburger = container.querySelector(".hamburger") as HTMLDivElement;
+      const hamburger = container.querySelector<HTMLDivElement>(".hamburger");
 
       expect(hamburger).toBeInTheDocument();
       expect(hamburger).toHaveClass("hamburger hamburger--open");
 
-      await user.click(hamburger);
+      await user.click(hamburger!);
 
       expect(mockHandleCloseNavBar).toHaveBeenCalledTimes(1);
     });
@@ -76,12 +76,12 @@ describe("Hamburger.tsx", () => {
     test("It should render the root with the relevant classes and when clicked it should execute the relevant functions.", async () => {
       const { container } = renderComponent();
 
-      const hamburger = container.querySelector(".hamburger") as HTMLDivElement;
+      const hamburger = container.querySelector<HTMLDivElement>(".hamburger");
 
       expect(hamburger).toBeInTheDocument();
       expect(hamburger).toHaveClass("hamburger");
 
-      await user.click(hamburger);
+      await user.click(hamburger!);
 
       expect(mockHandleOpenNavBar).toHaveBeenCalledTimes(1);
     });
@@ -104,10 +104,10 @@ describe("Hamburger.tsx", () => {
     test("It should render the hamburger icon menu.", () => {
       const { container } = renderComponent();
 
-      const hamburger = container.querySelector(".hamburger") as HTMLDivElement;
+      const hamburger = container.querySelector<HTMLDivElement>(".hamburger");
 
       expect(hamburger).toBeInTheDocument();
-      expect(hamburger.children).toHaveLength(3);
+      expect(hamburger!.children).toHaveLength(3);
     });
   });
 });

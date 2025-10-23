@@ -55,9 +55,7 @@ describe("DiskGame.tsx", () => {
     test("It must render the root of the card.", () => {
       const { container } = renderComponent();
 
-      const rootCard = container.querySelector(
-        ".disk-game"
-      ) as HTMLDivElement;
+      const rootCard = container.querySelector<HTMLDivElement>(".disk-game");
 
       expect(rootCard).toBeInTheDocument();
       expect(rootCard).toHaveClass("disk-game");
@@ -66,9 +64,7 @@ describe("DiskGame.tsx", () => {
     test("It must render the disk.", () => {
       const { props, container } = renderComponent();
 
-      const disk = container.querySelector(
-        ".disk-game__img"
-      ) as HTMLDivElement;
+      const disk = container.querySelector<HTMLDivElement>(".disk-game__img");
 
       expect(disk).toBeInTheDocument();
       expect(disk).toHaveClass("disk-game__img");
@@ -80,9 +76,9 @@ describe("DiskGame.tsx", () => {
     test("It must render the root of the information.", () => {
       const { container } = renderComponent();
 
-      const rootInformation = container.querySelector(
+      const rootInformation = container.querySelector<HTMLDivElement>(
         ".disk-game__information"
-      ) as HTMLDivElement;
+      );
 
       expect(rootInformation).toBeInTheDocument();
       expect(rootInformation).toHaveClass("disk-game__information");
@@ -140,57 +136,47 @@ describe("DiskGame.tsx", () => {
     test("It should open the description when you click on the disk.", async () => {
       const { container } = renderComponent();
 
-      const disk = container.querySelector(
-        ".disk-game__img"
-      ) as HTMLDivElement;
-      const rootInformation = container.querySelector(
+      const disk = container.querySelector<HTMLDivElement>(".disk-game__img");
+      const rootInformation = container.querySelector<HTMLDivElement>(
         ".disk-game__information"
-      ) as HTMLDivElement;
+      );
 
       expect(disk).toBeInTheDocument();
       expect(rootInformation).toBeInTheDocument();
 
-      await user.click(disk);
+      await user.click(disk!);
 
       expect(
-        container.querySelector(".disk-game__img") as HTMLDivElement
+        container.querySelector<HTMLDivElement>(".disk-game__img")
       ).toHaveClass("disk-game__img--open");
       expect(
-        container.querySelector(
-          ".disk-game__information"
-        ) as HTMLDivElement
+        container.querySelector<HTMLDivElement>(".disk-game__information")
       ).toHaveClass("disk-game__information--open");
     });
 
     test("It should close the description when you double click on the disk.", async () => {
       const { container } = renderComponent();
 
-      const disk = container.querySelector(
-        ".disk-game__img"
-      ) as HTMLDivElement;
+      const disk = container.querySelector<HTMLDivElement>(".disk-game__img");
 
       expect(disk).toBeInTheDocument();
 
-      await user.click(disk);
+      await user.click(disk!);
 
       expect(
-        container.querySelector(".disk-game__img") as HTMLDivElement
+        container.querySelector<HTMLDivElement>(".disk-game__img")
       ).toHaveClass("disk-game__img--open");
       expect(
-        container.querySelector(
-          ".disk-game__information"
-        ) as HTMLDivElement
+        container.querySelector<HTMLDivElement>(".disk-game__information")
       ).toHaveClass("disk-game__information--open");
 
-      await user.dblClick(disk);
+      await user.dblClick(disk!);
 
       expect(
-        container.querySelector(".disk-game__img") as HTMLDivElement
+        container.querySelector<HTMLDivElement>(".disk-game__img")
       ).not.toHaveClass("disk-game__img--open");
       expect(
-        container.querySelector(
-          ".disk-game__information"
-        ) as HTMLDivElement
+        container.querySelector<HTMLDivElement>(".disk-game__information")
       ).not.toHaveClass("disk-game__information--open");
     });
   });

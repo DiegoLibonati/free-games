@@ -130,7 +130,7 @@ describe("NavBar.tsx", () => {
     test("It must render the header.", () => {
       const { container } = renderComponent();
 
-      const header = container.querySelector(".header-wrapper");
+      const header = container.querySelector<HTMLElement>(".header-wrapper");
 
       expect(header).toBeInTheDocument();
     });
@@ -139,7 +139,7 @@ describe("NavBar.tsx", () => {
       const { container } = renderComponent();
 
       const img = screen.getByAltText("logo");
-      const hamburger = container.querySelector(".hamburger") as HTMLDivElement;
+      const hamburger = container.querySelector<HTMLDivElement>(".hamburger");
 
       expect(img).toBeInTheDocument();
       expect(img).toHaveAttribute("src", mockAssetsImage);

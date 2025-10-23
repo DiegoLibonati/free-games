@@ -69,13 +69,12 @@ describe("CarouselsGamesSection.tsx", () => {
     test("It must render the loader when you have not yet obtained the games of a category.", async () => {
       const { container } = renderComponent();
 
-      const loaderRoot = container.querySelector(
+      const loaderRoot = container.querySelector<HTMLDivElement>(
         ".loader-all-wrapper"
-      ) as HTMLDivElement;
-      const loaderParent = loaderRoot.parentElement as HTMLElement;
-      const loaderChild = loaderRoot!.querySelector(
-        ".loader-all"
-      ) as HTMLDivElement;
+      );
+      const loaderParent = loaderRoot!.parentElement as HTMLElement;
+      const loaderChild =
+        loaderRoot!.querySelector<HTMLDivElement>(".loader-all");
 
       expect(loaderParent).toBeInTheDocument();
       expect(loaderParent).toHaveClass("carousel-games");
@@ -95,9 +94,9 @@ describe("CarouselsGamesSection.tsx", () => {
       expect(headingCategory).toBeInTheDocument();
 
       for (const game of mockRequestGames) {
-        const rootCard = container.querySelector(
+        const rootCard = container.querySelector<HTMLDivElement>(
           `.game-${game.id}`
-        ) as HTMLDivElement;
+        );
         const imgGame = screen.getByAltText(game.title);
         const btnAddToFav = screen.getByRole("button", {
           name: `add game to fav ${game.title}`,

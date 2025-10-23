@@ -73,9 +73,9 @@ describe("CarouselGames.tsx", () => {
     test("It must render the carousel track with its respective class.", () => {
       const { container } = renderComponent();
 
-      const track = container.querySelector(
+      const track = container.querySelector<HTMLDivElement>(
         ".carousel-games__track"
-      ) as HTMLDivElement;
+      );
 
       expect(track).toBeInTheDocument();
       expect(track).toHaveClass("carousel-games__track");
@@ -85,9 +85,9 @@ describe("CarouselGames.tsx", () => {
       const { props, container } = renderComponent();
 
       for (const game of props.games) {
-        const track = container.querySelector(
+        const track = container.querySelector<HTMLDivElement>(
           `.game-${game.id}`
-        ) as HTMLDivElement;
+        );
         const img = screen.getByAltText(game.title);
         const btnAddToFav = screen.getByRole("button", {
           name: `add game to fav ${game.title}`,
