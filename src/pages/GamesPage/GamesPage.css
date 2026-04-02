@@ -7,7 +7,7 @@
   height: auto;
   min-height: 80vh;
   padding: 1rem;
-  background-color: var(--primary-color);
+  background-color: var(--color-primary);
   padding-top: 7rem;
 }
 
@@ -22,7 +22,7 @@
 
 .games-page-options__title {
   font-size: 3rem;
-  color: var(--white-color);
+  color: var(--color-white);
   font-family: var(--font-montserrat);
 }
 
@@ -47,7 +47,7 @@
 
 .all-games__title-text {
   font-size: 3rem;
-  color: var(--white-color);
+  color: var(--color-white);
   font-family: var(--font-montserrat);
 }
 
@@ -62,7 +62,7 @@
 
 .all-games__not-games-label {
   font-size: 4rem;
-  color: var(--white-color);
+  color: var(--color-white);
   font-family: var(--font-montserrat);
   text-align: center;
 }

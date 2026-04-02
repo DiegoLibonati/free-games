@@ -1,8 +1,8 @@
-import { useUiStore } from "@src/hooks/useUiStore";
+import { useUiStore } from "@/hooks/useUiStore";
 
-import "@src/components/Hamburger/Hamburger.css";
+import "@/components/Hamburger/Hamburger.css";
 
-export const Hamburger = (): JSX.Element => {
+const Hamburger = () => {
   const { isNavBarOpen, handleOpenNavBar, handleCloseNavBar } = useUiStore();
 
   return (
@@ -16,3 +16,5 @@ export const Hamburger = (): JSX.Element => {
     </div>
   );
 };
+
+export default Hamburger;

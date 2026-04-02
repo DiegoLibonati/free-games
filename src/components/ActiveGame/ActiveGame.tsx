@@ -2,14 +2,14 @@ import { useLocation } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import { GrClose, GrFavorite } from "react-icons/gr";
 
-import { Game } from "@src/entities/app";
+import { Game } from "@/types/app";
 
-import { useGamesStore } from "@src/hooks/useGamesStore";
-import { useUiStore } from "@src/hooks/useUiStore";
+import { useGamesStore } from "@/hooks/useGamesStore";
+import { useUiStore } from "@/hooks/useUiStore";
 
-import "@src/components/ActiveGame/ActiveGame.css";
+import "@/components/ActiveGame/ActiveGame.css";
 
-export const ActiveGame = (): JSX.Element => {
+const ActiveGame = () => {
   const { pathname } = useLocation();
 
   const {
@@ -55,38 +55,26 @@ export const ActiveGame = (): JSX.Element => {
           <h2 className="active-game__title">{activeGame!.title}</h2>
         </div>
 
-        <p className="active-game__description">
-          {activeGame!.short_description}
-        </p>
+        <p className="active-game__description">{activeGame!.short_description}</p>
 
         <div className="active-game__specs">
           <h3 className="active-game__genre">
-            Gender:{" "}
-            <span className="active-game__genre-span">{activeGame!.genre}</span>
+            Gender: <span className="active-game__genre-span">{activeGame!.genre}</span>
           </h3>
           <h3 className="active-game__platform">
-            Platform:{" "}
-            <span className="active-game__platform-span">
-              {activeGame!.platform}
-            </span>
+            Platform: <span className="active-game__platform-span">{activeGame!.platform}</span>
           </h3>
           <h3 className="active-game__publisher">
             Published by:{" "}
-            <span className="active-game__publisher-span">
-              {activeGame!.publisher}
-            </span>
+            <span className="active-game__publisher-span">{activeGame!.publisher}</span>
           </h3>
           <h3 className="active-game__developer">
             Developed by:{" "}
-            <span className="active-game__developer-span">
-              {activeGame!.developer}
-            </span>
+            <span className="active-game__developer-span">{activeGame!.developer}</span>
           </h3>
           <h3 className="active-game__release-date">
             Release date:{" "}
-            <span className="active-game__release-date-span">
-              {activeGame!.release_date}
-            </span>
+            <span className="active-game__release-date-span">{activeGame!.release_date}</span>
           </h3>
 
           <div className="active-game__links">
@@ -111,7 +99,7 @@ export const ActiveGame = (): JSX.Element => {
           <GrClose className="active-game-btn-close-icon"></GrClose>
         </button>
 
-        {pathname === "/games/favorite" && (
+        {pathname === "/favorite" && (
           <button
             type="button"
             aria-label="delete favorite game"
@@ -122,7 +110,7 @@ export const ActiveGame = (): JSX.Element => {
           </button>
         )}
 
-        {pathname === "/games/explore" && (
+        {pathname === "/explore" && (
           <button
             type="button"
             aria-label="save new game to favorite"
@@ -136,3 +124,5 @@ export const ActiveGame = (): JSX.Element => {
     </div>
   );
 };
+
+export default ActiveGame;

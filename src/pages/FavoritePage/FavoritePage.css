@@ -6,7 +6,7 @@
   min-height: 80vh;
   height: auto;
   padding: 1rem;
-  background-color: var(--primary-color);
+  background-color: var(--color-primary);
   padding-top: 6rem;
   position: relative;
 }
@@ -32,7 +32,7 @@
 
 .favorite-games__empty-label {
   font-size: 4rem;
-  color: var(--white-color);
+  color: var(--color-white);
   font-family: var(--font-montserrat);
   text-align: center;
 }

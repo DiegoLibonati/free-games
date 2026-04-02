@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 
-import { UseCheckAuth } from "@src/entities/hooks";
+import { UseCheckAuth } from "@/types/hooks";
 
-import { useAuthStore } from "@src/hooks/useAuthStore";
-import { FirebaseAuth } from "@src/firebase/config";
+import { useAuthStore } from "@/hooks/useAuthStore";
+import { FirebaseAuth } from "@/firebase/config";
 
 export const useCheckAuth = (): UseCheckAuth => {
   const { status, handleLogOut, handleLogin } = useAuthStore();

@@ -24,14 +24,16 @@
   height: 40rem;
   opacity: 0;
   font-size: 3rem;
-  color: var(--white-color);
+  color: var(--color-white);
   position: absolute;
   text-align: center;
   font-family: var(--font-montserrat);
-  background: rgba(var(--black-int-color), 0.501);
+  background: rgba(var(--color-black-rgb), 0.501);
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.2s, visibility 0.2s;
+  transition:
+    opacity 0.2s,
+    visibility 0.2s;
 }
 
 .upcoming-game:hover .upcoming-game__title {

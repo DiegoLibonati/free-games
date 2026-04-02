@@ -2,30 +2,22 @@ import { Fragment, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import queryString from "query-string";
 
-import { NavBar } from "@src/components/NavBar/NavBar";
-import { Footer } from "@src/components/Footer/Footer";
-import { Loader } from "@src/components/Loader/Loader";
-import { CardGame } from "@src/components/CardGame/CardGame";
-import { OptionFilter } from "@src/components/OptionFilter/OptionFilter";
+import NavBar from "@/components/NavBar/NavBar";
+import Footer from "@/components/Footer/Footer";
+import Loader from "@/components/Loader/Loader";
+import CardGame from "@/components/CardGame/CardGame";
+import OptionFilter from "@/components/OptionFilter/OptionFilter";
 
-import { useGamesStore } from "@src/hooks/useGamesStore";
-import { useUiStore } from "@src/hooks/useUiStore";
+import { useGamesStore } from "@/hooks/useGamesStore";
+import { useUiStore } from "@/hooks/useUiStore";
 
-import "@src/pages/GamesPage/GamesPage.css";
+import "@/pages/GamesPage/GamesPage.css";
 
-export const GamesPage = (): JSX.Element => {
-  const {
-    games,
-    isLoadingGames,
-    categories,
-    handleGetGamesByCategory,
-    handleSetToInitialState,
-  } = useGamesStore();
-  const {
-    isFilterCategoriesOpen,
-    handleOpenFilterCategories,
-    handleCloseFilterCategories,
-  } = useUiStore();
+const GamesPage = () => {
+  const { games, isLoadingGames, categories, handleGetGamesByCategory, handleSetToInitialState } =
+    useGamesStore();
+  const { isFilterCategoriesOpen, handleOpenFilterCategories, handleCloseFilterCategories } =
+    useUiStore();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -63,9 +55,7 @@ export const GamesPage = (): JSX.Element => {
             arr={categories}
             handleClickFilter={handleClickFilter}
             handleClickOpenAndClose={
-              isFilterCategoriesOpen
-                ? handleCloseFilterCategories
-                : handleOpenFilterCategories
+              isFilterCategoriesOpen ? handleCloseFilterCategories : handleOpenFilterCategories
             }
           ></OptionFilter>
         </section>
@@ -78,14 +68,17 @@ export const GamesPage = (): JSX.Element => {
               <h2 className="all-games__title-text">Games</h2>
             </div>
             {games.map((game) => (
-              <CardGame key={game.id} game={game}></CardGame>
+              <CardGame
+                key={game.id}
+                id={game.id}
+                thumbnail={game.thumbnail}
+                title={game.title}
+              ></CardGame>
             ))}
           </section>
         ) : (
           <section className="all-games__not-games">
-            <h2 className="all-games__not-games-label">
-              ¡That category does not exists!
-            </h2>
+            <h2 className="all-games__not-games-label">¡That category does not exists!</h2>
           </section>
         )}
       </main>
@@ -94,3 +87,5 @@ export const GamesPage = (): JSX.Element => {
     </Fragment>
   );
 };
+
+export default GamesPage;

@@ -1,12 +1,8 @@
-import { UpcomingGameProps } from "@src/entities/props";
+import { UpcomingGameProps } from "@/types/props";
 
-import "@src/components/UpcomingGame/UpcomingGame.css";
+import "@/components/UpcomingGame/UpcomingGame.css";
 
-export const UpcomingGame = ({
-  img,
-  name,
-  release_date,
-}: UpcomingGameProps): JSX.Element => {
+const UpcomingGame = ({ img, name, release_date }: UpcomingGameProps) => {
   return (
     <article className="upcoming-game">
       <img className="upcoming-game__img" src={img} alt={name}></img>
@@ -17,3 +13,5 @@ export const UpcomingGame = ({
     </article>
   );
 };
+
+export default UpcomingGame;

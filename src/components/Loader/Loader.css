@@ -9,7 +9,7 @@
 .loader-all {
   width: 4.8rem;
   height: 4.8rem;
-  border: 0.5rem solid var(--white-color);
+  border: 0.5rem solid var(--color-white);
   border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;

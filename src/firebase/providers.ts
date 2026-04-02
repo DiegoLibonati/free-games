@@ -7,13 +7,9 @@ import {
   updateProfile,
 } from "firebase/auth";
 
-import {
-  LoginWithEmailPassword,
-  RegisterUserWithEmail,
-  SignInWithGoogle,
-} from "@src/entities/firebase";
+import { LoginWithEmailPassword, RegisterUserWithEmail, SignInWithGoogle } from "@/types/firebase";
 
-import { FirebaseAuth } from "@src/firebase/config";
+import { FirebaseAuth } from "@/firebase/config";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -52,11 +48,7 @@ export const registerUserWithEmail = async (
   username: string
 ): Promise<RegisterUserWithEmail> => {
   try {
-    const result = await createUserWithEmailAndPassword(
-      FirebaseAuth,
-      email,
-      password
-    );
+    const result = await createUserWithEmailAndPassword(FirebaseAuth, email, password);
 
     await updateProfile(FirebaseAuth.currentUser!, { displayName: username });
 
@@ -91,11 +83,7 @@ export const loginWithEmailPassword = async (
   password: string
 ): Promise<LoginWithEmailPassword> => {
   try {
-    const result = await signInWithEmailAndPassword(
-      FirebaseAuth,
-      email,
-      password
-    );
+    const result = await signInWithEmailAndPassword(FirebaseAuth, email, password);
     const { uid, photoURL, displayName } = result.user;
 
     return {

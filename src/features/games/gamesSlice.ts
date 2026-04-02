@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { Game } from "@src/entities/app";
-import { GamesState } from "@src/entities/states";
+import { Game } from "@/types/app";
+import { GamesState } from "@/types/states";
 
 const initialState: GamesState = {
   games: {
@@ -67,6 +67,7 @@ export const gamesSlice = createSlice({
     },
     stateToInitialValue: (state) => {
       state = initialState;
+      console.log(state);
     },
   },
 });

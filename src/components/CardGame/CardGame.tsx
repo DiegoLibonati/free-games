@@ -1,26 +1,27 @@
-import { useGamesStore } from "@src/hooks/useGamesStore";
+import { CardGameProps } from "@/types/props";
 
-import { Game } from "@src/entities/app";
-import { CardGameProps } from "@src/entities/props";
+import { useGamesStore } from "@/hooks/useGamesStore";
 
-import "@src/components/CardGame/CardGame.css";
+import { gamesService } from "@/services/gamesService";
 
-export const CardGame = ({ game }: CardGameProps): JSX.Element => {
+import "@/components/CardGame/CardGame.css";
+
+const CardGame = ({ id, thumbnail, title }: CardGameProps) => {
   const { handleSetActiveGame } = useGamesStore();
 
-  const showActiveGame = (game: Game) => {
+  const showActiveGame = async (id: number) => {
+    const game = (await gamesService.getAll()).find((game) => game.id === id)!;
+
     handleSetActiveGame(game);
   };
 
   return (
-    <article className="card-game-games" onClick={() => showActiveGame(game)}>
-      <img
-        src={game.thumbnail}
-        alt={game.title}
-        className="card-game-games__img"
-      ></img>
+    <article className="card-game-games" onClick={() => showActiveGame(id)}>
+      <img src={thumbnail} alt={title} className="card-game-games__img"></img>
 
-      <h2 className="card-game-games__title">{game.title}</h2>
+      <h2 className="card-game-games__title">{title}</h2>
     </article>
   );
 };
+
+export default CardGame;

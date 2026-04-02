@@ -1,41 +1,35 @@
 import { NavLink } from "react-router-dom";
 
-import { Hamburger } from "@src/components/Hamburger/Hamburger";
+import Hamburger from "@/components/Hamburger/Hamburger";
 
-import { useAuthStore } from "@src/hooks/useAuthStore";
-import { useUiStore } from "@src/hooks/useUiStore";
+import { useAuthStore } from "@/hooks/useAuthStore";
+import { useUiStore } from "@/hooks/useUiStore";
 
-import assets from "@src/assets/export";
+import assets from "@/assets/export";
 
-import "@src/components/NavBar/NavBar.css";
+import "@/components/NavBar/NavBar.css";
 
-export const NavBar = (): JSX.Element => {
+const NavBar = () => {
   const { isNavBarOpen } = useUiStore();
   const { displayName, photoURL, handleLogOut } = useAuthStore();
 
   return (
     <header className="header-wrapper">
       <div className="header-wrapper__menu">
-        <img
-          src={assets.images.LogoPng}
-          alt="logo"
-          className="header-wrapper__logo"
-        ></img>
+        <img src={assets.images.LogoPng} alt="logo" className="header-wrapper__logo"></img>
 
         <Hamburger></Hamburger>
       </div>
 
       <nav
         className={
-          isNavBarOpen
-            ? "header-wrapper__nav header-wrapper__nav--open"
-            : "header-wrapper__nav"
+          isNavBarOpen ? "header-wrapper__nav header-wrapper__nav--open" : "header-wrapper__nav"
         }
       >
         <ul className="header-wrapper__list">
           <li className="header-wrapper__list-item">
             <NavLink
-              to="/games/home"
+              to="/home"
               aria-label="go to home page"
               className={({ isActive }) =>
                 isActive
@@ -49,7 +43,7 @@ export const NavBar = (): JSX.Element => {
 
           <li className="header-wrapper__list-item">
             <NavLink
-              to="/games/favorite"
+              to="/favorite"
               aria-label="go to favorite page"
               className={({ isActive }) =>
                 isActive
@@ -63,7 +57,7 @@ export const NavBar = (): JSX.Element => {
 
           <li className="header-wrapper__list-item">
             <NavLink
-              to="/games/explore"
+              to="/explore"
               aria-label="go to games page"
               className={({ isActive }) =>
                 isActive
@@ -105,3 +99,5 @@ export const NavBar = (): JSX.Element => {
     </header>
   );
 };
+
+export default NavBar;

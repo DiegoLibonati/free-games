@@ -1,14 +1,14 @@
 import { useMemo } from "react";
 
-import { DiskGame } from "@src/components/DiskGame/DiskGame";
+import DiskGame from "@/components/DiskGame/DiskGame";
 
-import { useGamesStore } from "@src/hooks/useGamesStore";
+import { useGamesStore } from "@/hooks/useGamesStore";
 
-import { getSliceArraySorted } from "@src/helpers/getSliceArraySorted";
+import { getSliceArraySorted } from "@/helpers/getSliceArraySorted";
 
-import "@src/components/ShowGamesSection/ShowGamesSection.css";
+import "@/components/ShowGamesSection/ShowGamesSection.css";
 
-export const ShowGamesSection = (): JSX.Element => {
+const ShowGamesSection = () => {
   const { games } = useGamesStore();
 
   const shuffledGames = useMemo(() => getSliceArraySorted(games, 12), [games]);
@@ -23,9 +23,23 @@ export const ShowGamesSection = (): JSX.Element => {
 
       <article className="show-games__cards">
         {shuffledGames?.map((game) => (
-          <DiskGame key={game.id} game={game}></DiskGame>
+          <DiskGame
+            key={game.id}
+            developer={game.developer}
+            freetogame_profile_url={game.freetogame_profile_url}
+            genre={game.genre}
+            id={game.id}
+            platform={game.platform}
+            publisher={game.publisher}
+            release_date={game.release_date}
+            short_description={game.short_description}
+            thumbnail={game.thumbnail}
+            title={game.title}
+          ></DiskGame>
         ))}
       </article>
     </section>
   );
 };
+
+export default ShowGamesSection;

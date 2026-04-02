@@ -1,9 +1,11 @@
-import "@src/components/Loader/Loader.css";
+import "@/components/Loader/Loader.css";
 
-export const Loader = (): JSX.Element => {
+const Loader = () => {
   return (
     <div className="loader-all-wrapper">
       <div className="loader-all"></div>
     </div>
   );
 };
+
+export default Loader;

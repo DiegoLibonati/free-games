@@ -1,13 +1,13 @@
-import AlbionJpeg from "@src/assets/images/albion.jpeg";
-import ApexJpg from "@src/assets/images/apex.jpg";
-import EnlistedJpg from "@src/assets/images/enlisted1920.jpg";
-import FortniteJpg from "@src/assets/images/fortnite.jpg";
-import FuryJpg from "@src/assets/images/fury1920.jpg";
-import GenshinJpg from "@src/assets/images/genshin1920.jpg";
-import ShatterlineJpg from "@src/assets/images/shatterline.jpg";
-import WarframeJpg from "@src/assets/images/warframe.jpg";
-import LogoPng from "@src/assets/images/logo.png";
-import ParhOfExilePng from "@src/assets/images/pathofexile.png";
+import AlbionJpeg from "@/assets/images/albion.jpeg";
+import ApexJpg from "@/assets/images/apex.jpg";
+import EnlistedJpg from "@/assets/images/enlisted1920.jpg";
+import FortniteJpg from "@/assets/images/fortnite.jpg";
+import FuryJpg from "@/assets/images/fury1920.jpg";
+import GenshinJpg from "@/assets/images/genshin1920.jpg";
+import ShatterlineJpg from "@/assets/images/shatterline.jpg";
+import WarframeJpg from "@/assets/images/warframe.jpg";
+import LogoPng from "@/assets/images/logo.png";
+import ParhOfExilePng from "@/assets/images/pathofexile.png";
 
 const assets = {
   images: {

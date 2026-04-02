@@ -1,12 +1,12 @@
-import { HomeCard } from "@src/components/HomeCard/HomeCard";
+import HomeCard from "@/components/HomeCard/HomeCard";
 
-import { useAutoSlide } from "@src/hooks/useAutoSlide";
+import { useAutoSlide } from "@/hooks/useAutoSlide";
 
-import { imagesOfGames } from "@src/constants/data";
+import { imagesOfGames } from "@/constants/data";
 
-import "@src/components/HomeImagesSection/HomeImagesSection.css";
+import "@/components/HomeImagesSection/HomeImagesSection.css";
 
-export const HomeImagesSection = (): JSX.Element => {
+const HomeImagesSection = () => {
   const autoIndex = useAutoSlide(imagesOfGames);
 
   return (
@@ -18,10 +18,7 @@ export const HomeImagesSection = (): JSX.Element => {
           position = "home-images__background home-images__background--active-slide";
         }
 
-        if (
-          index === autoIndex - 1 ||
-          (autoIndex === 0 && index === imagesOfGames.length - 1)
-        ) {
+        if (index === autoIndex - 1 || (autoIndex === 0 && index === imagesOfGames.length - 1)) {
           position = "home-images__background home-images__background--last-slide";
         }
 
@@ -42,3 +39,5 @@ export const HomeImagesSection = (): JSX.Element => {
     </section>
   );
 };
+
+export default HomeImagesSection;

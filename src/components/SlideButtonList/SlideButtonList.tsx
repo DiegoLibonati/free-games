@@ -1,11 +1,8 @@
-import { SlideButtonListProps } from "@src/entities/props";
+import { SlideButtonListProps } from "@/types/props";
 
-import "@src/components/SlideButtonList/SlideButtonList.css";
+import "@/components/SlideButtonList/SlideButtonList.css";
 
-export const SlideButtonList = ({
-  index,
-  handleSetIndex,
-}: SlideButtonListProps): JSX.Element => {
+const SlideButtonList = ({ index, handleSetIndex }: SlideButtonListProps) => {
   return (
     <div className="slide-button-list">
       <button
@@ -41,3 +38,5 @@ export const SlideButtonList = ({
     </div>
   );
 };
+
+export default SlideButtonList;

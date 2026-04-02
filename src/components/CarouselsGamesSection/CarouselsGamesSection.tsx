@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 
-import { Game, Carousel } from "@src/entities/app";
+import { Game, Carousel } from "@/types/app";
 
-import { Loader } from "@src/components/Loader/Loader";
-import { CarouselGames } from "@src/components/CarouselGames/CarouselGames";
+import Loader from "@/components/Loader/Loader";
+import CarouselGames from "@/components/CarouselGames/CarouselGames";
 
-import { useGamesStore } from "@src/hooks/useGamesStore";
+import { useGamesStore } from "@/hooks/useGamesStore";
 
-import { getSliceArraySorted } from "@src/helpers/getSliceArraySorted";
+import { getSliceArraySorted } from "@/helpers/getSliceArraySorted";
 
-import { getGamesByCategory } from "@src/api/get/getGamesByCategory";
+import { gamesService } from "@/services/gamesService";
 
-import "@src/components/CarouselsGamesSection/CarouselsGamesSection.css";
+import "@/components/CarouselsGamesSection/CarouselsGamesSection.css";
 
-export const CarouselsGamesSection = (): JSX.Element => {
+const CarouselsGamesSection = () => {
   const [carousels, setCarousels] = useState<Carousel<Game>[]>([]);
 
   const { categories } = useGamesStore();
@@ -21,24 +21,18 @@ export const CarouselsGamesSection = (): JSX.Element => {
   const handleGetGamesFromCategories = (categories: string[]): void => {
     categories.forEach(async (category) => {
       try {
-        setCarousels((state) => [
-          ...state,
-          { name: category, isLoading: true, arr: [] },
-        ]);
+        setCarousels((state) => [...state, { name: category, isLoading: true, arr: [] }]);
 
-        const data = await getGamesByCategory(category);
+        const data = await gamesService.getByCategory(category);
 
-        setCarousels((state) =>
-          state.filter((carousel) => !carousel.isLoading)
-        );
+        setCarousels((state) => state.filter((carousel) => !carousel.isLoading));
         setCarousels((state) => [
           ...state,
           { name: category, isLoading: false, arr: data.slice(0, 20) },
         ]);
       } catch (e) {
-        setCarousels((state) =>
-          state.filter((carousel) => !carousel.isLoading)
-        );
+        console.log(e);
+        setCarousels((state) => state.filter((carousel) => !carousel.isLoading));
       }
     });
   };
@@ -69,3 +63,5 @@ export const CarouselsGamesSection = (): JSX.Element => {
     </section>
   );
 };
+
+export default CarouselsGamesSection;

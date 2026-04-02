@@ -1,13 +1,25 @@
 import { useState } from "react";
 
-import { Game } from "@src/entities/app";
-import { DiskGameProps } from "@src/entities/props";
+import { DiskGameProps } from "@/types/props";
 
-import { useGamesStore } from "@src/hooks/useGamesStore";
+import { useGamesStore } from "@/hooks/useGamesStore";
 
-import "@src/components/DiskGame/DiskGame.css";
+import { gamesService } from "@/services/gamesService";
 
-export const DiskGame = ({ game }: DiskGameProps): JSX.Element => {
+import "@/components/DiskGame/DiskGame.css";
+
+const DiskGame = ({
+  id,
+  developer,
+  freetogame_profile_url,
+  genre,
+  platform,
+  publisher,
+  release_date,
+  short_description,
+  title,
+  thumbnail,
+}: DiskGameProps) => {
   const [isInformationOpen, setIsInformationOpen] = useState<boolean>(false);
 
   const { handleSetNewGameToFavorite } = useGamesStore();
@@ -28,24 +40,20 @@ export const DiskGame = ({ game }: DiskGameProps): JSX.Element => {
     setIsInformationOpen(false);
   };
 
-  const handleSaveGameToFavorite = (game: Game) => {
+  const handleSaveGameToFavorite = async (id: number) => {
+    const game = (await gamesService.getAll()).find((game) => game.id === id)!;
     handleSetNewGameToFavorite(game);
   };
 
   return (
-    <div
-      className={`disk-game`}
-      style={{ animationName: isInformationOpen ? "nospin" : "spin" }}
-    >
+    <div className={`disk-game`} style={{ animationName: isInformationOpen ? "nospin" : "spin" }}>
       <div
-        className={`disk-game__img ${
-          isInformationOpen && "disk-game__img--open"
-        }`}
+        className={`disk-game__img ${isInformationOpen && "disk-game__img--open"}`}
         onClick={handleClick}
         onDoubleClick={handleDoubleClick}
         onTouchEnd={handleTouchEnd}
         onTouchCancel={handleTouchCancel}
-        style={{ backgroundImage: `url(${game.thumbnail})` }}
+        style={{ backgroundImage: `url(${thumbnail})` }}
       >
         <div
           className="disk-game__img-circle"
@@ -53,47 +61,32 @@ export const DiskGame = ({ game }: DiskGameProps): JSX.Element => {
         ></div>
       </div>
       <div
-        className={`disk-game__information ${
-          isInformationOpen && "disk-game__information--open"
-        }`}
+        className={`disk-game__information ${isInformationOpen && "disk-game__information--open"}`}
       >
-        <h2 className="disk-game__title">{game.title}</h2>
-        <p className="disk-game__description">{game.short_description}</p>
+        <h2 className="disk-game__title">{title}</h2>
+        <p className="disk-game__description">{short_description}</p>
         <h3 className="disk-game__genre">
-          Gender:{" "}
-          <span className="disk-game__genre-span">{game.genre}</span>
+          Gender: <span className="disk-game__genre-span">{genre}</span>
         </h3>
         <h3 className="disk-game__platform">
-          Platform:{" "}
-          <span className="disk-game__platform-span">
-            {game.platform}
-          </span>
+          Platform: <span className="disk-game__platform-span">{platform}</span>
         </h3>
         <h3 className="disk-game__published-by">
-          Published by:{" "}
-          <span className="disk-game__published-by-span">
-            {game.publisher}
-          </span>
+          Published by: <span className="disk-game__published-by-span">{publisher}</span>
         </h3>
         <h3 className="disk-game__developed-by">
-          Developed by:{" "}
-          <span className="disk-game__developed-by-span">
-            {game.developer}
-          </span>
+          Developed by: <span className="disk-game__developed-by-span">{developer}</span>
         </h3>
         <h3 className="disk-game__release-date">
-          Release date:{" "}
-          <span className="disk-game__release-date-span">
-            {game.release_date}
-          </span>
+          Release date: <span className="disk-game__release-date-span">{release_date}</span>
         </h3>
 
         <div className="disk-game__links">
           <a
-            href={game.freetogame_profile_url}
+            href={freetogame_profile_url}
             target="_blank"
             rel="noreferrer"
-            aria-label={`go to official website ${game.title}`}
+            aria-label={`go to official website ${title}`}
             className="disk-game__link-official-website"
           >
             Official website
@@ -101,8 +94,8 @@ export const DiskGame = ({ game }: DiskGameProps): JSX.Element => {
 
           <button
             type="button"
-            onClick={() => handleSaveGameToFavorite(game)}
-            aria-label={`add to favorites ${game.title}`}
+            onClick={() => handleSaveGameToFavorite(id)}
+            aria-label={`add to favorites ${title}`}
             className="disk-game__btn-favorite"
           >
             Add to Favorites
@@ -112,3 +105,5 @@ export const DiskGame = ({ game }: DiskGameProps): JSX.Element => {
     </div>
   );
 };
+
+export default DiskGame;

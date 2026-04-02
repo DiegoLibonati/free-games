@@ -1,9 +1,9 @@
-import { HeaderPresentationProps } from "@src/entities/props";
+import { HeaderPresentationProps } from "@/types/props";
 
-import "@src/components/HeaderPresentation/HeaderPresentation.css";
+import "@/components/HeaderPresentation/HeaderPresentation.css";
 
-export const HeaderPresentation = ({
-  children,
-}: HeaderPresentationProps): JSX.Element => {
+const HeaderPresentation = ({ children }: HeaderPresentationProps) => {
   return <h1 className="header-presentation">{children}</h1>;
 };
+
+export default HeaderPresentation;

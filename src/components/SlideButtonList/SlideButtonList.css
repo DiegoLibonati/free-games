@@ -18,11 +18,11 @@
   width: 0.7rem;
   height: 0.7rem;
   border-radius: 50%;
-  background-color: var(--white-color);
+  background-color: var(--color-white);
   border: none;
   cursor: pointer;
 }
 
 .slide-button-list__btn--active {
-  background-color: var(--primary-color);
+  background-color: var(--color-primary);
 }

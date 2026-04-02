@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 
-import { UseForm } from "@src/entities/hooks";
+import { UseForm } from "@/types/hooks";
 
 export const useForm = <T,>(initialForm: T): UseForm<T> => {
   const [formState, setFormState] = useState<T>(initialForm);
 
-  const onInputChange: React.ChangeEventHandler<HTMLInputElement> = ({
-    target,
-  }) => {
+  const onInputChange: React.ChangeEventHandler<HTMLInputElement> = ({ target }) => {
     const { name, value } = target;
 
     setFormState({

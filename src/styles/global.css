@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;800&display=swap");
+
+:root {
+  /* Colors */
+  --color-primary: #040926;
+  --color-secondary: #251351;
+  --color-tertiary: #00ffe5;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-black-rgb: 0, 0, 0;
+  --color-gray: #888888;
+
+  /* Typography */
+  --font-family-primary: "Montserrat", Helvetica, sans-serif;
+  --font-size-base: 10px;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size-base);
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-family-primary);
+  background-color: var(--color-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+::-webkit-scrollbar {
+  width: 1rem;
+  height: 0.8rem;
+  background-color: var(--color-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-secondary);
+  border-radius: 1rem;
+}
+
+.rocket-top {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 1rem;
+  background-color: var(--color-secondary);
+  border-radius: 50%;
+  color: var(--color-white);
+  width: 5rem;
+  height: 5rem;
+  z-index: 50000;
+  cursor: pointer;
+}
+
+.rocket-top:hover {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.line-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+}
+
+.line {
+  width: 20rem;
+  height: 0.5rem;
+  background-color: var(--color-white);
+  margin-bottom: 1rem;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-0.1rem, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(0.2rem, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-0.4rem, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(0.4rem, 0, 0);
+  }
+}

@@ -1,15 +1,11 @@
-import { Game } from "@src/entities/app";
+import { Game } from "@/types/app";
+import { CarouselGamesProps } from "@/types/props";
 
-import { CarouselGamesProps } from "@src/entities/props";
+import { useGamesStore } from "@/hooks/useGamesStore";
 
-import { useGamesStore } from "@src/hooks/useGamesStore";
+import "@/components/CarouselGames/CarouselGames.css";
 
-import "@src/components/CarouselGames/CarouselGames.css";
-
-export const CarouselGames = ({
-  name,
-  games,
-}: CarouselGamesProps): JSX.Element => {
+const CarouselGames = ({ name, games }: CarouselGamesProps) => {
   const { handleSetNewGameToFavorite } = useGamesStore();
 
   const handleSetFavoriteGame = (game: Game) => {
@@ -23,15 +19,8 @@ export const CarouselGames = ({
       <div className="carousel-games__track">
         {games.map((game) => {
           return (
-            <div
-              className={`carousel-games__item game-${game.id}`}
-              key={game.id}
-            >
-              <img
-                src={game.thumbnail}
-                alt={game.title}
-                className="carousel-games__img"
-              ></img>
+            <div className={`carousel-games__item game-${game.id}`} key={game.id}>
+              <img src={game.thumbnail} alt={game.title} className="carousel-games__img"></img>
               <button
                 className="carousel-games__btn-favorite"
                 type="button"
@@ -47,3 +36,5 @@ export const CarouselGames = ({
     </article>
   );
 };
+
+export default CarouselGames;

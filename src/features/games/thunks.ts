@@ -1,14 +1,8 @@
-import {
-  collection,
-  doc,
-  setDoc,
-  getDocs,
-  deleteDoc,
-} from "firebase/firestore/lite";
+import { collection, doc, setDoc, getDocs, deleteDoc } from "firebase/firestore/lite";
 
-import { Game } from "@src/entities/app";
+import { Game } from "@/types/app";
 
-import { FirebaseDB } from "@src/firebase/config";
+import { FirebaseDB } from "@/firebase/config";
 
 import {
   setCategories,
@@ -16,20 +10,19 @@ import {
   setGames,
   setLoadingFavoritesGames,
   setLoadingGames,
-} from "@src/features/games/gamesSlice";
-import { openAlert } from "@src/features/ui/uiSlice";
+} from "@/features/games/gamesSlice";
+import { openAlert } from "@/features/ui/uiSlice";
 
-import { AppDispatch, RootState } from "@src/app/store";
+import { AppDispatch, RootState } from "@/app/store";
 
-import { getGamesByCategory } from "@src/api/get/getGamesByCategory";
-import { getGames } from "@src/api/get/getGames";
+import { gamesService } from "@/services/gamesService";
 
 export const startGettingGames = () => {
   return async (dispatch: AppDispatch) => {
     try {
       dispatch(setLoadingGames(true));
 
-      const data = await getGames();
+      const data = await gamesService.getAll();
 
       dispatch(setGames(data));
       dispatch(setCategories(data));
@@ -46,9 +39,7 @@ export const startSaveNewGameToFavorite = (game: Game) => {
     const collectionRef = collection(FirebaseDB, `${user.uid}/games/game`);
     const { docs } = await getDocs(collectionRef);
 
-    const gameExistInFavorite = docs.find(
-      (document) => document.data().id === game.id
-    );
+    const gameExistInFavorite = docs.find((document) => document.data().id === game.id);
 
     if (gameExistInFavorite) {
       return dispatch(
@@ -133,16 +124,16 @@ export const startGettingGamesByCategory = (category: string) => {
       dispatch(setLoadingGames(true));
 
       if (!category || category === "all") {
-        const data: Game[] = await getGames();
+        const data: Game[] = await gamesService.getAll();
         dispatch(setGames(data));
         dispatch(setCategories(data));
         return;
       }
 
-      const allGames = await getGames();
+      const allGames = await gamesService.getAll();
       dispatch(setCategories(allGames));
 
-      const data: Game[] = await getGamesByCategory(category);
+      const data: Game[] = await gamesService.getByCategory(category);
       dispatch(setGames(data));
     } catch (error) {
       console.log(error);

@@ -1,5 +1,5 @@
-import { Game } from "@src/entities/app";
-import { UseGameStore } from "@src/entities/hooks";
+import { Game } from "@/types/app";
+import { UseGameStore } from "@/types/hooks";
 
 import {
   startDeletingFavoriteGame,
@@ -7,19 +7,13 @@ import {
   startGettingGames,
   startGettingGamesByCategory,
   startSaveNewGameToFavorite,
-} from "@src/features/games/thunks";
-import {
-  clearActiveGame,
-  setActiveGame,
-  stateToInitialValue,
-} from "@src/features/games/gamesSlice";
+} from "@/features/games/thunks";
+import { clearActiveGame, setActiveGame, stateToInitialValue } from "@/features/games/gamesSlice";
 
-import { useAppDispatch, useAppSelector } from "@src/app/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 
 export const useGamesStore = (): UseGameStore => {
-  const { games, categories, favorites, activeGame } = useAppSelector(
-    (state) => state.games
-  );
+  const { games, categories, favorites, activeGame } = useAppSelector((state) => state.games);
   const dispatch = useAppDispatch();
 
   const handleGetGames = (): void => {

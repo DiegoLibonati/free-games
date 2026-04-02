@@ -3,29 +3,29 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import Wave from "react-wavify";
 
-import { FormDataAuth } from "@src/entities/forms";
+import { FormDataAuth } from "@/types/forms";
 
-import { Loader } from "@src/components/Loader/Loader";
-import { SlideButtonList } from "@src/components/SlideButtonList/SlideButtonList";
-import { HeaderPresentation } from "@src/components/HeaderPresentation/HeaderPresentation";
-import { InputForm } from "@src/components/InputForm/InputForm";
+import Loader from "@/components/Loader/Loader";
+import SlideButtonList from "@/components/SlideButtonList/SlideButtonList";
+import HeaderPresentation from "@/components/HeaderPresentation/HeaderPresentation";
+import InputForm from "@/components/InputForm/InputForm";
 
-import { useAuthStore } from "@src/hooks/useAuthStore";
-import { useForm } from "@src/hooks/useForm";
-import { useSlide } from "@src/hooks/useSlide";
+import { useAuthStore } from "@/hooks/useAuthStore";
+import { useForm } from "@/hooks/useForm";
+import { useSlide } from "@/hooks/useSlide";
 
-import { theme } from "@src/styles/theme";
+import { theme } from "@/styles/theme";
 
-import assets from "@src/assets/export";
+import assets from "@/assets/export";
 
-import "@src/pages/LoginPage/LoginPage.css";
+import "@/pages/LoginPage/LoginPage.css";
 
 const formData: FormDataAuth = {
   email: "",
   password: "",
 };
 
-export const LoginPage = (): JSX.Element => {
+const LoginPage = () => {
   const {
     images,
     isLoadingImages,
@@ -73,34 +73,23 @@ export const LoginPage = (): JSX.Element => {
             <Loader></Loader>
           ) : (
             <Fragment>
-              <img
-                src={images[index]}
-                alt="loginimage"
-                className="login-wrapper__img"
-              ></img>
+              <img src={images[index]} alt="loginimage" className="login-wrapper__img"></img>
 
               <HeaderPresentation>
                 {index === 0
                   ? "The best free games wiki"
                   : index === 1
-                  ? "Share with your friends"
-                  : "Stay up to date with the latest news"}
+                    ? "Share with your friends"
+                    : "Stay up to date with the latest news"}
               </HeaderPresentation>
 
-              <SlideButtonList
-                index={index}
-                handleSetIndex={handleSetIndex}
-              ></SlideButtonList>
+              <SlideButtonList index={index} handleSetIndex={handleSetIndex}></SlideButtonList>
             </Fragment>
           )}
         </article>
 
         <form className="login-wrapper__form" onSubmit={onSubmitForm}>
-          <img
-            src={assets.images.LogoPng}
-            alt="logo"
-            className="login-wrapper__logo"
-          ></img>
+          <img src={assets.images.LogoPng} alt="logo" className="login-wrapper__logo"></img>
 
           <InputForm
             type="text"
@@ -120,11 +109,7 @@ export const LoginPage = (): JSX.Element => {
             onChange={onInputChange}
           ></InputForm>
 
-          <button
-            type="submit"
-            aria-label="submit login"
-            className="login-wrapper__btn"
-          >
+          <button type="submit" aria-label="submit login" className="login-wrapper__btn">
             Login
           </button>
           <button
@@ -135,11 +120,7 @@ export const LoginPage = (): JSX.Element => {
           >
             Google
           </button>
-          <Link
-            to="/auth/register"
-            aria-label="Go to register page"
-            className="login-wrapper__link"
-          >
+          <Link to="/register" aria-label="Go to register page" className="login-wrapper__link">
             Register
           </Link>
         </form>
@@ -158,3 +139,5 @@ export const LoginPage = (): JSX.Element => {
     </main>
   );
 };
+
+export default LoginPage;

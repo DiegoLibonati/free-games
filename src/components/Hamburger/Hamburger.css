@@ -8,7 +8,7 @@
 }
 
 .hamburger__span {
-  background-color: var(--white-color);
+  background-color: var(--color-white);
   position: absolute;
   border-radius: 0.2rem;
   transition: 0.3s cubic-bezier(0.8, 0.5, 0.2, 1.4);

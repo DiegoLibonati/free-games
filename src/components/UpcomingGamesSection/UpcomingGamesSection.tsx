@@ -1,10 +1,10 @@
-import { UpcomingGame } from "@src/components/UpcomingGame/UpcomingGame";
+import UpcomingGame from "@/components/UpcomingGame/UpcomingGame";
 
-import { upcomingGames } from "@src/constants/data";
+import { upcomingGames } from "@/constants/data";
 
-import "@src/components/UpcomingGamesSection/UpcomingGamesSection.css";
+import "@/components/UpcomingGamesSection/UpcomingGamesSection.css";
 
-export const UpcomingGamesSection = (): JSX.Element => {
+const UpcomingGamesSection = () => {
   return (
     <section className="upcoming-games">
       <h2 className="upcoming-games__title">Upcoming Games</h2>
@@ -24,3 +24,5 @@ export const UpcomingGamesSection = (): JSX.Element => {
     </section>
   );
 };
+
+export default UpcomingGamesSection;

@@ -1,5 +1,5 @@
-import { User, UserLogin, UserLoginWithoutUsername } from "@src/entities/app";
-import { UseAuthStore } from "@src/entities/hooks";
+import { User, UserLogin, UserLoginWithoutUsername } from "@/types/app";
+import { UseAuthStore } from "@/types/hooks";
 
 import {
   startCreatingUserWithEmail,
@@ -7,10 +7,10 @@ import {
   startGoogleSignIn,
   startLoginWithEmailPassword,
   startLogOutWithButton,
-} from "@src/features/auth/thunks";
-import { login } from "@src/features/auth/authSlice";
+} from "@/features/auth/thunks";
+import { login } from "@/features/auth/authSlice";
 
-import { useAppDispatch, useAppSelector } from "@src/app/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 
 export const useAuthStore = (): UseAuthStore => {
   const { user, auth, images } = useAppSelector((state) => state.auth);
@@ -24,9 +24,7 @@ export const useAuthStore = (): UseAuthStore => {
     dispatch(login(user));
   };
 
-  const handleLoginWithEmailAndPassword = (
-    user: UserLoginWithoutUsername
-  ): void => {
+  const handleLoginWithEmailAndPassword = (user: UserLoginWithoutUsername): void => {
     dispatch(startLoginWithEmailPassword(user));
   };
 
@@ -56,8 +54,7 @@ export const useAuthStore = (): UseAuthStore => {
     handleLogin: handleLogin,
     handleLoginWithEmailAndPassword: handleLoginWithEmailAndPassword,
     handleLoginWithGoogle: handleLoginWithGoogle,
-    handleCreateNewUserWithEmailAndPassword:
-      handleCreateNewUserWithEmailAndPassword,
+    handleCreateNewUserWithEmailAndPassword: handleCreateNewUserWithEmailAndPassword,
     handleGetImages: handleGetImages,
   };
 };

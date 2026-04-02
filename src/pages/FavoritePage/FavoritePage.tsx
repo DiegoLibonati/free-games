@@ -1,15 +1,15 @@
 import { Fragment, useEffect } from "react";
 
-import { NavBar } from "@src/components/NavBar/NavBar";
-import { Footer } from "@src/components/Footer/Footer";
-import { Loader } from "@src/components/Loader/Loader";
-import { CardFavoriteGame } from "@src/components/CardFavoriteGame/CardFavoriteGame";
+import NavBar from "@/components/NavBar/NavBar";
+import Footer from "@/components/Footer/Footer";
+import Loader from "@/components/Loader/Loader";
+import CardFavoriteGame from "@/components/CardFavoriteGame/CardFavoriteGame";
 
-import { useGamesStore } from "@src/hooks/useGamesStore";
+import { useGamesStore } from "@/hooks/useGamesStore";
 
-import "@src/pages/FavoritePage/FavoritePage.css";
+import "@/pages/FavoritePage/FavoritePage.css";
 
-export const FavoritePage = (): JSX.Element => {
+const FavoritePage = () => {
   const {
     favoritesGames,
     isLoadingFavoritesGames,
@@ -44,16 +44,16 @@ export const FavoritePage = (): JSX.Element => {
               return (
                 <CardFavoriteGame
                   key={`game-${favoriteGame.id}-${favoriteGame.title}`}
-                  game={favoriteGame}
+                  id={favoriteGame.id}
+                  thumbnail={favoriteGame.thumbnail}
+                  title={favoriteGame.title}
                 ></CardFavoriteGame>
               );
             })}
           </section>
         ) : (
           <section className="favorite-games__empty">
-            <h1 className="favorite-games__empty-label">
-              Add a game to your favorites list
-            </h1>
+            <h1 className="favorite-games__empty-label">Add a game to your favorites list</h1>
           </section>
         )}
       </main>
@@ -62,3 +62,5 @@ export const FavoritePage = (): JSX.Element => {
     </Fragment>
   );
 };
+
+export default FavoritePage;

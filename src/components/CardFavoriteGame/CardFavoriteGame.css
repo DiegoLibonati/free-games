@@ -26,11 +26,11 @@
 .card-favorite-game__title {
   font-size: 1.5rem;
   font-family: var(--font-montserrat);
-  color: var(--white-color);
+  color: var(--color-white);
   width: 100%;
   height: auto;
   padding: 1rem;
-  background-color: var(--secondary-color);
+  background-color: var(--color-secondary);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }

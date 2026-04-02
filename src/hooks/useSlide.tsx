@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { UseSlide } from "@src/entities/hooks";
+import { UseSlide } from "@/types/hooks";
 
 export const useSlide = <T,>(arr: T[]): UseSlide => {
   const [index, setIndex] = useState<number>(0);

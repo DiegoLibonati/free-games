@@ -21,17 +21,19 @@
   object-fit: cover;
   cursor: pointer;
   border-radius: 50%;
-  background-color: var(--white-color);
-  border: 0.1rem solid var(--gray-color);
-  transition: opacity 1s, border-radius 1s;
+  background-color: var(--color-white);
+  border: 0.1rem solid var(--color-gray);
+  transition:
+    opacity 1s,
+    border-radius 1s;
 }
 
 .disk-game__img-circle {
-  background-color: var(--secondary-color);
+  background-color: var(--color-secondary);
   height: 7rem;
   width: 7rem;
   border-radius: 50%;
-  border: 0.1rem solid var(--gray-color);
+  border: 0.1rem solid var(--color-gray);
 }
 
 .disk-game__img:hover {
@@ -53,7 +55,7 @@
   height: auto;
   max-height: 0;
   padding: 0 1rem 0 1rem;
-  background-color: var(--secondary-color);
+  background-color: var(--color-secondary);
   overflow: hidden;
   transition: max-height 1s;
 }
@@ -65,7 +67,7 @@
 
 .disk-game__title {
   font-size: 3rem;
-  color: var(--white-color);
+  color: var(--color-white);
   font-family: var(--font-montserrat);
   text-transform: uppercase;
   margin-bottom: 1rem;
@@ -74,7 +76,7 @@
 
 .disk-game__description {
   font-size: 2.5rem;
-  color: var(--white-color);
+  color: var(--color-white);
   font-family: var(--font-montserrat);
   margin-bottom: 1rem;
 }
@@ -85,7 +87,7 @@
 .disk-game__developed-by,
 .disk-game__release-date {
   font-size: 2rem;
-  color: var(--white-color);
+  color: var(--color-white);
   font-family: var(--font-montserrat);
   margin-bottom: 1rem;
 }
@@ -96,7 +98,7 @@
 .disk-game__developed-by-span,
 .disk-game__release-date-span {
   font-size: 1.5rem;
-  color: var(--white-color);
+  color: var(--color-white);
   font-family: var(--font-montserrat);
 }
 
@@ -114,8 +116,8 @@
   width: auto;
   font-size: 1.5rem;
   padding: 1rem;
-  color: var(--white-color);
-  background: var(--primary-color);
+  color: var(--color-white);
+  background: var(--color-primary);
   text-decoration: none;
   border: none;
   text-align: end;
@@ -128,10 +130,10 @@
 .disk-game__link-official-website:hover {
   background-image: linear-gradient(
     to right,
-    var(--black-color),
-    var(--black-color) 16.65%,
-    var(--primary-color) 49.95%,
-    var(--secondary-color) 100%
+    var(--color-black),
+    var(--color-black) 16.65%,
+    var(--color-primary) 49.95%,
+    var(--color-secondary) 100%
   );
   animation: slidebg 2s linear infinite;
 }
@@ -140,8 +142,8 @@
   width: auto;
   font-size: 1.5rem;
   padding: 1rem;
-  color: var(--white-color);
-  background: var(--primary-color);
+  color: var(--color-white);
+  background: var(--color-primary);
   text-decoration: none;
   border: none;
   text-align: end;
@@ -154,10 +156,10 @@
 .disk-game__btn-favorite:hover {
   background-image: linear-gradient(
     to right,
-    var(--black-color),
-    var(--black-color) 16.65%,
-    var(--primary-color) 49.95%,
-    var(--secondary-color) 100%
+    var(--color-black),
+    var(--color-black) 16.65%,
+    var(--color-primary) 49.95%,
+    var(--color-secondary) 100%
   );
   animation: slidebg 2s linear infinite;
 }

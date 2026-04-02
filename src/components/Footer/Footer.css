@@ -5,7 +5,7 @@
   flex-flow: column wrap;
   width: 100%;
   height: auto;
-  background-color: var(--secondary-color);
+  background-color: var(--color-secondary);
   padding: 0 0 5rem 0;
 }
 
@@ -20,12 +20,12 @@
 
 .footer-wrapper__icon {
   font-size: 3rem;
-  color: var(--white-color);
+  color: var(--color-white);
   cursor: pointer;
   transition: color 1s;
 }
 
 .footer-wrapper__icon:hover {
-  color: var(--primary-color);
+  color: var(--color-primary);
   transition: color 1s;
 }

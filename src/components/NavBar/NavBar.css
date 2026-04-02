@@ -9,7 +9,8 @@
   position: fixed;
   z-index: 999999;
   top: 0;
-  box-shadow: rgba(9, 30, 66, 0.25) 0 0.4rem 0.8rem -0.2rem,
+  box-shadow:
+    rgba(9, 30, 66, 0.25) 0 0.4rem 0.8rem -0.2rem,
     rgba(9, 30, 66, 0.08) 0 0 0 0.1rem;
   backdrop-filter: blur(0.2rem);
 }
@@ -62,7 +63,7 @@
 }
 
 .header-wrapper__link {
-  color: var(--white-color);
+  color: var(--color-white);
   text-decoration: none;
   font-size: 2rem;
   font-family: var(--font-montserrat);
@@ -70,7 +71,7 @@
 }
 
 .header-wrapper__link--active {
-  color: var(--tertiary-color);
+  color: var(--color-tertiary);
   transition: color 1s;
 }
 
@@ -80,7 +81,7 @@
   padding: 1rem;
   background: none;
   border: none;
-  color: var(--white-color);
+  color: var(--color-white);
   font-size: 2rem;
   font-family: var(--font-montserrat);
   cursor: pointer;
@@ -98,7 +99,7 @@
 
 .header-wrapper__username {
   font-size: 1.5rem;
-  color: var(--white-color);
+  color: var(--color-white);
   font-family: var(--font-montserrat);
   align-self: flex-end;
 }

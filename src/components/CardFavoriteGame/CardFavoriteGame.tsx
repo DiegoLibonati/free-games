@@ -1,29 +1,27 @@
-import { Game } from "@src/entities/app";
+import { CardFavoriteGameProps } from "@/types/props";
 
-import { CardFavoriteGameProps } from "@src/entities/props";
+import { useGamesStore } from "@/hooks/useGamesStore";
 
-import { useGamesStore } from "@src/hooks/useGamesStore";
+import { gamesService } from "@/services/gamesService";
 
-import "@src/components/CardFavoriteGame/CardFavoriteGame.css";
+import "@/components/CardFavoriteGame/CardFavoriteGame.css";
 
-export const CardFavoriteGame = ({
-  game,
-}: CardFavoriteGameProps): JSX.Element => {
+const CardFavoriteGame = ({ id, thumbnail, title }: CardFavoriteGameProps) => {
   const { handleSetActiveGame } = useGamesStore();
 
-  const handleClick = (game: Game) => {
+  const handleClick = async (id: number) => {
+    const game = (await gamesService.getAll()).find((game) => game.id === id)!;
+
     handleSetActiveGame(game);
   };
 
   return (
-    <article className="card-favorite-game" onClick={() => handleClick(game)}>
-      <img
-        src={game.thumbnail}
-        alt={game.title}
-        className="card-favorite-game__img"
-      ></img>
+    <article className="card-favorite-game" onClick={() => handleClick(id)}>
+      <img src={thumbnail} alt={title} className="card-favorite-game__img"></img>
 
-      <h2 className="card-favorite-game__title">{game.title}</h2>
+      <h2 className="card-favorite-game__title">{title}</h2>
     </article>
   );
 };
+
+export default CardFavoriteGame;

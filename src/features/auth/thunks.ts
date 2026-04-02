@@ -1,11 +1,11 @@
-import { UserLogin, UserLoginWithoutUsername } from "@src/entities/app";
+import { UserLogin, UserLoginWithoutUsername } from "@/types/app";
 
 import {
   loginWithEmailPassword,
   logoutFirebase,
   registerUserWithEmail,
   signInWithGoogle,
-} from "@src/firebase/providers";
+} from "@/firebase/providers";
 
 import {
   setImagesLoginAndRegister,
@@ -13,18 +13,19 @@ import {
   checkingCredentials,
   logout,
   login,
-} from "@src/features/auth/authSlice";
+  setError,
+} from "@/features/auth/authSlice";
 
-import { getGames } from "@src/api/get/getGames";
+import { gamesService } from "@/services/gamesService";
 
-import { AppDispatch } from "@src/app/store";
+import { AppDispatch } from "@/app/store";
 
 export const startGettingImagesToLoginAndRegisterPage = () => {
   return async (dispatch: AppDispatch) => {
     try {
       dispatch(setLoadingImages(true));
 
-      const data = await getGames();
+      const data = await gamesService.getAll();
 
       const dataSlice = data.slice(0, 3);
 
@@ -44,43 +45,45 @@ export const startGoogleSignIn = () => {
 
     const result = await signInWithGoogle();
 
+    if (!result.ok && result.errorMessage) dispatch(setError(result.errorMessage));
+
     if (!result.ok) {
-      return dispatch(logout());
+      dispatch(logout());
+      return;
     }
 
     dispatch(login(result));
   };
 };
 
-export const startCreatingUserWithEmail = ({
-  email,
-  password,
-  username,
-}: UserLogin) => {
+export const startCreatingUserWithEmail = ({ email, password, username }: UserLogin) => {
   return async (dispatch: AppDispatch) => {
     dispatch(checkingCredentials());
 
     const result = await registerUserWithEmail(email, password, username);
 
+    if (!result.ok && result.errorMessage) dispatch(setError(result.errorMessage));
+
     if (!result.ok) {
-      return dispatch(logout());
+      dispatch(logout());
+      return;
     }
 
     dispatch(login(result));
   };
 };
 
-export const startLoginWithEmailPassword = ({
-  email,
-  password,
-}: UserLoginWithoutUsername) => {
+export const startLoginWithEmailPassword = ({ email, password }: UserLoginWithoutUsername) => {
   return async (dispatch: AppDispatch) => {
     dispatch(checkingCredentials());
 
     const result = await loginWithEmailPassword(email, password);
 
+    if (!result.ok && result.errorMessage) dispatch(setError(result.errorMessage));
+
     if (!result.ok) {
-      return dispatch(logout());
+      dispatch(logout());
+      return;
     }
 
     dispatch(login(result));

@@ -1,7 +1,8 @@
-import { Envs } from "@src/entities/envs";
+import { Envs } from "@/types/envs";
 
 const envs: Envs = {
   xRapid: {
+    apiUrl: import.meta.env.VITE_API_URL_XRAPID!,
     apiKey: import.meta.env.VITE_API_KEY_XRAPID!,
     apiHost: import.meta.env.VITE_API_HOST_XRAPID!,
   },

@@ -1,6 +1,5 @@
-import { Alert } from "@src/entities/app";
-
-import { UseUiStore } from "@src/entities/hooks";
+import { Alert } from "@/types/app";
+import { UseUiStore } from "@/types/hooks";
 
 import {
   openNavBar,
@@ -9,9 +8,9 @@ import {
   closeFilterCategories,
   closeAlert,
   openAlert,
-} from "@src/features/ui/uiSlice";
+} from "@/features/ui/uiSlice";
 
-import { useAppDispatch, useAppSelector } from "@src/app/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 
 export const useUiStore = (): UseUiStore => {
   const dispatch = useAppDispatch();

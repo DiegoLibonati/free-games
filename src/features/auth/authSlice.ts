@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { User } from "@src/entities/app";
-import { AuthState } from "@src/entities/states";
+import { User } from "@/types/app";
+import { AuthState } from "@/types/states";
 
 const initialState: AuthState = {
   images: { images: [], isLoadingImages: false },
@@ -51,6 +51,9 @@ export const authSlice = createSlice({
       state.auth.status = "checking";
       state.auth.isChecking = true;
     },
+    setError: (state, action: PayloadAction<string>) => {
+      state.auth.errorMessage = action.payload;
+    },
   },
 });
 
@@ -60,6 +63,7 @@ export const {
   login,
   logout,
   checkingCredentials,
+  setError,
 } = authSlice.actions;
 
 export default authSlice.reducer;

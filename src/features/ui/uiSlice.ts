@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { Alert } from "@src/entities/app";
-import { UIState } from "@src/entities/states";
+import { Alert } from "@/types/app";
+import { UIState } from "@/types/states";
 
 const initialState: UIState = {
   navBar: {

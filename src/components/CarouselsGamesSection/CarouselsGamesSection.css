@@ -5,7 +5,7 @@
   flex-flow: column wrap;
   height: auto;
   width: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--color-primary);
   position: relative;
 }
 
@@ -21,11 +21,7 @@
 
 .carousel-games::before,
 .carousel-games::after {
-  background: linear-gradient(
-    to right,
-    var(--primary-color) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(to right, var(--color-primary) 0%, rgba(255, 255, 255, 0) 100%);
   content: "";
   height: 100%;
   position: absolute;

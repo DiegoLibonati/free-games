@@ -1,23 +1,17 @@
-import { useEffect } from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
-import Swal from "sweetalert2";
+import { HashRouter } from "react-router-dom";
 
-import { AppRouter } from "@src/router/AppRouter";
+import { GamesRouter } from "@/router/GamesRouter";
 
-import { useAuthStore } from "@src/hooks/useAuthStore";
+import { store } from "@/app/store";
 
-function App(): JSX.Element {
-  const { errorMessage } = useAuthStore();
-
-  useEffect(() => {
-    if (errorMessage) Swal.fire("Error", errorMessage, "error");
-  }, [errorMessage]);
-
+function App() {
   return (
-    <BrowserRouter>
-      <AppRouter></AppRouter>
-    </BrowserRouter>
+    <Provider store={store}>
+      <HashRouter>
+        <GamesRouter></GamesRouter>
+      </HashRouter>
+    </Provider>
   );
 }
 

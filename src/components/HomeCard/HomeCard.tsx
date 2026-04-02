@@ -1,14 +1,14 @@
 import { Fragment, useMemo } from "react";
 
-import { Game } from "@src/entities/app";
+import { Game } from "@/types/app";
 
-import { Loader } from "@src/components/Loader/Loader";
+import Loader from "@/components/Loader/Loader";
 
-import { useGamesStore } from "@src/hooks/useGamesStore";
+import { useGamesStore } from "@/hooks/useGamesStore";
 
-import "@src/components/HomeCard/HomeCard.css";
+import "@/components/HomeCard/HomeCard.css";
 
-export const HomeCard = (): JSX.Element => {
+const HomeCard = () => {
   const { games, handleSetNewGameToFavorite } = useGamesStore();
 
   const game = useMemo(() => {
@@ -20,18 +20,12 @@ export const HomeCard = (): JSX.Element => {
   };
 
   return (
-    <article
-      className={!game ? "home-card home-card--effect-load" : "home-card"}
-    >
+    <article className={!game ? "home-card home-card--effect-load" : "home-card"}>
       {!game ? (
         <Loader></Loader>
       ) : (
         <Fragment>
-          <img
-            className="home-card__img"
-            src={game.thumbnail}
-            alt={game.title}
-          ></img>
+          <img className="home-card__img" src={game.thumbnail} alt={game.title}></img>
           <div className="home-card__information">
             <h2 className="home-card__title">{game.title}</h2>
             <h3 className="home-card__genre">{game.genre}</h3>
@@ -51,3 +45,5 @@ export const HomeCard = (): JSX.Element => {
     </article>
   );
 };
+
+export default HomeCard;

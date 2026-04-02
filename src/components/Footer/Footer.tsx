@@ -1,15 +1,10 @@
-import {
-  FaFacebook,
-  FaInstagram,
-  FaLinkedinIn,
-  FaGithub,
-} from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedinIn, FaGithub } from "react-icons/fa";
 
-import { theme } from "@src/styles/theme";
+import { theme } from "@/styles/theme";
 
-import "@src/components/Footer/Footer.css";
+import "@/components/Footer/Footer.css";
 
-export const Footer = (): JSX.Element => {
+const Footer = () => {
   return (
     <footer className="footer-wrapper">
       <svg
@@ -61,3 +56,5 @@ export const Footer = (): JSX.Element => {
     </footer>
   );
 };
+
+export default Footer;

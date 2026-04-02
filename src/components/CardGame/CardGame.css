@@ -26,9 +26,9 @@
   font-size: 2rem;
   padding: 1rem;
   font-family: var(--font-montserrat);
-  background-color: var(--secondary-color);
+  background-color: var(--color-secondary);
   width: 100%;
-  color: var(--white-color);
+  color: var(--color-white);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }

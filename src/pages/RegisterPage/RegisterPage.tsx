@@ -3,22 +3,22 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import Wave from "react-wavify";
 
-import { FormDataRegister } from "@src/entities/forms";
+import { FormDataRegister } from "@/types/forms";
 
-import { Loader } from "@src/components/Loader/Loader";
-import { SlideButtonList } from "@src/components/SlideButtonList/SlideButtonList";
-import { HeaderPresentation } from "@src/components/HeaderPresentation/HeaderPresentation";
-import { InputForm } from "@src/components/InputForm/InputForm";
+import Loader from "@/components/Loader/Loader";
+import SlideButtonList from "@/components/SlideButtonList/SlideButtonList";
+import HeaderPresentation from "@/components/HeaderPresentation/HeaderPresentation";
+import InputForm from "@/components/InputForm/InputForm";
 
-import { useSlide } from "@src/hooks/useSlide";
-import { useAuthStore } from "@src/hooks/useAuthStore";
-import { useForm } from "@src/hooks/useForm";
+import { useSlide } from "@/hooks/useSlide";
+import { useAuthStore } from "@/hooks/useAuthStore";
+import { useForm } from "@/hooks/useForm";
 
-import { theme } from "@src/styles/theme";
+import { theme } from "@/styles/theme";
 
-import assets from "@src/assets/export";
+import assets from "@/assets/export";
 
-import "@src/pages/RegisterPage/RegisterPage.css";
+import "@/pages/RegisterPage/RegisterPage.css";
 
 const formData: FormDataRegister = {
   username: "",
@@ -27,13 +27,9 @@ const formData: FormDataRegister = {
   repeatPassword: "",
 };
 
-export const RegisterPage = (): JSX.Element => {
-  const {
-    images,
-    isLoadingImages,
-    handleCreateNewUserWithEmailAndPassword,
-    handleGetImages,
-  } = useAuthStore();
+const RegisterPage = () => {
+  const { images, isLoadingImages, handleCreateNewUserWithEmailAndPassword, handleGetImages } =
+    useAuthStore();
 
   const { index, handleSetIndex } = useSlide<string>(images);
   const { formState, onInputChange } = useForm<FormDataRegister>(formData);
@@ -77,34 +73,23 @@ export const RegisterPage = (): JSX.Element => {
             <Loader></Loader>
           ) : (
             <Fragment>
-              <img
-                src={images[index]}
-                alt="registerimage"
-                className="register-wrapper__img"
-              ></img>
+              <img src={images[index]} alt="registerimage" className="register-wrapper__img"></img>
 
               <HeaderPresentation>
                 {index === 0
                   ? "The best free games wiki"
                   : index === 1
-                  ? "Share with your friends"
-                  : "Stay up to date with the latest news"}
+                    ? "Share with your friends"
+                    : "Stay up to date with the latest news"}
               </HeaderPresentation>
 
-              <SlideButtonList
-                index={index}
-                handleSetIndex={handleSetIndex}
-              ></SlideButtonList>
+              <SlideButtonList index={index} handleSetIndex={handleSetIndex}></SlideButtonList>
             </Fragment>
           )}
         </article>
 
         <form className="register-wrapper__form" onSubmit={onSubmitForm}>
-          <img
-            src={assets.images.LogoPng}
-            alt="logo"
-            className="register-wrapper__logo"
-          ></img>
+          <img src={assets.images.LogoPng} alt="logo" className="register-wrapper__logo"></img>
 
           <InputForm
             type="text"
@@ -142,18 +127,10 @@ export const RegisterPage = (): JSX.Element => {
             onChange={onInputChange}
           ></InputForm>
 
-          <button
-            type="submit"
-            aria-label="submit register"
-            className="register-wrapper__btn"
-          >
+          <button type="submit" aria-label="submit register" className="register-wrapper__btn">
             Register
           </button>
-          <Link
-            to="/auth/login"
-            aria-label="Go to login page"
-            className="register-wrapper__link"
-          >
+          <Link to="/login" aria-label="Go to login page" className="register-wrapper__link">
             Go to Login
           </Link>
         </form>
@@ -172,3 +149,5 @@ export const RegisterPage = (): JSX.Element => {
     </main>
   );
 };
+
+export default RegisterPage;

@@ -1,8 +1,8 @@
-import { UpcomingGames } from "@src/entities/app";
+import { UpcomingGames } from "@/types/app";
 
-import assets from "@src/assets/export";
+import assets from "@/assets/export";
 
-export const imagesOfGames = [
+export const imagesOfGames: string[] = [
   assets.images.ApexJpg,
   assets.images.EnlistedJpg,
   assets.images.FortniteJpg,
