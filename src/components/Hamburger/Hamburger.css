@@ -1,7 +1,7 @@
 .hamburger {
-  width: 3rem;
-  height: 3rem;
-  margin: 0.5rem 0.5rem;
+  width: 1.875rem;
+  height: 1.875rem;
+  margin: 0.3125rem 0.3125rem;
   position: relative;
   cursor: pointer;
   display: inline-block;
@@ -10,10 +10,10 @@
 .hamburger__span {
   background-color: var(--color-white);
   position: absolute;
-  border-radius: 0.2rem;
+  border-radius: 0.125rem;
   transition: 0.3s cubic-bezier(0.8, 0.5, 0.2, 1.4);
   width: 100%;
-  height: 0.4rem;
+  height: 0.25rem;
   transition-duration: 500ms;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .hamburger__span:nth-child(2) {
-  top: 1.3rem;
+  top: 0.8125rem;
   left: 0;
   opacity: 1;
 }
@@ -35,7 +35,7 @@
 
 .hamburger--open.hamburger__span:nth-child(1) {
   transform: rotate(45deg);
-  top: 1.3rem;
+  top: 0.8125rem;
 }
 
 .hamburger--open.hamburger__span:nth-child(2) {
@@ -44,7 +44,7 @@
 
 .hamburger--open.hamburger__span:nth-child(3) {
   transform: rotate(-45deg);
-  top: 1.3rem;
+  top: 0.8125rem;
 }
 
 @media only screen and (min-width: 1024px) {

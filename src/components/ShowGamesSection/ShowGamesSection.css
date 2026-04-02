@@ -6,15 +6,15 @@
   width: 100%;
   height: auto;
   background-color: var(--color-primary);
-  padding: 1rem;
+  padding: 0.625rem;
 }
 
 .show-games__title {
-  font-size: 4.5rem;
+  font-size: 2.8125rem;
   color: var(--color-white);
   width: 100%;
   font-family: var(--font-montserrat);
-  margin: 1rem 0 1rem 0;
+  margin: 0.625rem 0 0.625rem 0;
 }
 
 .show-games__cards {
@@ -27,12 +27,12 @@
 
 @media only screen and (min-width: 540px) {
   .show-games__title {
-    font-size: 6rem;
+    font-size: 3.75rem;
   }
 }
 
 @media only screen and (min-width: 1024px) {
   .show-games__title {
-    font-size: 7rem;
+    font-size: 4.375rem;
   }
 }

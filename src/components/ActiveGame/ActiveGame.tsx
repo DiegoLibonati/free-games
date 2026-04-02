@@ -83,7 +83,7 @@ const ActiveGame = () => {
               target="_blank"
               rel="noreferrer"
               className="active-game__official-website"
-              aria-label={`official website ${activeGame.title}`}
+              aria-label={`Visit official website of ${activeGame.title}`}
             >
               Official website
             </a>
@@ -92,7 +92,7 @@ const ActiveGame = () => {
 
         <button
           type="button"
-          aria-label="close active game"
+          aria-label="Close game details"
           onClick={handleClickClose}
           className="active-game-btn-close"
         >
@@ -102,7 +102,7 @@ const ActiveGame = () => {
         {pathname === "/favorite" && (
           <button
             type="button"
-            aria-label="delete favorite game"
+            aria-label={`Remove ${activeGame.title} from favorites`}
             onClick={() => handleDeleteFavoriteGame(activeGame)}
             className="active-game-btn-trash"
           >
@@ -113,7 +113,7 @@ const ActiveGame = () => {
         {pathname === "/explore" && (
           <button
             type="button"
-            aria-label="save new game to favorite"
+            aria-label={`Add ${activeGame.title} to favorites`}
             onClick={() => handleClickSaveNewGameToFavorite(activeGame)}
             className="active-game-btn-favorite"
           >

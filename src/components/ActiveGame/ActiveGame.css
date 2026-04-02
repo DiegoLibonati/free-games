@@ -18,8 +18,8 @@
   flex-flow: column wrap;
   width: 90%;
   background-color: var(--color-primary);
-  border-radius: 1rem;
-  padding: 0.5rem;
+  border-radius: 0.625rem;
+  padding: 0.3125rem;
   position: relative;
 }
 
@@ -34,13 +34,13 @@
 }
 
 .active-game__img {
-  width: 10rem;
+  width: 6.25rem;
   height: auto;
   object-fit: cover;
 }
 
 .active-game__title {
-  font-size: 2rem;
+  font-size: 1.25rem;
   color: var(--color-white);
   font-family: var(--font-montserrat);
   text-align: center;
@@ -48,12 +48,12 @@
 }
 
 .active-game__description {
-  font-size: 1.5rem;
+  font-size: 0.9375rem;
   color: var(--color-white);
   font-family: var(--font-montserrat);
   text-align: center;
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 0.625rem;
 }
 
 .active-game__specs {
@@ -63,7 +63,7 @@
   flex-flow: column wrap;
   width: 100%;
   height: auto;
-  margin: 1rem 0 1rem 0;
+  margin: 0.625rem 0 0.625rem 0;
   text-align: center;
 }
 
@@ -72,10 +72,10 @@
 .active-game__publisher,
 .active-game__developer,
 .active-game__release-date {
-  font-size: 1.5rem;
+  font-size: 0.9375rem;
   color: var(--color-white);
   font-family: var(--font-montserrat);
-  margin: 1rem 0 1rem 0;
+  margin: 0.625rem 0 0.625rem 0;
 }
 
 .active-game__genre-span,
@@ -83,7 +83,7 @@
 .active-game__publisher-span,
 .active-game__developer-span,
 .active-game__release-date-span {
-  font-size: 1.2rem;
+  font-size: 0.75rem;
   color: var(--color-white);
   font-family: var(--font-montserrat);
 }
@@ -95,12 +95,12 @@
   flex-flow: row wrap;
   height: auto;
   width: 100%;
-  margin: 1rem 0 1rem 0;
+  margin: 0.625rem 0 0.625rem 0;
 }
 
 .active-game__official-website {
   text-decoration: none;
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   color: var(--color-white);
   font-family: var(--font-montserrat);
   cursor: pointer;
@@ -108,11 +108,11 @@
 
 .active-game-btn-close-icon {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 2rem;
+  top: 0.625rem;
+  right: 0.625rem;
+  font-size: 1.25rem;
   background-color: var(--color-white);
-  padding: 0.5rem;
+  padding: 0.3125rem;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -120,11 +120,11 @@
 .active-game-btn-trash-icon,
 .active-game-btn-favorite-icon {
   position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  font-size: 2.5rem;
+  bottom: 0.625rem;
+  right: 0.625rem;
+  font-size: 1.5625rem;
   background-color: var(--color-white);
-  padding: 0.5rem;
+  padding: 0.3125rem;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -137,19 +137,19 @@
 
 @media only screen and (min-width: 1024px) {
   .active-game {
-    width: 70rem;
+    width: 43.75rem;
   }
 
   .active-game__img {
-    width: 25rem;
+    width: 15.625rem;
   }
 
   .active-game__title {
-    font-size: 4rem;
+    font-size: 2.5rem;
   }
 
   .active-game__description {
-    font-size: 3rem;
+    font-size: 1.875rem;
   }
 
   .active-game__genre,
@@ -157,7 +157,7 @@
   .active-game__publisher,
   .active-game__developer,
   .active-game__release-date {
-    font-size: 2.5rem;
+    font-size: 1.5625rem;
   }
 
   .active-game__genre-span,
@@ -165,10 +165,10 @@
   .active-game__publisher-span,
   .active-game__developer-span,
   .active-game__release-date-span {
-    font-size: 2rem;
+    font-size: 1.25rem;
   }
 
   .active-game__official-website {
-    font-size: 1.5rem;
+    font-size: 0.9375rem;
   }
 }

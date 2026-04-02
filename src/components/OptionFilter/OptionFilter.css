@@ -5,8 +5,8 @@
   flex-flow: column wrap;
   width: 100%;
   height: auto;
-  border-bottom: 0.1rem solid var(--color-white);
-  padding: 1rem 0 1rem 0;
+  border-bottom: 0.0625rem solid var(--color-white);
+  padding: 0.625rem 0 0.625rem 0;
 }
 
 .option-filter__header {
@@ -20,13 +20,13 @@
 }
 
 .option-filter__name {
-  font-size: 2rem;
+  font-size: 1.25rem;
   color: var(--color-white);
   font-family: var(--font-montserrat);
 }
 
 .option-filter__icon {
-  font-size: 2rem;
+  font-size: 1.25rem;
   color: var(--color-white);
   font-family: var(--font-montserrat);
 }
@@ -38,5 +38,5 @@
   flex-flow: column wrap;
   width: 100%;
   height: auto;
-  padding: 1rem;
+  padding: 0.625rem;
 }

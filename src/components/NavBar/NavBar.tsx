@@ -30,7 +30,7 @@ const NavBar = () => {
           <li className="header-wrapper__list-item">
             <NavLink
               to="/home"
-              aria-label="go to home page"
+              aria-label="Navigate to home page"
               className={({ isActive }) =>
                 isActive
                   ? "header-wrapper__link header-wrapper__link--active"
@@ -44,7 +44,7 @@ const NavBar = () => {
           <li className="header-wrapper__list-item">
             <NavLink
               to="/favorite"
-              aria-label="go to favorite page"
+              aria-label="Navigate to favorites page"
               className={({ isActive }) =>
                 isActive
                   ? "header-wrapper__link header-wrapper__link--active"
@@ -58,7 +58,7 @@ const NavBar = () => {
           <li className="header-wrapper__list-item">
             <NavLink
               to="/explore"
-              aria-label="go to games page"
+              aria-label="Navigate to games page"
               className={({ isActive }) =>
                 isActive
                   ? "header-wrapper__link header-wrapper__link--active"
@@ -70,11 +70,7 @@ const NavBar = () => {
           </li>
         </ul>
 
-        <button
-          className="header-wrapper__logout"
-          onClick={handleLogOut}
-          aria-label="logout button"
-        >
+        <button className="header-wrapper__logout" onClick={handleLogOut} aria-label="Log out">
           LogOut
         </button>
 

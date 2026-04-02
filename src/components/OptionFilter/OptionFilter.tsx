@@ -18,12 +18,20 @@ const OptionFilter = ({
       <div className="option-filter__header" onClick={handleClickOpenAndClose}>
         <h3 className="option-filter__name">{name}</h3>
         {!isOpen && (
-          <button type="button" aria-label="open filter" className="option-filter__btn-open">
+          <button
+            type="button"
+            aria-label="Open category filter"
+            className="option-filter__btn-open"
+          >
             <FaChevronDown className="option-filter__icon"></FaChevronDown>
           </button>
         )}
         {isOpen && (
-          <button type="button" aria-label="close filter" className="option-filter__btn-close">
+          <button
+            type="button"
+            aria-label="Close category filter"
+            className="option-filter__btn-close"
+          >
             <FaChevronUp className="option-filter__icon"></FaChevronUp>
           </button>
         )}

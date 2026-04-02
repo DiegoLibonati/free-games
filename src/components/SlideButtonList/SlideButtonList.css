@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   flex-flow: row wrap;
-  width: 5rem;
+  width: 3.125rem;
   height: auto;
   position: absolute;
   margin-left: auto;
@@ -11,12 +11,12 @@
   left: 0;
   right: 0;
   text-align: center;
-  bottom: 2rem;
+  bottom: 1.25rem;
 }
 
 .slide-button-list__btn {
-  width: 0.7rem;
-  height: 0.7rem;
+  width: 0.4375rem;
+  height: 0.4375rem;
   border-radius: 50%;
   background-color: var(--color-white);
   border: none;

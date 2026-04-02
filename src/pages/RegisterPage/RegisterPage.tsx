@@ -127,7 +127,7 @@ const RegisterPage = () => {
             onChange={onInputChange}
           ></InputForm>
 
-          <button type="submit" aria-label="submit register" className="register-wrapper__btn">
+          <button type="submit" aria-label="Create account" className="register-wrapper__btn">
             Register
           </button>
           <Link to="/login" aria-label="Go to login page" className="register-wrapper__link">

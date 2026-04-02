@@ -1,8 +1,8 @@
 .option-filter-list-item {
-  font-size: 1.5rem;
+  font-size: 0.9375rem;
   color: var(--color-white);
   font-family: var(--font-montserrat);
-  margin-bottom: 1rem;
+  margin-bottom: 0.625rem;
   text-transform: uppercase;
   cursor: pointer;
 }

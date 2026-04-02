@@ -7,7 +7,7 @@ const SlideButtonList = ({ index, handleSetIndex }: SlideButtonListProps) => {
     <div className="slide-button-list">
       <button
         type="button"
-        aria-label="item-0"
+        aria-label="Go to slide 1"
         onClick={() => handleSetIndex(0)}
         className={
           index === 0
@@ -17,7 +17,7 @@ const SlideButtonList = ({ index, handleSetIndex }: SlideButtonListProps) => {
       ></button>
       <button
         type="button"
-        aria-label="item-1"
+        aria-label="Go to slide 2"
         onClick={() => handleSetIndex(1)}
         className={
           index === 1
@@ -27,7 +27,7 @@ const SlideButtonList = ({ index, handleSetIndex }: SlideButtonListProps) => {
       ></button>
       <button
         type="button"
-        aria-label="item-2"
+        aria-label="Go to slide 3"
         onClick={() => handleSetIndex(2)}
         className={
           index === 2

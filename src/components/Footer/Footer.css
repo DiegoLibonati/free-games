@@ -6,7 +6,7 @@
   width: 100%;
   height: auto;
   background-color: var(--color-secondary);
-  padding: 0 0 5rem 0;
+  padding: 0 0 3.125rem 0;
 }
 
 .footer-wrapper__links {
@@ -19,7 +19,7 @@
 }
 
 .footer-wrapper__icon {
-  font-size: 3rem;
+  font-size: 1.875rem;
   color: var(--color-white);
   cursor: pointer;
   transition: color 1s;

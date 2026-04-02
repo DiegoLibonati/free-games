@@ -5,7 +5,7 @@
   flex-flow: column wrap;
   width: 100%;
   height: auto;
-  margin: 1rem 0 1rem 0;
+  margin: 0.625rem 0 0.625rem 0;
   cursor: pointer;
   transition: transform 1s;
 }
@@ -16,28 +16,28 @@
 }
 
 .card-favorite-game__img {
-  height: 25rem;
+  height: 15.625rem;
   width: 100%;
   object-fit: cover;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
+  border-top-left-radius: 0.625rem;
+  border-top-right-radius: 0.625rem;
 }
 
 .card-favorite-game__title {
-  font-size: 1.5rem;
+  font-size: 0.9375rem;
   font-family: var(--font-montserrat);
   color: var(--color-white);
   width: 100%;
   height: auto;
-  padding: 1rem;
+  padding: 0.625rem;
   background-color: var(--color-secondary);
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 0.625rem;
+  border-bottom-right-radius: 0.625rem;
 }
 
 @media only screen and (min-width: 540px) {
   .card-favorite-game {
-    width: 40rem;
-    margin: 1rem;
+    width: 25rem;
+    margin: 0.625rem;
   }
 }

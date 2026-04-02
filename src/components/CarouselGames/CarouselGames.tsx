@@ -24,7 +24,7 @@ const CarouselGames = ({ name, games }: CarouselGamesProps) => {
               <button
                 className="carousel-games__btn-favorite"
                 type="button"
-                aria-label={`add game to fav ${game.title}`}
+                aria-label={`Add ${game.title} to favorites`}
                 onClick={() => handleSetFavoriteGame(game)}
               >
                 Add To Fav

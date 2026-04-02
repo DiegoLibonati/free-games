@@ -24,7 +24,7 @@ const Footer = () => {
           href="https://www.facebook.com/dielibonati/"
           target="_blank"
           rel="noreferrer"
-          aria-label="open facebook"
+          aria-label="Visit Facebook profile"
         >
           <FaFacebook className="footer-wrapper__icon"></FaFacebook>
         </a>
@@ -32,7 +32,7 @@ const Footer = () => {
           href="https://github.com/DiegoLibonati"
           target="_blank"
           rel="noreferrer"
-          aria-label="open github"
+          aria-label="Visit GitHub profile"
         >
           <FaGithub className="footer-wrapper__icon"></FaGithub>
         </a>
@@ -40,7 +40,7 @@ const Footer = () => {
           href="https://www.instagram.com/die_libonati/"
           target="_blank"
           rel="noreferrer"
-          aria-label="open instagram"
+          aria-label="Visit Instagram profile"
         >
           <FaInstagram className="footer-wrapper__icon"></FaInstagram>
         </a>
@@ -48,7 +48,7 @@ const Footer = () => {
           href="https://www.linkedin.com/in/diego-libonati-67102419b/"
           target="_blank"
           rel="noreferrer"
-          aria-label="open linkedin"
+          aria-label="Visit LinkedIn profile"
         >
           <FaLinkedinIn className="footer-wrapper__icon"></FaLinkedinIn>
         </a>

@@ -2,15 +2,13 @@ import { CardGameProps } from "@/types/props";
 
 import { useGamesStore } from "@/hooks/useGamesStore";
 
-import { gamesService } from "@/services/gamesService";
-
 import "@/components/CardGame/CardGame.css";
 
 const CardGame = ({ id, thumbnail, title }: CardGameProps) => {
-  const { handleSetActiveGame } = useGamesStore();
+  const { games, handleSetActiveGame } = useGamesStore();
 
-  const showActiveGame = async (id: number) => {
-    const game = (await gamesService.getAll()).find((game) => game.id === id)!;
+  const showActiveGame = (id: number) => {
+    const game = games.find((game) => game.id === id)!;
 
     handleSetActiveGame(game);
   };

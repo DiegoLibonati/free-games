@@ -9,8 +9,8 @@
 
 .loader-wrapper__auth {
   position: relative;
-  width: 6.4rem;
-  height: 6.4rem;
+  width: 4rem;
+  height: 4rem;
   background-color: rgba(var(--color-black-rgb), 0.5);
   transform: rotate(45deg);
   overflow: hidden;
@@ -19,7 +19,7 @@
 .loader-wrapper__auth:after {
   content: "";
   position: absolute;
-  inset: 0.8rem;
+  inset: 0.5rem;
   margin: auto;
   background: var(--color-white);
 }
@@ -27,7 +27,7 @@
 .loader-wrapper__auth:before {
   content: "";
   position: absolute;
-  inset: -1.5rem;
+  inset: -0.9375rem;
   margin: auto;
   background: var(--color-secondary);
   animation: diamondLoader 2s linear infinite;
@@ -36,7 +36,7 @@
 @keyframes diamondLoader {
   0%,
   10% {
-    transform: translate(-6.4rem, -6.4rem) rotate(-45deg);
+    transform: translate(-4rem, -4rem) rotate(-45deg);
   }
   90%,
   100% {

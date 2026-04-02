@@ -109,13 +109,13 @@ const LoginPage = () => {
             onChange={onInputChange}
           ></InputForm>
 
-          <button type="submit" aria-label="submit login" className="login-wrapper__btn">
+          <button type="submit" aria-label="Sign in" className="login-wrapper__btn">
             Login
           </button>
           <button
             type="button"
             className="login-wrapper__btn"
-            aria-label="login with google"
+            aria-label="Sign in with Google"
             onClick={onSubmitWithGoogle}
           >
             Google

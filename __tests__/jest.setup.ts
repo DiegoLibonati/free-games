@@ -17,3 +17,28 @@ jest.mock("@/assets/export", () => ({
   __esModule: true,
   default: mockAssets,
 }));
+
+jest.mock("@/firebase/config", () => ({
+  FirebaseDB: {},
+  FirebaseAuth: { signOut: jest.fn() },
+}));
+
+jest.mock("@/firebase/providers", () => ({
+  signInWithGoogle: jest.fn(),
+  registerUserWithEmail: jest.fn(),
+  loginWithEmailPassword: jest.fn(),
+  logoutFirebase: jest.fn(),
+}));
+
+jest.mock("firebase/firestore/lite", () => ({
+  collection: jest.fn(),
+  getDocs: jest.fn(),
+  doc: jest.fn(),
+  setDoc: jest.fn(),
+  deleteDoc: jest.fn(),
+}));
+
+beforeEach(() => {
+  const firestore = jest.requireMock("firebase/firestore/lite");
+  firestore.getDocs.mockResolvedValue({ docs: [] });
+});

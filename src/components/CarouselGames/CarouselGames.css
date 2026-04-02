@@ -1,5 +1,5 @@
 .carousel-games {
-  height: 35rem;
+  height: 21.875rem;
   margin: auto;
   position: relative;
   width: 90%;
@@ -34,7 +34,7 @@
   left: 0;
   top: 50%;
   color: var(--color-white);
-  font-size: 4rem;
+  font-size: 2.5rem;
   font-family: var(--font-montserrat);
   z-index: 1000;
   text-transform: uppercase;
@@ -42,9 +42,9 @@
 
 .carousel-games__track {
   display: flex;
-  width: calc(50rem * 18);
+  width: calc(31.25rem * 18);
   animation: scroll 40s linear infinite;
-  margin-top: 5rem;
+  margin-top: 3.125rem;
 }
 
 .carousel-games__track:hover {
@@ -52,39 +52,39 @@
 }
 
 .carousel-games__item {
-  height: 30rem;
-  width: 50rem;
+  height: 18.75rem;
+  width: 31.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
-  perspective: 20rem;
+  padding: 0.9375rem;
+  perspective: 12.5rem;
   cursor: pointer;
   position: relative;
 }
 
 .carousel-games__img {
-  height: 25rem;
-  width: 50rem;
+  height: 15.625rem;
+  width: 31.25rem;
   object-fit: cover;
   transition: transform 1s;
 }
 
 .carousel-games__img:hover {
-  transform: translateZ(2rem);
+  transform: translateZ(1.25rem);
   transition: transform 1s;
 }
 
 .carousel-games__btn-favorite {
   width: 40%;
-  font-size: 1.5rem;
-  padding: 1rem;
+  font-size: 0.9375rem;
+  padding: 0.625rem;
   color: var(--color-white);
   background: var(--color-primary);
   border: none;
-  box-shadow: rgba(var(--color-black-rgb), 0.35) 0 0.5rem 1.5rem;
+  box-shadow: rgba(var(--color-black-rgb), 0.35) 0 0.3125rem 0.9375rem;
   font-family: var(--font-montserrat);
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.0625rem;
   cursor: pointer;
   position: absolute;
   opacity: 0;
@@ -118,12 +118,12 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-25rem * 9));
+    transform: translateX(calc(-15.625rem * 9));
   }
 }
 
 @media only screen and (min-width: 1024px) {
   .carousel-games__name {
-    font-size: 5rem;
+    font-size: 3.125rem;
   }
 }

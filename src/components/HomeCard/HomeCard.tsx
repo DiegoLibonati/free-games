@@ -33,7 +33,7 @@ const HomeCard = () => {
 
             <button
               type="button"
-              aria-label="add to favorite"
+              aria-label="Add to favorites"
               className="home-card__btn-favorite"
               onClick={() => handleSaveGameToFavorite(game)}
             >

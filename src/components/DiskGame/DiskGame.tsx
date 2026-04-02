@@ -4,8 +4,6 @@ import { DiskGameProps } from "@/types/props";
 
 import { useGamesStore } from "@/hooks/useGamesStore";
 
-import { gamesService } from "@/services/gamesService";
-
 import "@/components/DiskGame/DiskGame.css";
 
 const DiskGame = ({
@@ -22,7 +20,7 @@ const DiskGame = ({
 }: DiskGameProps) => {
   const [isInformationOpen, setIsInformationOpen] = useState<boolean>(false);
 
-  const { handleSetNewGameToFavorite } = useGamesStore();
+  const { games, handleSetNewGameToFavorite } = useGamesStore();
 
   const handleClick = () => {
     setIsInformationOpen(true);
@@ -40,8 +38,8 @@ const DiskGame = ({
     setIsInformationOpen(false);
   };
 
-  const handleSaveGameToFavorite = async (id: number) => {
-    const game = (await gamesService.getAll()).find((game) => game.id === id)!;
+  const handleSaveGameToFavorite = (id: number) => {
+    const game = games.find((game) => game.id === id)!;
     handleSetNewGameToFavorite(game);
   };
 
@@ -86,7 +84,7 @@ const DiskGame = ({
             href={freetogame_profile_url}
             target="_blank"
             rel="noreferrer"
-            aria-label={`go to official website ${title}`}
+            aria-label={`Visit official website of ${title}`}
             className="disk-game__link-official-website"
           >
             Official website
@@ -95,7 +93,7 @@ const DiskGame = ({
           <button
             type="button"
             onClick={() => handleSaveGameToFavorite(id)}
-            aria-label={`add to favorites ${title}`}
+            aria-label={`Add ${title} to favorites`}
             className="disk-game__btn-favorite"
           >
             Add to Favorites
