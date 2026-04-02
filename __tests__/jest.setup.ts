@@ -38,6 +38,8 @@ jest.mock("firebase/firestore/lite", () => ({
   deleteDoc: jest.fn(),
 }));
 
+jest.mock("sweetalert2", () => ({ __esModule: true, default: { fire: jest.fn() } }));
+
 beforeEach(() => {
   const firestore = jest.requireMock("firebase/firestore/lite");
   firestore.getDocs.mockResolvedValue({ docs: [] });

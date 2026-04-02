@@ -1,50 +1,52 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
-import { Provider, useSelector } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-
-import authSlice from "@/features/auth/authSlice";
-import gamesSlice from "@/features/games/gamesSlice";
-import uiSlice from "@/features/ui/uiSlice";
 
 import ActiveGame from "@/components/ActiveGame/ActiveGame";
-import { RootState } from "@/app/store";
+
+import { useGamesStore } from "@/hooks/useGamesStore";
+import { useUiStore } from "@/hooks/useUiStore";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
+jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
+jest.mock("@/hooks/useUiStore", () => ({ useUiStore: jest.fn() }));
+
 const [activeGame] = mockGames;
 
-const createStore = () =>
-  configureStore({
-    reducer: { auth: authSlice, games: gamesSlice, ui: uiSlice },
-    preloadedState: {
-      games: {
-        games: { isLoading: false, games: mockGames },
-        categories: { isLoading: false, categories: [] },
-        favorites: { isLoading: false, games: [] },
-        activeGame,
-      },
-    },
-  });
+const mockHandleClearActiveGame = jest.fn();
+const mockHandleSetNewGameToFavorite = jest.fn();
+const mockHandleDeleteFavoriteGame = jest.fn();
+const mockHandleOpenAlert = jest.fn();
 
-type RenderComponent = {
-  container: HTMLElement;
-};
+type RenderComponent = { container: HTMLElement };
 
 const renderComponent = (initialRoute = "/explore"): RenderComponent => {
+  (useGamesStore as jest.Mock).mockReturnValue({
+    activeGame,
+    handleClearActiveGame: mockHandleClearActiveGame,
+    handleSetNewGameToFavorite: mockHandleSetNewGameToFavorite,
+    handleDeleteFavoriteGame: mockHandleDeleteFavoriteGame,
+  });
+
+  (useUiStore as jest.Mock).mockReturnValue({
+    handleOpenAlert: mockHandleOpenAlert,
+  });
+
   const { container } = render(
-    <Provider store={createStore()}>
-      <MemoryRouter initialEntries={[initialRoute]}>
-        <ActiveGame />
-      </MemoryRouter>
-    </Provider>
+    <MemoryRouter initialEntries={[initialRoute]}>
+      <ActiveGame />
+    </MemoryRouter>
   );
 
   return { container };
 };
 
 describe("ActiveGame", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the modal wrapper", () => {
     const { container } = renderComponent();
 
@@ -93,25 +95,37 @@ describe("ActiveGame", () => {
     ).toBeInTheDocument();
   });
 
-  it("should clear the activeGame when close button is clicked", async () => {
+  it("should call handleClearActiveGame when the close button is clicked", async () => {
     const user = userEvent.setup();
-    const store = createStore();
-
-    const ConditionalActiveGame = () => {
-      const active = useSelector((state: RootState) => state.games.activeGame);
-      return active ? <ActiveGame /> : null;
-    };
-
-    render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <ConditionalActiveGame />
-        </MemoryRouter>
-      </Provider>
-    );
+    renderComponent();
 
     await user.click(screen.getByRole("button", { name: "Close game details" }));
 
-    expect(store.getState().games.activeGame).toBeNull();
+    expect(mockHandleClearActiveGame).toHaveBeenCalledTimes(1);
+  });
+
+  it("should call handleClearActiveGame and handleSetNewGameToFavorite when add-to-favorites is clicked", async () => {
+    const user = userEvent.setup();
+    renderComponent("/explore");
+
+    await user.click(screen.getByRole("button", { name: `Add ${activeGame!.title} to favorites` }));
+
+    expect(mockHandleClearActiveGame).toHaveBeenCalledTimes(1);
+    expect(mockHandleSetNewGameToFavorite).toHaveBeenCalledWith(activeGame);
+  });
+
+  it("should call handleClearActiveGame, handleDeleteFavoriteGame and handleOpenAlert when remove-from-favorites is clicked", async () => {
+    const user = userEvent.setup();
+    renderComponent("/favorite");
+
+    await user.click(
+      screen.getByRole("button", { name: `Remove ${activeGame!.title} from favorites` })
+    );
+
+    expect(mockHandleClearActiveGame).toHaveBeenCalledTimes(1);
+    expect(mockHandleDeleteFavoriteGame).toHaveBeenCalledWith(activeGame);
+    expect(mockHandleOpenAlert).toHaveBeenCalledWith(
+      expect.objectContaining({ type: "success", title: "Favorite Game" })
+    );
   });
 });

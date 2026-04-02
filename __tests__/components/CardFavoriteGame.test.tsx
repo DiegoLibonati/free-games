@@ -1,30 +1,17 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-
-import authSlice from "@/features/auth/authSlice";
-import gamesSlice from "@/features/games/gamesSlice";
-import uiSlice from "@/features/ui/uiSlice";
 
 import type { CardFavoriteGameProps } from "@/types/props";
 
 import CardFavoriteGame from "@/components/CardFavoriteGame/CardFavoriteGame";
 
+import { useGamesStore } from "@/hooks/useGamesStore";
+
 import { mockGames } from "@tests/__mocks__/games.mock";
 
-const createStore = () =>
-  configureStore({
-    reducer: { auth: authSlice, games: gamesSlice, ui: uiSlice },
-    preloadedState: {
-      games: {
-        games: { isLoading: false, games: [] },
-        categories: { isLoading: false, categories: [] },
-        favorites: { isLoading: false, games: mockGames },
-        activeGame: null,
-      },
-    },
-  });
+jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
+
+const mockHandleSetActiveGame = jest.fn();
 
 type RenderComponent = {
   container: HTMLElement;
@@ -34,23 +21,28 @@ type RenderComponent = {
 const renderComponent = (overrides?: Partial<CardFavoriteGameProps>): RenderComponent => {
   const [firstGame] = mockGames;
 
+  (useGamesStore as jest.Mock).mockReturnValue({
+    favoritesGames: mockGames,
+    handleSetActiveGame: mockHandleSetActiveGame,
+  });
+
   const props: CardFavoriteGameProps = {
-    id: firstGame.id,
-    thumbnail: firstGame.thumbnail,
-    title: firstGame.title,
+    id: firstGame!.id,
+    thumbnail: firstGame!.thumbnail,
+    title: firstGame!.title,
     ...overrides,
   };
 
-  const { container } = render(
-    <Provider store={createStore()}>
-      <CardFavoriteGame {...props} />
-    </Provider>
-  );
+  const { container } = render(<CardFavoriteGame {...props} />);
 
   return { container, props };
 };
 
 describe("CardFavoriteGame", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render an article element", () => {
     renderComponent();
 
@@ -59,32 +51,26 @@ describe("CardFavoriteGame", () => {
 
   it("should render the game thumbnail", () => {
     const [game] = mockGames;
-    renderComponent({ thumbnail: game.thumbnail });
+    renderComponent({ thumbnail: game!.thumbnail });
 
-    expect(screen.getByRole("img")).toHaveAttribute("src", game.thumbnail);
+    expect(screen.getByRole("img")).toHaveAttribute("src", game!.thumbnail);
   });
 
   it("should render the game title", () => {
     const [game] = mockGames;
-    renderComponent({ title: game.title });
+    renderComponent({ title: game!.title });
 
-    expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(game.title);
+    expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(game!.title);
   });
 
-  it("should set activeGame in the store when clicked", async () => {
+  it("should call handleSetActiveGame with the correct game when clicked", async () => {
     const user = userEvent.setup();
-    const store = createStore();
-
     const [game] = mockGames;
 
-    render(
-      <Provider store={store}>
-        <CardFavoriteGame id={game.id} thumbnail={game.thumbnail} title={game.title} />
-      </Provider>
-    );
+    renderComponent({ id: game!.id });
 
     await user.click(screen.getByRole("article"));
 
-    expect(store.getState().games.activeGame).toEqual(game);
+    expect(mockHandleSetActiveGame).toHaveBeenCalledWith(game);
   });
 });

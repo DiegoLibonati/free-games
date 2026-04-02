@@ -1,43 +1,34 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-
-import authSlice from "@/features/auth/authSlice";
-import gamesSlice from "@/features/games/gamesSlice";
-import uiSlice from "@/features/ui/uiSlice";
 
 import Hamburger from "@/components/Hamburger/Hamburger";
 
-const createStore = (navBarOpen = false) =>
-  configureStore({
-    reducer: { auth: authSlice, games: gamesSlice, ui: uiSlice },
-    preloadedState: {
-      ui: {
-        navBar: { isOpen: navBarOpen },
-        filters: { categories: { isOpen: false } },
-        alert: { isOpen: false, type: "" as const, title: "", message: "" },
-      },
-    },
+import { useUiStore } from "@/hooks/useUiStore";
+
+jest.mock("@/hooks/useUiStore", () => ({ useUiStore: jest.fn() }));
+
+const mockHandleOpenNavBar = jest.fn();
+const mockHandleCloseNavBar = jest.fn();
+
+type RenderComponent = { container: HTMLElement };
+
+const renderComponent = (isNavBarOpen = false): RenderComponent => {
+  (useUiStore as jest.Mock).mockReturnValue({
+    isNavBarOpen,
+    handleOpenNavBar: mockHandleOpenNavBar,
+    handleCloseNavBar: mockHandleCloseNavBar,
   });
 
-type RenderComponent = {
-  container: HTMLElement;
-};
-
-const renderComponent = (navBarOpen = false): RenderComponent => {
-  const store = createStore(navBarOpen);
-
-  const { container } = render(
-    <Provider store={store}>
-      <Hamburger />
-    </Provider>
-  );
+  const { container } = render(<Hamburger />);
 
   return { container };
 };
 
 describe("Hamburger", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the hamburger element", () => {
     const { container } = renderComponent();
 
@@ -64,23 +55,23 @@ describe("Hamburger", () => {
     expect(container.querySelector<HTMLDivElement>(".hamburger")).toHaveClass("hamburger--open");
   });
 
-  it("should toggle to open state when clicked while closed", async () => {
+  it("should call handleOpenNavBar when clicked while closed", async () => {
     const user = userEvent.setup();
     const { container } = renderComponent(false);
 
     await user.click(container.querySelector<HTMLDivElement>(".hamburger")!);
 
-    expect(container.querySelector<HTMLDivElement>(".hamburger")).toHaveClass("hamburger--open");
+    expect(mockHandleOpenNavBar).toHaveBeenCalledTimes(1);
+    expect(mockHandleCloseNavBar).not.toHaveBeenCalled();
   });
 
-  it("should toggle to closed state when clicked while open", async () => {
+  it("should call handleCloseNavBar when clicked while open", async () => {
     const user = userEvent.setup();
     const { container } = renderComponent(true);
 
     await user.click(container.querySelector<HTMLDivElement>(".hamburger")!);
 
-    expect(container.querySelector<HTMLDivElement>(".hamburger")).not.toHaveClass(
-      "hamburger--open"
-    );
+    expect(mockHandleCloseNavBar).toHaveBeenCalledTimes(1);
+    expect(mockHandleOpenNavBar).not.toHaveBeenCalled();
   });
 });

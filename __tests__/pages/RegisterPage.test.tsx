@@ -1,47 +1,33 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-
-import authSlice from "@/features/auth/authSlice";
-import gamesSlice from "@/features/games/gamesSlice";
-import uiSlice from "@/features/ui/uiSlice";
+import Swal from "sweetalert2";
 
 import RegisterPage from "@/pages/RegisterPage/RegisterPage";
 
-import { gamesService } from "@/services/gamesService";
+import { useAuthStore } from "@/hooks/useAuthStore";
 
-import { mockGames } from "@tests/__mocks__/games.mock";
 import { mockImages } from "@tests/__mocks__/images.mock";
 
-jest.mock("@/services/gamesService");
+jest.mock("@/hooks/useAuthStore", () => ({ useAuthStore: jest.fn() }));
 
-const mockedGamesService = gamesService as jest.Mocked<typeof gamesService>;
+const mockHandleCreateNewUserWithEmailAndPassword = jest.fn();
+const mockHandleGetImages = jest.fn();
 
-const createStore = (images: string[] = [], isLoadingImages = false) =>
-  configureStore({
-    reducer: { auth: authSlice, games: gamesSlice, ui: uiSlice },
-    preloadedState: {
-      auth: {
-        images: { images, isLoadingImages },
-        auth: { isChecking: false, status: "not-authenticated" as const, errorMessage: "" },
-        user: { uid: "", email: "", displayName: "", photoURL: "" },
-      },
-    },
-  });
-
-type RenderPage = {
-  container: HTMLElement;
-};
+type RenderPage = { container: HTMLElement };
 
 const renderPage = (images: string[] = [], isLoadingImages = false): RenderPage => {
+  (useAuthStore as jest.Mock).mockReturnValue({
+    images,
+    isLoadingImages,
+    handleCreateNewUserWithEmailAndPassword: mockHandleCreateNewUserWithEmailAndPassword,
+    handleGetImages: mockHandleGetImages,
+  });
+
   const { container } = render(
-    <Provider store={createStore(images, isLoadingImages)}>
-      <MemoryRouter>
-        <RegisterPage />
-      </MemoryRouter>
-    </Provider>
+    <MemoryRouter>
+      <RegisterPage />
+    </MemoryRouter>
   );
 
   return { container };
@@ -53,56 +39,42 @@ describe("RegisterPage", () => {
   });
 
   it("should render the main element", () => {
-    mockedGamesService.getAll.mockReturnValueOnce(new Promise(() => undefined));
-
     const { container } = renderPage();
 
     expect(container.querySelector<HTMLElement>("main.register-page")).toBeInTheDocument();
   });
 
   it("should render the username input", () => {
-    mockedGamesService.getAll.mockReturnValueOnce(new Promise(() => undefined));
-
     renderPage();
 
     expect(screen.getByPlaceholderText("Your username")).toBeInTheDocument();
   });
 
   it("should render the email input", () => {
-    mockedGamesService.getAll.mockReturnValueOnce(new Promise(() => undefined));
-
     renderPage();
 
     expect(screen.getByPlaceholderText("Your email")).toBeInTheDocument();
   });
 
   it("should render the password input", () => {
-    mockedGamesService.getAll.mockReturnValueOnce(new Promise(() => undefined));
-
     renderPage();
 
     expect(screen.getByPlaceholderText("Your password")).toBeInTheDocument();
   });
 
   it("should render the repeat password input", () => {
-    mockedGamesService.getAll.mockReturnValueOnce(new Promise(() => undefined));
-
     renderPage();
 
     expect(screen.getByPlaceholderText("Repeat your password")).toBeInTheDocument();
   });
 
   it("should render the create account button", () => {
-    mockedGamesService.getAll.mockReturnValueOnce(new Promise(() => undefined));
-
     renderPage();
 
     expect(screen.getByRole("button", { name: "Create account" })).toBeInTheDocument();
   });
 
   it("should render the link to the login page", () => {
-    mockedGamesService.getAll.mockReturnValueOnce(new Promise(() => undefined));
-
     renderPage();
 
     expect(screen.getByRole("link", { name: "Go to login page" })).toHaveAttribute(
@@ -112,31 +84,76 @@ describe("RegisterPage", () => {
   });
 
   it("should show loader while images are loading", () => {
-    mockedGamesService.getAll.mockReturnValueOnce(new Promise(() => undefined));
-
     const { container } = renderPage([], true);
 
     expect(container.querySelector<HTMLDivElement>(".loader-all-wrapper")).toBeInTheDocument();
   });
 
-  it("should show the slide image when images are loaded", async () => {
-    mockedGamesService.getAll.mockResolvedValueOnce(mockGames);
-
+  it("should show the slide image when images are loaded", () => {
     renderPage(mockImages, false);
 
-    const img = await screen.findByAltText("registerimage");
-    expect(img).toHaveAttribute("src", mockImages[0]);
+    expect(screen.getByAltText("registerimage")).toHaveAttribute("src", mockImages[0]);
   });
 
   it("should update the username input when typed", async () => {
-    mockedGamesService.getAll.mockReturnValueOnce(new Promise(() => undefined));
-
     const user = userEvent.setup();
     renderPage();
 
-    const usernameInput = screen.getByPlaceholderText("Your username");
-    await user.type(usernameInput, "johndoe");
+    await user.type(screen.getByPlaceholderText("Your username"), "johndoe");
 
-    expect(usernameInput).toHaveValue("johndoe");
+    expect(screen.getByPlaceholderText("Your username")).toHaveValue("johndoe");
+  });
+
+  it("should call handleGetImages on mount", () => {
+    renderPage();
+
+    expect(mockHandleGetImages).toHaveBeenCalledTimes(1);
+  });
+
+  it("should show an error alert when submitting with incomplete fields", async () => {
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.type(screen.getByPlaceholderText("Your username"), "johndoe");
+    await user.click(screen.getByRole("button", { name: "Create account" }));
+
+    expect(Swal.fire).toHaveBeenCalledWith(
+      expect.objectContaining({ text: "You need to complete all the fields" })
+    );
+    expect(mockHandleCreateNewUserWithEmailAndPassword).not.toHaveBeenCalled();
+  });
+
+  it("should show an error alert when passwords do not match", async () => {
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.type(screen.getByPlaceholderText("Your username"), "johndoe");
+    await user.type(screen.getByPlaceholderText("Your email"), "john@test.com");
+    await user.type(screen.getByPlaceholderText("Your password"), "password123");
+    await user.type(screen.getByPlaceholderText("Repeat your password"), "different456");
+    await user.click(screen.getByRole("button", { name: "Create account" }));
+
+    expect(Swal.fire).toHaveBeenCalledWith(
+      expect.objectContaining({ text: "Passwords must be identical to each other" })
+    );
+    expect(mockHandleCreateNewUserWithEmailAndPassword).not.toHaveBeenCalled();
+  });
+
+  it("should call handleCreateNewUserWithEmailAndPassword when all fields are valid", async () => {
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.type(screen.getByPlaceholderText("Your username"), "johndoe");
+    await user.type(screen.getByPlaceholderText("Your email"), "john@test.com");
+    await user.type(screen.getByPlaceholderText("Your password"), "password123");
+    await user.type(screen.getByPlaceholderText("Repeat your password"), "password123");
+    await user.click(screen.getByRole("button", { name: "Create account" }));
+
+    expect(mockHandleCreateNewUserWithEmailAndPassword).toHaveBeenCalledWith({
+      username: "johndoe",
+      email: "john@test.com",
+      password: "password123",
+      repeatPassword: "password123",
+    });
   });
 });

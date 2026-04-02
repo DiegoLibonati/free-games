@@ -1,48 +1,46 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-
-import authSlice from "@/features/auth/authSlice";
-import gamesSlice from "@/features/games/gamesSlice";
-import uiSlice from "@/features/ui/uiSlice";
 
 import NavBar from "@/components/NavBar/NavBar";
 
-const createStore = (displayName = "TestUser", photoURL = "") =>
-  configureStore({
-    reducer: { auth: authSlice, games: gamesSlice, ui: uiSlice },
-    preloadedState: {
-      auth: {
-        images: { images: [], isLoadingImages: false },
-        auth: { isChecking: false, status: "authenticated" as const, errorMessage: "" },
-        user: { uid: "uid-1", email: "test@test.com", displayName, photoURL },
-      },
-      ui: {
-        navBar: { isOpen: true },
-        filters: { categories: { isOpen: false } },
-        alert: { isOpen: false, type: "" as const, title: "", message: "" },
-      },
-    },
-  });
+import { useAuthStore } from "@/hooks/useAuthStore";
+import { useUiStore } from "@/hooks/useUiStore";
 
-type RenderComponent = {
-  container: HTMLElement;
-};
+jest.mock("@/hooks/useAuthStore", () => ({ useAuthStore: jest.fn() }));
+jest.mock("@/hooks/useUiStore", () => ({ useUiStore: jest.fn() }));
+
+const mockHandleLogOut = jest.fn();
+
+type RenderComponent = { container: HTMLElement };
 
 const renderComponent = (displayName = "TestUser", photoURL = ""): RenderComponent => {
+  (useAuthStore as jest.Mock).mockReturnValue({
+    displayName,
+    photoURL,
+    handleLogOut: mockHandleLogOut,
+  });
+
+  (useUiStore as jest.Mock).mockReturnValue({
+    isNavBarOpen: true,
+    handleOpenNavBar: jest.fn(),
+    handleCloseNavBar: jest.fn(),
+  });
+
   const { container } = render(
-    <Provider store={createStore(displayName, photoURL)}>
-      <MemoryRouter>
-        <NavBar />
-      </MemoryRouter>
-    </Provider>
+    <MemoryRouter>
+      <NavBar />
+    </MemoryRouter>
   );
 
   return { container };
 };
 
 describe("NavBar", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the header element", () => {
     renderComponent();
 
@@ -97,5 +95,14 @@ describe("NavBar", () => {
 
     const avatar = container.querySelector<HTMLImageElement>(".header-wrapper__avatar");
     expect(avatar).toHaveAttribute("src", "https://example.com/photo.jpg");
+  });
+
+  it("should call handleLogOut when the logout button is clicked", async () => {
+    const user = userEvent.setup();
+    renderComponent();
+
+    await user.click(screen.getByRole("button", { name: "Log out" }));
+
+    expect(mockHandleLogOut).toHaveBeenCalledTimes(1);
   });
 });

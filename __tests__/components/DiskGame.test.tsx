@@ -1,30 +1,17 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-
-import authSlice from "@/features/auth/authSlice";
-import gamesSlice from "@/features/games/gamesSlice";
-import uiSlice from "@/features/ui/uiSlice";
 
 import type { DiskGameProps } from "@/types/props";
 
 import DiskGame from "@/components/DiskGame/DiskGame";
 
+import { useGamesStore } from "@/hooks/useGamesStore";
+
 import { mockGames } from "@tests/__mocks__/games.mock";
 
-const createStore = () =>
-  configureStore({
-    reducer: { auth: authSlice, games: gamesSlice, ui: uiSlice },
-    preloadedState: {
-      games: {
-        games: { isLoading: false, games: mockGames },
-        categories: { isLoading: false, categories: [] },
-        favorites: { isLoading: false, games: [] },
-        activeGame: null,
-      },
-    },
-  });
+jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
+
+const mockHandleSetNewGameToFavorite = jest.fn();
 
 type RenderComponent = {
   container: HTMLElement;
@@ -33,6 +20,11 @@ type RenderComponent = {
 
 const renderComponent = (overrides?: Partial<DiskGameProps>): RenderComponent => {
   const [game] = mockGames;
+
+  (useGamesStore as jest.Mock).mockReturnValue({
+    games: mockGames,
+    handleSetNewGameToFavorite: mockHandleSetNewGameToFavorite,
+  });
 
   const props: DiskGameProps = {
     id: game!.id,
@@ -48,16 +40,16 @@ const renderComponent = (overrides?: Partial<DiskGameProps>): RenderComponent =>
     ...overrides,
   };
 
-  const { container } = render(
-    <Provider store={createStore()}>
-      <DiskGame {...props} />
-    </Provider>
-  );
+  const { container } = render(<DiskGame {...props} />);
 
   return { container, props };
 };
 
 describe("DiskGame", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the disk-game container", () => {
     const { container } = renderComponent();
 
@@ -122,5 +114,16 @@ describe("DiskGame", () => {
     expect(
       container.querySelector<HTMLDivElement>(".disk-game__information--open")
     ).not.toBeInTheDocument();
+  });
+
+  it("should call handleSetNewGameToFavorite with the correct game when add-to-favorites is clicked", async () => {
+    const user = userEvent.setup();
+    const [game] = mockGames;
+    const { container } = renderComponent();
+
+    await user.click(container.querySelector<HTMLDivElement>(".disk-game__img")!);
+    await user.click(screen.getByRole("button", { name: `Add ${game!.title} to favorites` }));
+
+    expect(mockHandleSetNewGameToFavorite).toHaveBeenCalledWith(game);
   });
 });

@@ -1,21 +1,14 @@
 import { render, screen } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-
-import authSlice from "@/features/auth/authSlice";
-import gamesSlice from "@/features/games/gamesSlice";
-import uiSlice from "@/features/ui/uiSlice";
 
 import type { CarouselGamesProps } from "@/types/props";
 
 import CarouselGames from "@/components/CarouselGames/CarouselGames";
 
+import { useGamesStore } from "@/hooks/useGamesStore";
+
 import { mockGames } from "@tests/__mocks__/games.mock";
 
-const createStore = () =>
-  configureStore({
-    reducer: { auth: authSlice, games: gamesSlice, ui: uiSlice },
-  });
+jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
 
 type RenderComponent = {
   container: HTMLElement;
@@ -23,22 +16,26 @@ type RenderComponent = {
 };
 
 const renderComponent = (overrides?: Partial<CarouselGamesProps>): RenderComponent => {
+  (useGamesStore as jest.Mock).mockReturnValue({
+    handleSetNewGameToFavorite: jest.fn(),
+  });
+
   const props: CarouselGamesProps = {
     name: "MMORPG",
     games: mockGames,
     ...overrides,
   };
 
-  const { container } = render(
-    <Provider store={createStore()}>
-      <CarouselGames {...props} />
-    </Provider>
-  );
+  const { container } = render(<CarouselGames {...props} />);
 
   return { container, props };
 };
 
 describe("CarouselGames", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the carousel article", () => {
     renderComponent();
 
