@@ -11,16 +11,16 @@ import { mockGames } from "@tests/__mocks__/games.mock";
 
 type RenderPage = { container: HTMLElement };
 
-jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
-jest.mock("@/hooks/useAuthStore", () => ({ useAuthStore: jest.fn() }));
-jest.mock("@/hooks/useUiStore", () => ({ useUiStore: jest.fn() }));
-
 const mockHandleGetFavoriteGames = jest.fn();
 const mockHandleSetToInitialState = jest.fn();
 const mockHandleSetActiveGame = jest.fn();
 const mockHandleLogOut = jest.fn();
 const mockHandleOpenNavBar = jest.fn();
 const mockHandleCloseNavBar = jest.fn();
+
+jest.mock("@/hooks/useGamesStore");
+jest.mock("@/hooks/useAuthStore");
+jest.mock("@/hooks/useUiStore");
 
 const renderPage = (
   favorites: typeof mockGames = [],

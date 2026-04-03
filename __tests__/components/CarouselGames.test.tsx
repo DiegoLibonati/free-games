@@ -13,9 +13,9 @@ type RenderComponent = {
   props: CarouselGamesProps;
 };
 
-jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
-
 const mockHandleSetNewGameToFavorite = jest.fn();
+
+jest.mock("@/hooks/useGamesStore");
 
 const renderComponent = (overrides?: Partial<CarouselGamesProps>): RenderComponent => {
   (useGamesStore as jest.Mock).mockReturnValue({

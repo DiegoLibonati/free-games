@@ -11,11 +11,11 @@ import { mockImages } from "@tests/__mocks__/images.mock";
 
 type RenderPage = { container: HTMLElement };
 
-jest.mock("@/hooks/useAuthStore", () => ({ useAuthStore: jest.fn() }));
-
 const mockHandleLoginWithEmailAndPassword = jest.fn();
 const mockHandleLoginWithGoogle = jest.fn();
 const mockHandleGetImages = jest.fn();
+
+jest.mock("@/hooks/useAuthStore");
 
 const renderPage = (images: string[] = [], isLoadingImages = false): RenderPage => {
   (useAuthStore as jest.Mock).mockReturnValue({

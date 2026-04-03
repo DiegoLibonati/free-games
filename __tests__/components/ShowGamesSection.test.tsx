@@ -10,9 +10,9 @@ type RenderComponent = {
   container: HTMLElement;
 };
 
-jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
-
 const mockHandleSetNewGameToFavorite = jest.fn();
+
+jest.mock("@/hooks/useGamesStore");
 
 const renderComponent = (games = mockGames): RenderComponent => {
   (useGamesStore as jest.Mock).mockReturnValue({

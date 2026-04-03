@@ -14,9 +14,9 @@ type RenderComponent = {
   props: CardFavoriteGameProps;
 };
 
-jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
-
 const mockHandleSetActiveGame = jest.fn();
+
+jest.mock("@/hooks/useGamesStore");
 
 const renderComponent = (overrides?: Partial<CardFavoriteGameProps>): RenderComponent => {
   const [firstGame] = mockGames;

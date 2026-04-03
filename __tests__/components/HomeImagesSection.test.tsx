@@ -13,10 +13,10 @@ type RenderComponent = {
   container: HTMLElement;
 };
 
-jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
-jest.mock("@/hooks/useAutoSlide", () => ({ useAutoSlide: jest.fn() }));
-
 const mockHandleSetNewGameToFavorite = jest.fn();
+
+jest.mock("@/hooks/useGamesStore");
+jest.mock("@/hooks/useAutoSlide");
 
 const renderComponent = (autoIndex = 0, games = mockGames): RenderComponent => {
   (useAutoSlide as jest.Mock).mockReturnValue(autoIndex);

@@ -9,12 +9,12 @@ import { useUiStore } from "@/hooks/useUiStore";
 
 type RenderComponent = { container: HTMLElement };
 
-jest.mock("@/hooks/useAuthStore", () => ({ useAuthStore: jest.fn() }));
-jest.mock("@/hooks/useUiStore", () => ({ useUiStore: jest.fn() }));
-
 const mockHandleLogOut = jest.fn();
 const mockHandleOpenNavBar = jest.fn();
 const mockHandleCloseNavBar = jest.fn();
+
+jest.mock("@/hooks/useAuthStore");
+jest.mock("@/hooks/useUiStore");
 
 const renderComponent = (displayName = "TestUser", photoURL = ""): RenderComponent => {
   (useAuthStore as jest.Mock).mockReturnValue({

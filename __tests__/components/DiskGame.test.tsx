@@ -14,9 +14,9 @@ type RenderComponent = {
   props: DiskGameProps;
 };
 
-jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
-
 const mockHandleSetNewGameToFavorite = jest.fn();
+
+jest.mock("@/hooks/useGamesStore");
 
 const renderComponent = (overrides?: Partial<DiskGameProps>): RenderComponent => {
   const [game] = mockGames;

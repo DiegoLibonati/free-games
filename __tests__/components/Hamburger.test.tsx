@@ -7,10 +7,10 @@ import { useUiStore } from "@/hooks/useUiStore";
 
 type RenderComponent = { container: HTMLElement };
 
-jest.mock("@/hooks/useUiStore", () => ({ useUiStore: jest.fn() }));
-
 const mockHandleOpenNavBar = jest.fn();
 const mockHandleCloseNavBar = jest.fn();
+
+jest.mock("@/hooks/useUiStore");
 
 const renderComponent = (isNavBarOpen = false): RenderComponent => {
   (useUiStore as jest.Mock).mockReturnValue({

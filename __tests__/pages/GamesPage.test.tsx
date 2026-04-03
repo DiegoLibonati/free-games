@@ -11,10 +11,6 @@ import { mockGames } from "@tests/__mocks__/games.mock";
 
 type RenderPage = { container: HTMLElement };
 
-jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
-jest.mock("@/hooks/useUiStore", () => ({ useUiStore: jest.fn() }));
-jest.mock("@/hooks/useAuthStore", () => ({ useAuthStore: jest.fn() }));
-
 const mockHandleGetGamesByCategory = jest.fn();
 const mockHandleSetToInitialState = jest.fn();
 const mockHandleOpenFilterCategories = jest.fn();
@@ -25,6 +21,10 @@ const mockHandleCloseNavBar = jest.fn();
 const mockHandleOpenAlert = jest.fn();
 const mockHandleCloseAlert = jest.fn();
 const mockHandleLogOut = jest.fn();
+
+jest.mock("@/hooks/useGamesStore");
+jest.mock("@/hooks/useAuthStore");
+jest.mock("@/hooks/useUiStore");
 
 const renderPage = ({
   games = mockGames,
