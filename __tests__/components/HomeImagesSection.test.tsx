@@ -9,15 +9,21 @@ import { imagesOfGames } from "@/constants/data";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
+type RenderComponent = {
+  container: HTMLElement;
+};
+
 jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
 jest.mock("@/hooks/useAutoSlide", () => ({ useAutoSlide: jest.fn() }));
 
-const renderComponent = (autoIndex = 0, games = mockGames) => {
+const mockHandleSetNewGameToFavorite = jest.fn();
+
+const renderComponent = (autoIndex = 0, games = mockGames): RenderComponent => {
   (useAutoSlide as jest.Mock).mockReturnValue(autoIndex);
 
   (useGamesStore as jest.Mock).mockReturnValue({
     games,
-    handleSetNewGameToFavorite: jest.fn(),
+    handleSetNewGameToFavorite: mockHandleSetNewGameToFavorite,
   });
 
   const { container } = render(<HomeImagesSection />);

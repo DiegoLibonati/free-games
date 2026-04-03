@@ -10,6 +10,8 @@ import { useAutoSlide } from "@/hooks/useAutoSlide";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
+type RenderPage = { container: HTMLElement };
+
 jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
 jest.mock("@/hooks/useAuthStore", () => ({ useAuthStore: jest.fn() }));
 jest.mock("@/hooks/useUiStore", () => ({ useUiStore: jest.fn() }));
@@ -17,8 +19,11 @@ jest.mock("@/hooks/useAutoSlide", () => ({ useAutoSlide: jest.fn() }));
 
 const mockHandleGetGames = jest.fn();
 const mockHandleSetToInitialState = jest.fn();
-
-type RenderPage = { container: HTMLElement };
+const mockHandleSetNewGameToFavorite = jest.fn();
+const mockHandleSetActiveGame = jest.fn();
+const mockHandleLogOut = jest.fn();
+const mockHandleOpenNavBar = jest.fn();
+const mockHandleCloseNavBar = jest.fn();
 
 const renderPage = (games = mockGames): RenderPage => {
   (useGamesStore as jest.Mock).mockReturnValue({
@@ -26,20 +31,20 @@ const renderPage = (games = mockGames): RenderPage => {
     categories: [],
     handleGetGames: mockHandleGetGames,
     handleSetToInitialState: mockHandleSetToInitialState,
-    handleSetNewGameToFavorite: jest.fn(),
-    handleSetActiveGame: jest.fn(),
+    handleSetNewGameToFavorite: mockHandleSetNewGameToFavorite,
+    handleSetActiveGame: mockHandleSetActiveGame,
   });
 
   (useAuthStore as jest.Mock).mockReturnValue({
     displayName: "Test",
     photoURL: "",
-    handleLogOut: jest.fn(),
+    handleLogOut: mockHandleLogOut,
   });
 
   (useUiStore as jest.Mock).mockReturnValue({
     isNavBarOpen: false,
-    handleOpenNavBar: jest.fn(),
-    handleCloseNavBar: jest.fn(),
+    handleOpenNavBar: mockHandleOpenNavBar,
+    handleCloseNavBar: mockHandleCloseNavBar,
   });
 
   (useAutoSlide as jest.Mock).mockReturnValue(0);

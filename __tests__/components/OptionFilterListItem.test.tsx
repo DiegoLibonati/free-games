@@ -11,11 +11,11 @@ type RenderComponent = {
 };
 
 const renderComponent = (overrides?: Partial<OptionFilterListItemProps>): RenderComponent => {
-  const handleClickFilter = jest.fn();
+  const mockHandleClickFilter = jest.fn();
 
   const props: OptionFilterListItemProps = {
     filter: "MMORPG",
-    handleClickFilter,
+    handleClickFilter: mockHandleClickFilter,
     ...overrides,
   };
 
@@ -36,24 +36,24 @@ describe("OptionFilterListItem", () => {
   });
 
   it("should call handleClickFilter with the filter value when clicked", async () => {
-    const handleClickFilter = jest.fn();
+    const mockHandleClickFilter = jest.fn();
     const user = userEvent.setup();
 
-    renderComponent({ filter: "MMORPG", handleClickFilter });
+    renderComponent({ filter: "MMORPG", handleClickFilter: mockHandleClickFilter });
 
     await user.click(screen.getByRole("listitem"));
 
-    expect(handleClickFilter).toHaveBeenCalledWith("MMORPG");
+    expect(mockHandleClickFilter).toHaveBeenCalledWith("MMORPG");
   });
 
   it("should call handleClickFilter exactly once per click", async () => {
-    const handleClickFilter = jest.fn();
+    const mockHandleClickFilter = jest.fn();
     const user = userEvent.setup();
 
-    renderComponent({ handleClickFilter });
+    renderComponent({ handleClickFilter: mockHandleClickFilter });
 
     await user.click(screen.getByRole("listitem"));
 
-    expect(handleClickFilter).toHaveBeenCalledTimes(1);
+    expect(mockHandleClickFilter).toHaveBeenCalledTimes(1);
   });
 });

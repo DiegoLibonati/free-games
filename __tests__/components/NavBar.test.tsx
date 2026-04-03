@@ -7,12 +7,14 @@ import NavBar from "@/components/NavBar/NavBar";
 import { useAuthStore } from "@/hooks/useAuthStore";
 import { useUiStore } from "@/hooks/useUiStore";
 
+type RenderComponent = { container: HTMLElement };
+
 jest.mock("@/hooks/useAuthStore", () => ({ useAuthStore: jest.fn() }));
 jest.mock("@/hooks/useUiStore", () => ({ useUiStore: jest.fn() }));
 
 const mockHandleLogOut = jest.fn();
-
-type RenderComponent = { container: HTMLElement };
+const mockHandleOpenNavBar = jest.fn();
+const mockHandleCloseNavBar = jest.fn();
 
 const renderComponent = (displayName = "TestUser", photoURL = ""): RenderComponent => {
   (useAuthStore as jest.Mock).mockReturnValue({
@@ -23,8 +25,8 @@ const renderComponent = (displayName = "TestUser", photoURL = ""): RenderCompone
 
   (useUiStore as jest.Mock).mockReturnValue({
     isNavBarOpen: true,
-    handleOpenNavBar: jest.fn(),
-    handleCloseNavBar: jest.fn(),
+    handleOpenNavBar: mockHandleOpenNavBar,
+    handleCloseNavBar: mockHandleCloseNavBar,
   });
 
   const { container } = render(

@@ -8,16 +8,18 @@ import { useGamesStore } from "@/hooks/useGamesStore";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
-jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
-
 type RenderComponent = {
   container: HTMLElement;
   props: CarouselGamesProps;
 };
 
+jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
+
+const mockHandleSetNewGameToFavorite = jest.fn();
+
 const renderComponent = (overrides?: Partial<CarouselGamesProps>): RenderComponent => {
   (useGamesStore as jest.Mock).mockReturnValue({
-    handleSetNewGameToFavorite: jest.fn(),
+    handleSetNewGameToFavorite: mockHandleSetNewGameToFavorite,
   });
 
   const props: CarouselGamesProps = {

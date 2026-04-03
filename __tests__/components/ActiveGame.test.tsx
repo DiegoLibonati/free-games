@@ -9,6 +9,8 @@ import { useUiStore } from "@/hooks/useUiStore";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
+type RenderComponent = { container: HTMLElement };
+
 jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
 jest.mock("@/hooks/useUiStore", () => ({ useUiStore: jest.fn() }));
 
@@ -18,8 +20,6 @@ const mockHandleClearActiveGame = jest.fn();
 const mockHandleSetNewGameToFavorite = jest.fn();
 const mockHandleDeleteFavoriteGame = jest.fn();
 const mockHandleOpenAlert = jest.fn();
-
-type RenderComponent = { container: HTMLElement };
 
 const renderComponent = (initialRoute = "/explore"): RenderComponent => {
   (useGamesStore as jest.Mock).mockReturnValue({

@@ -2,7 +2,11 @@ import { render, screen } from "@testing-library/react";
 
 import Footer from "@/components/Footer/Footer";
 
-const renderComponent = () => {
+type RenderComponent = {
+  container: HTMLElement;
+};
+
+const renderComponent = (): RenderComponent => {
   const { container } = render(<Footer />);
   return { container };
 };

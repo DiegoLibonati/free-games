@@ -11,11 +11,11 @@ type RenderComponent = {
 };
 
 const renderComponent = (overrides?: Partial<SlideButtonListProps>): RenderComponent => {
-  const handleSetIndex = jest.fn();
+  const mockHandleSetIndex = jest.fn();
 
   const props: SlideButtonListProps = {
     index: 0,
-    handleSetIndex,
+    handleSetIndex: mockHandleSetIndex,
     ...overrides,
   };
 
@@ -48,35 +48,35 @@ describe("SlideButtonList", () => {
   });
 
   it("should call handleSetIndex with 0 when first button is clicked", async () => {
-    const handleSetIndex = jest.fn();
+    const mockHandleSetIndex = jest.fn();
     const user = userEvent.setup();
 
-    renderComponent({ handleSetIndex });
+    renderComponent({ handleSetIndex: mockHandleSetIndex });
 
-    await user.click(screen.getAllByRole("button")[0]);
+    await user.click(screen.getAllByRole("button")[0]!);
 
-    expect(handleSetIndex).toHaveBeenCalledWith(0);
+    expect(mockHandleSetIndex).toHaveBeenCalledWith(0);
   });
 
   it("should call handleSetIndex with 1 when second button is clicked", async () => {
-    const handleSetIndex = jest.fn();
+    const mockHandleSetIndex = jest.fn();
     const user = userEvent.setup();
 
-    renderComponent({ handleSetIndex });
+    renderComponent({ handleSetIndex: mockHandleSetIndex });
 
-    await user.click(screen.getAllByRole("button")[1]);
+    await user.click(screen.getAllByRole("button")[1]!);
 
-    expect(handleSetIndex).toHaveBeenCalledWith(1);
+    expect(mockHandleSetIndex).toHaveBeenCalledWith(1);
   });
 
   it("should call handleSetIndex with 2 when third button is clicked", async () => {
-    const handleSetIndex = jest.fn();
+    const mockHandleSetIndex = jest.fn();
     const user = userEvent.setup();
 
-    renderComponent({ handleSetIndex });
+    renderComponent({ handleSetIndex: mockHandleSetIndex });
 
-    await user.click(screen.getAllByRole("button")[2]);
+    await user.click(screen.getAllByRole("button")[2]!);
 
-    expect(handleSetIndex).toHaveBeenCalledWith(2);
+    expect(mockHandleSetIndex).toHaveBeenCalledWith(2);
   });
 });

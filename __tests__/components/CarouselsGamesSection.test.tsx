@@ -8,15 +8,21 @@ import { gamesService } from "@/services/gamesService";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
+type RenderComponent = {
+  container: HTMLElement;
+};
+
 jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
 jest.mock("@/services/gamesService");
 
 const mockedGamesService = gamesService as jest.Mocked<typeof gamesService>;
 
-const renderComponent = (categories: string[] = []) => {
+const mockHandleSetNewGameToFavorite = jest.fn();
+
+const renderComponent = (categories: string[] = []): RenderComponent => {
   (useGamesStore as jest.Mock).mockReturnValue({
     categories,
-    handleSetNewGameToFavorite: jest.fn(),
+    handleSetNewGameToFavorite: mockHandleSetNewGameToFavorite,
   });
 
   const { container } = render(<CarouselsGamesSection />);

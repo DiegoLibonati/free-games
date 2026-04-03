@@ -5,12 +5,12 @@ import Hamburger from "@/components/Hamburger/Hamburger";
 
 import { useUiStore } from "@/hooks/useUiStore";
 
+type RenderComponent = { container: HTMLElement };
+
 jest.mock("@/hooks/useUiStore", () => ({ useUiStore: jest.fn() }));
 
 const mockHandleOpenNavBar = jest.fn();
 const mockHandleCloseNavBar = jest.fn();
-
-type RenderComponent = { container: HTMLElement };
 
 const renderComponent = (isNavBarOpen = false): RenderComponent => {
   (useUiStore as jest.Mock).mockReturnValue({

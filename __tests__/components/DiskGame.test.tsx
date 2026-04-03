@@ -9,14 +9,14 @@ import { useGamesStore } from "@/hooks/useGamesStore";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
-jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
-
-const mockHandleSetNewGameToFavorite = jest.fn();
-
 type RenderComponent = {
   container: HTMLElement;
   props: DiskGameProps;
 };
+
+jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
+
+const mockHandleSetNewGameToFavorite = jest.fn();
 
 const renderComponent = (overrides?: Partial<DiskGameProps>): RenderComponent => {
   const [game] = mockGames;

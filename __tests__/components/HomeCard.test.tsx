@@ -7,11 +7,11 @@ import { useGamesStore } from "@/hooks/useGamesStore";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
+type RenderComponent = { container: HTMLElement };
+
 jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
 
 const mockHandleSetNewGameToFavorite = jest.fn();
-
-type RenderComponent = { container: HTMLElement };
 
 const renderComponent = (games = mockGames): RenderComponent => {
   (useGamesStore as jest.Mock).mockReturnValue({

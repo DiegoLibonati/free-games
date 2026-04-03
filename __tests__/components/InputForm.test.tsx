@@ -11,14 +11,14 @@ type RenderComponent = {
 };
 
 const renderComponent = (overrides?: Partial<InputFormProps>): RenderComponent => {
-  const onChange = jest.fn();
+  const mockOnChange = jest.fn();
 
   const props: InputFormProps = {
     type: "text",
     placeholder: "Enter value",
     value: "",
     name: "test-input",
-    onChange,
+    onChange: mockOnChange,
     ...overrides,
   };
 
@@ -65,13 +65,13 @@ describe("InputForm", () => {
   });
 
   it("should call onChange when user types", async () => {
-    const onChange = jest.fn();
+    const mockOnChange = jest.fn();
     const user = userEvent.setup();
 
-    renderComponent({ onChange });
+    renderComponent({ onChange: mockOnChange });
 
     await user.type(screen.getByRole("textbox"), "a");
 
-    expect(onChange).toHaveBeenCalled();
+    expect(mockOnChange).toHaveBeenCalled();
   });
 });

@@ -2,7 +2,11 @@ import { render } from "@testing-library/react";
 
 import Loader from "@/components/Loader/Loader";
 
-const renderComponent = () => {
+type RenderComponent = {
+  container: HTMLElement;
+};
+
+const renderComponent = (): RenderComponent => {
   const { container } = render(<Loader />);
   return { container };
 };

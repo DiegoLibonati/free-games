@@ -9,14 +9,18 @@ import { useUiStore } from "@/hooks/useUiStore";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
-const mockHandleGetFavoriteGames = jest.fn();
-const mockHandleSetToInitialState = jest.fn();
+type RenderPage = { container: HTMLElement };
 
 jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
 jest.mock("@/hooks/useAuthStore", () => ({ useAuthStore: jest.fn() }));
 jest.mock("@/hooks/useUiStore", () => ({ useUiStore: jest.fn() }));
 
-type RenderPage = { container: HTMLElement };
+const mockHandleGetFavoriteGames = jest.fn();
+const mockHandleSetToInitialState = jest.fn();
+const mockHandleSetActiveGame = jest.fn();
+const mockHandleLogOut = jest.fn();
+const mockHandleOpenNavBar = jest.fn();
+const mockHandleCloseNavBar = jest.fn();
 
 const renderPage = (
   favorites: typeof mockGames = [],
@@ -27,19 +31,19 @@ const renderPage = (
     isLoadingFavoritesGames,
     handleGetFavoriteGames: mockHandleGetFavoriteGames,
     handleSetToInitialState: mockHandleSetToInitialState,
-    handleSetActiveGame: jest.fn(),
+    handleSetActiveGame: mockHandleSetActiveGame,
   });
 
   (useAuthStore as jest.Mock).mockReturnValue({
     displayName: "Test",
     photoURL: "",
-    handleLogOut: jest.fn(),
+    handleLogOut: mockHandleLogOut,
   });
 
   (useUiStore as jest.Mock).mockReturnValue({
     isNavBarOpen: false,
-    handleOpenNavBar: jest.fn(),
-    handleCloseNavBar: jest.fn(),
+    handleOpenNavBar: mockHandleOpenNavBar,
+    handleCloseNavBar: mockHandleCloseNavBar,
   });
 
   const { container } = render(
@@ -94,19 +98,19 @@ describe("FavoritePage", () => {
       isLoadingFavoritesGames: false,
       handleGetFavoriteGames: mockHandleGetFavoriteGames,
       handleSetToInitialState: mockHandleSetToInitialState,
-      handleSetActiveGame: jest.fn(),
+      handleSetActiveGame: mockHandleSetActiveGame,
     });
 
     (useAuthStore as jest.Mock).mockReturnValue({
       displayName: "Test",
       photoURL: "",
-      handleLogOut: jest.fn(),
+      handleLogOut: mockHandleLogOut,
     });
 
     (useUiStore as jest.Mock).mockReturnValue({
       isNavBarOpen: false,
-      handleOpenNavBar: jest.fn(),
-      handleCloseNavBar: jest.fn(),
+      handleOpenNavBar: mockHandleOpenNavBar,
+      handleCloseNavBar: mockHandleCloseNavBar,
     });
 
     const { unmount } = render(

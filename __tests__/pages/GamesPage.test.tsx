@@ -9,6 +9,8 @@ import { useAuthStore } from "@/hooks/useAuthStore";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
+type RenderPage = { container: HTMLElement };
+
 jest.mock("@/hooks/useGamesStore", () => ({ useGamesStore: jest.fn() }));
 jest.mock("@/hooks/useUiStore", () => ({ useUiStore: jest.fn() }));
 jest.mock("@/hooks/useAuthStore", () => ({ useAuthStore: jest.fn() }));
@@ -17,8 +19,12 @@ const mockHandleGetGamesByCategory = jest.fn();
 const mockHandleSetToInitialState = jest.fn();
 const mockHandleOpenFilterCategories = jest.fn();
 const mockHandleCloseFilterCategories = jest.fn();
-
-type RenderPage = { container: HTMLElement };
+const mockHandleSetActiveGame = jest.fn();
+const mockHandleOpenNavBar = jest.fn();
+const mockHandleCloseNavBar = jest.fn();
+const mockHandleOpenAlert = jest.fn();
+const mockHandleCloseAlert = jest.fn();
+const mockHandleLogOut = jest.fn();
 
 const renderPage = ({
   games = mockGames,
@@ -33,25 +39,25 @@ const renderPage = ({
     categories,
     handleGetGamesByCategory: mockHandleGetGamesByCategory,
     handleSetToInitialState: mockHandleSetToInitialState,
-    handleSetActiveGame: jest.fn(),
+    handleSetActiveGame: mockHandleSetActiveGame,
   });
 
   (useUiStore as jest.Mock).mockReturnValue({
     isNavBarOpen: false,
     isFilterCategoriesOpen,
-    handleOpenNavBar: jest.fn(),
-    handleCloseNavBar: jest.fn(),
+    handleOpenNavBar: mockHandleOpenNavBar,
+    handleCloseNavBar: mockHandleCloseNavBar,
     handleOpenFilterCategories: mockHandleOpenFilterCategories,
     handleCloseFilterCategories: mockHandleCloseFilterCategories,
-    handleOpenAlert: jest.fn(),
-    handleCloseAlert: jest.fn(),
+    handleOpenAlert: mockHandleOpenAlert,
+    handleCloseAlert: mockHandleCloseAlert,
     alert: { isOpen: false, type: "", title: "", message: "" },
   });
 
   (useAuthStore as jest.Mock).mockReturnValue({
     displayName: "Test",
     photoURL: "",
-    handleLogOut: jest.fn(),
+    handleLogOut: mockHandleLogOut,
   });
 
   const { container } = render(
