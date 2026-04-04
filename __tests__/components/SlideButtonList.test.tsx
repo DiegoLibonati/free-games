@@ -10,9 +10,9 @@ type RenderComponent = {
   props: SlideButtonListProps;
 };
 
-const renderComponent = (overrides?: Partial<SlideButtonListProps>): RenderComponent => {
-  const mockHandleSetIndex = jest.fn();
+const mockHandleSetIndex = jest.fn();
 
+const renderComponent = (overrides?: Partial<SlideButtonListProps>): RenderComponent => {
   const props: SlideButtonListProps = {
     index: 0,
     handleSetIndex: mockHandleSetIndex,
@@ -25,6 +25,10 @@ const renderComponent = (overrides?: Partial<SlideButtonListProps>): RenderCompo
 };
 
 describe("SlideButtonList", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render 3 buttons", () => {
     renderComponent();
 
@@ -48,10 +52,9 @@ describe("SlideButtonList", () => {
   });
 
   it("should call handleSetIndex with 0 when first button is clicked", async () => {
-    const mockHandleSetIndex = jest.fn();
     const user = userEvent.setup();
 
-    renderComponent({ handleSetIndex: mockHandleSetIndex });
+    renderComponent();
 
     await user.click(screen.getAllByRole("button")[0]!);
 
@@ -59,10 +62,9 @@ describe("SlideButtonList", () => {
   });
 
   it("should call handleSetIndex with 1 when second button is clicked", async () => {
-    const mockHandleSetIndex = jest.fn();
     const user = userEvent.setup();
 
-    renderComponent({ handleSetIndex: mockHandleSetIndex });
+    renderComponent();
 
     await user.click(screen.getAllByRole("button")[1]!);
 
@@ -70,10 +72,9 @@ describe("SlideButtonList", () => {
   });
 
   it("should call handleSetIndex with 2 when third button is clicked", async () => {
-    const mockHandleSetIndex = jest.fn();
     const user = userEvent.setup();
 
-    renderComponent({ handleSetIndex: mockHandleSetIndex });
+    renderComponent();
 
     await user.click(screen.getAllByRole("button")[2]!);
 

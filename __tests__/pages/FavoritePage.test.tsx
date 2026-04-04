@@ -9,7 +9,7 @@ import { useUiStore } from "@/hooks/useUiStore";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
-type RenderPage = { container: HTMLElement };
+type RenderPage = { container: HTMLElement; unmount: () => void };
 
 const mockHandleGetFavoriteGames = jest.fn();
 const mockHandleSetToInitialState = jest.fn();
@@ -46,13 +46,13 @@ const renderPage = (
     handleCloseNavBar: mockHandleCloseNavBar,
   });
 
-  const { container } = render(
+  const { container, unmount } = render(
     <MemoryRouter>
       <FavoritePage />
     </MemoryRouter>
   );
 
-  return { container };
+  return { container, unmount };
 };
 
 describe("FavoritePage", () => {
@@ -93,31 +93,7 @@ describe("FavoritePage", () => {
   });
 
   it("should call handleSetToInitialState on unmount", () => {
-    (useGamesStore as jest.Mock).mockReturnValue({
-      favoritesGames: [],
-      isLoadingFavoritesGames: false,
-      handleGetFavoriteGames: mockHandleGetFavoriteGames,
-      handleSetToInitialState: mockHandleSetToInitialState,
-      handleSetActiveGame: mockHandleSetActiveGame,
-    });
-
-    (useAuthStore as jest.Mock).mockReturnValue({
-      displayName: "Test",
-      photoURL: "",
-      handleLogOut: mockHandleLogOut,
-    });
-
-    (useUiStore as jest.Mock).mockReturnValue({
-      isNavBarOpen: false,
-      handleOpenNavBar: mockHandleOpenNavBar,
-      handleCloseNavBar: mockHandleCloseNavBar,
-    });
-
-    const { unmount } = render(
-      <MemoryRouter>
-        <FavoritePage />
-      </MemoryRouter>
-    );
+    const { unmount } = renderPage();
 
     unmount();
 

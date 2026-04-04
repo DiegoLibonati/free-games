@@ -10,9 +10,9 @@ type RenderComponent = {
   props: OptionFilterListItemProps;
 };
 
-const renderComponent = (overrides?: Partial<OptionFilterListItemProps>): RenderComponent => {
-  const mockHandleClickFilter = jest.fn();
+const mockHandleClickFilter = jest.fn();
 
+const renderComponent = (overrides?: Partial<OptionFilterListItemProps>): RenderComponent => {
   const props: OptionFilterListItemProps = {
     filter: "MMORPG",
     handleClickFilter: mockHandleClickFilter,
@@ -29,6 +29,10 @@ const renderComponent = (overrides?: Partial<OptionFilterListItemProps>): Render
 };
 
 describe("OptionFilterListItem", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the filter text", () => {
     renderComponent({ filter: "Strategy" });
 
@@ -36,10 +40,9 @@ describe("OptionFilterListItem", () => {
   });
 
   it("should call handleClickFilter with the filter value when clicked", async () => {
-    const mockHandleClickFilter = jest.fn();
     const user = userEvent.setup();
 
-    renderComponent({ filter: "MMORPG", handleClickFilter: mockHandleClickFilter });
+    renderComponent({ filter: "MMORPG" });
 
     await user.click(screen.getByRole("listitem"));
 
@@ -47,10 +50,9 @@ describe("OptionFilterListItem", () => {
   });
 
   it("should call handleClickFilter exactly once per click", async () => {
-    const mockHandleClickFilter = jest.fn();
     const user = userEvent.setup();
 
-    renderComponent({ handleClickFilter: mockHandleClickFilter });
+    renderComponent();
 
     await user.click(screen.getByRole("listitem"));
 

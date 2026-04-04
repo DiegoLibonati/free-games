@@ -10,9 +10,9 @@ type RenderComponent = {
   props: InputFormProps;
 };
 
-const renderComponent = (overrides?: Partial<InputFormProps>): RenderComponent => {
-  const mockOnChange = jest.fn();
+const mockOnChange = jest.fn();
 
+const renderComponent = (overrides?: Partial<InputFormProps>): RenderComponent => {
   const props: InputFormProps = {
     type: "text",
     placeholder: "Enter value",
@@ -28,6 +28,10 @@ const renderComponent = (overrides?: Partial<InputFormProps>): RenderComponent =
 };
 
 describe("InputForm", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render an input element", () => {
     renderComponent();
 
@@ -65,10 +69,9 @@ describe("InputForm", () => {
   });
 
   it("should call onChange when user types", async () => {
-    const mockOnChange = jest.fn();
     const user = userEvent.setup();
 
-    renderComponent({ onChange: mockOnChange });
+    renderComponent();
 
     await user.type(screen.getByRole("textbox"), "a");
 
