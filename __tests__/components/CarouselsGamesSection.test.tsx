@@ -4,7 +4,7 @@ import CarouselsGamesSection from "@/components/CarouselsGamesSection/CarouselsG
 
 import { useGamesStore } from "@/hooks/useGamesStore";
 
-import { gamesService } from "@/services/gamesService";
+import gameService from "@/services/gameService";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
@@ -12,11 +12,11 @@ type RenderComponent = {
   container: HTMLElement;
 };
 
-const mockedGamesService = gamesService as jest.Mocked<typeof gamesService>;
+const mockedGameService = gameService as jest.Mocked<typeof gameService>;
 const mockHandleSetNewGameToFavorite = jest.fn();
 
 jest.mock("@/hooks/useGamesStore");
-jest.mock("@/services/gamesService");
+jest.mock("@/services/gameService");
 
 const renderComponent = (categories: string[] = []): RenderComponent => {
   (useGamesStore as jest.Mock).mockReturnValue({
@@ -47,7 +47,7 @@ describe("CarouselsGamesSection", () => {
   });
 
   it("should render a CarouselGames for each category after data loads", async () => {
-    mockedGamesService.getByCategory.mockResolvedValue(mockGames);
+    mockedGameService.getByCategory.mockResolvedValue(mockGames);
 
     renderComponent(["MMORPG", "Strategy"]);
 
@@ -56,7 +56,7 @@ describe("CarouselsGamesSection", () => {
   });
 
   it("should render no leftover loaders after all categories finish loading", async () => {
-    mockedGamesService.getByCategory.mockResolvedValue(mockGames);
+    mockedGameService.getByCategory.mockResolvedValue(mockGames);
 
     const { container } = renderComponent(["MMORPG"]);
 
@@ -66,7 +66,7 @@ describe("CarouselsGamesSection", () => {
   });
 
   it("should render no leftover loaders when a category fetch fails", async () => {
-    mockedGamesService.getByCategory.mockRejectedValue(new Error("Network error"));
+    mockedGameService.getByCategory.mockRejectedValue(new Error("Network error"));
 
     const { container } = renderComponent(["MMORPG"]);
 

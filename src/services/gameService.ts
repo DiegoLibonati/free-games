@@ -2,7 +2,7 @@ import type { Game } from "@/types/app";
 
 import envs from "@/constants/envs";
 
-export const gamesService = {
+const gameService = {
   getAll: async (): Promise<Game[]> => {
     const response = await fetch(`/api/games`, {
       method: "GET",
@@ -34,3 +34,5 @@ export const gamesService = {
     return user;
   },
 };
+
+export default gameService;

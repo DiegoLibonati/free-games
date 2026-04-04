@@ -9,7 +9,7 @@ import { useGamesStore } from "@/hooks/useGamesStore";
 
 import { getSliceArraySorted } from "@/helpers/getSliceArraySorted";
 
-import { gamesService } from "@/services/gamesService";
+import gameService from "@/services/gameService";
 
 import "@/components/CarouselsGamesSection/CarouselsGamesSection.css";
 
@@ -23,7 +23,7 @@ const CarouselsGamesSection = () => {
       try {
         setCarousels((state) => [...state, { name: category, isLoading: true, arr: [] }]);
 
-        const data = await gamesService.getByCategory(category);
+        const data = await gameService.getByCategory(category);
 
         setCarousels((state) => state.filter((carousel) => !carousel.isLoading));
         setCarousels((state) => [

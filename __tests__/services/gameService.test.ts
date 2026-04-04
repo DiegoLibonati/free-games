@@ -1,10 +1,10 @@
-import { gamesService } from "@/services/gamesService";
+import gameService from "@/services/gameService";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
 const mockedFetch = fetch as jest.MockedFunction<typeof fetch>;
 
-describe("gamesService", () => {
+describe("gameService", () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
@@ -16,7 +16,7 @@ describe("gamesService", () => {
         json: jest.fn().mockResolvedValue(mockGames),
       } as unknown as Response);
 
-      const result = await gamesService.getAll();
+      const result = await gameService.getAll();
 
       expect(result).toEqual(mockGames);
     });
@@ -27,7 +27,7 @@ describe("gamesService", () => {
         json: jest.fn().mockResolvedValue(mockGames),
       } as unknown as Response);
 
-      await gamesService.getAll();
+      await gameService.getAll();
 
       expect(mockedFetch).toHaveBeenCalledWith("/api/games", expect.any(Object));
     });
@@ -38,7 +38,7 @@ describe("gamesService", () => {
         json: jest.fn().mockResolvedValue(mockGames),
       } as unknown as Response);
 
-      await gamesService.getAll();
+      await gameService.getAll();
 
       expect(mockedFetch).toHaveBeenCalledWith(
         expect.any(String),
@@ -52,7 +52,7 @@ describe("gamesService", () => {
         status: 500,
       } as unknown as Response);
 
-      await expect(gamesService.getAll()).rejects.toThrow("HTTP error! status: 500");
+      await expect(gameService.getAll()).rejects.toThrow("HTTP error! status: 500");
     });
   });
 
@@ -63,7 +63,7 @@ describe("gamesService", () => {
         json: jest.fn().mockResolvedValue(mockGames),
       } as unknown as Response);
 
-      const result = await gamesService.getByCategory("MMORPG");
+      const result = await gameService.getByCategory("MMORPG");
 
       expect(result).toEqual(mockGames);
     });
@@ -74,7 +74,7 @@ describe("gamesService", () => {
         json: jest.fn().mockResolvedValue(mockGames),
       } as unknown as Response);
 
-      await gamesService.getByCategory("Strategy");
+      await gameService.getByCategory("Strategy");
 
       expect(mockedFetch).toHaveBeenCalledWith("/api/games?category=Strategy", expect.any(Object));
     });
@@ -85,9 +85,7 @@ describe("gamesService", () => {
         status: 404,
       } as unknown as Response);
 
-      await expect(gamesService.getByCategory("Unknown")).rejects.toThrow(
-        "HTTP error! status: 404"
-      );
+      await expect(gameService.getByCategory("Unknown")).rejects.toThrow("HTTP error! status: 404");
     });
   });
 });

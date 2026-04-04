@@ -15,14 +15,14 @@ import { openAlert } from "@/features/ui/uiSlice";
 
 import { AppDispatch, RootState } from "@/app/store";
 
-import { gamesService } from "@/services/gamesService";
+import gameService from "@/services/gameService";
 
 export const startGettingGames = () => {
   return async (dispatch: AppDispatch) => {
     try {
       dispatch(setLoadingGames(true));
 
-      const data = await gamesService.getAll();
+      const data = await gameService.getAll();
 
       dispatch(setGames(data));
       dispatch(setCategories(data));
@@ -124,16 +124,16 @@ export const startGettingGamesByCategory = (category: string) => {
       dispatch(setLoadingGames(true));
 
       if (!category || category === "all") {
-        const data: Game[] = await gamesService.getAll();
+        const data: Game[] = await gameService.getAll();
         dispatch(setGames(data));
         dispatch(setCategories(data));
         return;
       }
 
-      const allGames = await gamesService.getAll();
+      const allGames = await gameService.getAll();
       dispatch(setCategories(allGames));
 
-      const data: Game[] = await gamesService.getByCategory(category);
+      const data: Game[] = await gameService.getByCategory(category);
       dispatch(setGames(data));
     } catch (error) {
       console.log(error);

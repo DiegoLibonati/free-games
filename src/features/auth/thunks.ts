@@ -16,7 +16,7 @@ import {
   setError,
 } from "@/features/auth/authSlice";
 
-import { gamesService } from "@/services/gamesService";
+import gameService from "@/services/gameService";
 
 import { AppDispatch } from "@/app/store";
 
@@ -25,7 +25,7 @@ export const startGettingImagesToLoginAndRegisterPage = () => {
     try {
       dispatch(setLoadingImages(true));
 
-      const data = await gamesService.getAll();
+      const data = await gameService.getAll();
 
       const dataSlice = data.slice(0, 3);
 
