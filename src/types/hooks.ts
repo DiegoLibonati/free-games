@@ -35,7 +35,7 @@ export interface UseGameStore {
   isLoadingCategories: boolean;
   favoritesGames: Game[];
   isLoadingFavoritesGames: boolean;
-  activeGame: Game;
+  activeGame: Game | null;
   handleGetGames: () => void;
   handleGetFavoriteGames: () => void;
   handleSetNewGameToFavorite: (game: Game) => void;

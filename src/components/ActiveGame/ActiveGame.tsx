@@ -47,40 +47,44 @@ const ActiveGame = (): JSX.Element => {
     <div className="active-game-wrapper">
       <div className="active-game">
         <div className="active-game__header">
-          <img src={activeGame.thumbnail} alt={activeGame.title} className="active-game__img"></img>
+          <img
+            src={activeGame?.thumbnail}
+            alt={activeGame?.title}
+            className="active-game__img"
+          ></img>
 
-          <h2 className="active-game__title">{activeGame.title}</h2>
+          <h2 className="active-game__title">{activeGame?.title}</h2>
         </div>
 
-        <p className="active-game__description">{activeGame.short_description}</p>
+        <p className="active-game__description">{activeGame?.short_description}</p>
 
         <div className="active-game__specs">
           <h3 className="active-game__genre">
-            Gender: <span className="active-game__genre-span">{activeGame.genre}</span>
+            Gender: <span className="active-game__genre-span">{activeGame?.genre}</span>
           </h3>
           <h3 className="active-game__platform">
-            Platform: <span className="active-game__platform-span">{activeGame.platform}</span>
+            Platform: <span className="active-game__platform-span">{activeGame?.platform}</span>
           </h3>
           <h3 className="active-game__publisher">
             Published by:{" "}
-            <span className="active-game__publisher-span">{activeGame.publisher}</span>
+            <span className="active-game__publisher-span">{activeGame?.publisher}</span>
           </h3>
           <h3 className="active-game__developer">
             Developed by:{" "}
-            <span className="active-game__developer-span">{activeGame.developer}</span>
+            <span className="active-game__developer-span">{activeGame?.developer}</span>
           </h3>
           <h3 className="active-game__release-date">
             Release date:{" "}
-            <span className="active-game__release-date-span">{activeGame.release_date}</span>
+            <span className="active-game__release-date-span">{activeGame?.release_date}</span>
           </h3>
 
           <div className="active-game__links">
             <a
-              href={activeGame.game_url}
+              href={activeGame?.game_url}
               target="_blank"
               rel="noreferrer"
               className="active-game__official-website"
-              aria-label={`Visit official website of ${activeGame.title}`}
+              aria-label={`Visit official website of ${activeGame?.title}`}
             >
               Official website
             </a>
@@ -99,9 +103,9 @@ const ActiveGame = (): JSX.Element => {
         {pathname === "/favorite" && (
           <button
             type="button"
-            aria-label={`Remove ${activeGame.title} from favorites`}
+            aria-label={`Remove ${activeGame?.title} from favorites`}
             onClick={() => {
-              handleDeleteFavoriteGame(activeGame);
+              handleDeleteFavoriteGame(activeGame!);
             }}
             className="active-game-btn-trash"
           >
@@ -112,9 +116,9 @@ const ActiveGame = (): JSX.Element => {
         {pathname === "/explore" && (
           <button
             type="button"
-            aria-label={`Add ${activeGame.title} to favorites`}
+            aria-label={`Add ${activeGame?.title} to favorites`}
             onClick={() => {
-              handleClickSaveNewGameToFavorite(activeGame);
+              handleClickSaveNewGameToFavorite(activeGame!);
             }}
             className="active-game-btn-favorite"
           >

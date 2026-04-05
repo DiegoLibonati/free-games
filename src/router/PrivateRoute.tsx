@@ -7,9 +7,11 @@ import type { JSX } from "react";
 import ActiveGame from "@/components/ActiveGame/ActiveGame";
 
 import { useCheckAuth } from "@/hooks/useCheckAuth";
+import { useGamesStore } from "@/hooks/useGamesStore";
 
 export const PrivateRoute = (): JSX.Element => {
   const { status } = useCheckAuth();
+  const { activeGame } = useGamesStore();
 
   return status === "authenticated" ? (
     <Fragment>
@@ -22,7 +24,7 @@ export const PrivateRoute = (): JSX.Element => {
         }}
       ></IoMdRocket>
 
-      <ActiveGame></ActiveGame>
+      {activeGame && <ActiveGame></ActiveGame>}
     </Fragment>
   ) : (
     <Navigate to="/login" replace />
