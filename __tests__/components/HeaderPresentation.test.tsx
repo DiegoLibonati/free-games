@@ -4,10 +4,10 @@ import type { HeaderPresentationProps } from "@/types/props";
 
 import HeaderPresentation from "@/components/HeaderPresentation/HeaderPresentation";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
   props: HeaderPresentationProps;
-};
+}
 
 const renderComponent = (overrides?: Partial<HeaderPresentationProps>): RenderComponent => {
   const props: HeaderPresentationProps = {

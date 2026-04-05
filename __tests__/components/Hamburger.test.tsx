@@ -5,7 +5,9 @@ import Hamburger from "@/components/Hamburger/Hamburger";
 
 import { useUiStore } from "@/hooks/useUiStore";
 
-type RenderComponent = { container: HTMLElement };
+interface RenderComponent {
+  container: HTMLElement;
+}
 
 const mockHandleOpenNavBar = jest.fn();
 const mockHandleCloseNavBar = jest.fn();

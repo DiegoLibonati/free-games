@@ -1,4 +1,4 @@
-import { UserLogin, UserLoginWithoutUsername } from "@/types/app";
+import type { UserLogin, UserLoginWithoutUsername } from "@/types/app";
 
 import {
   loginWithEmailPassword,
@@ -18,10 +18,10 @@ import {
 
 import gameService from "@/services/gameService";
 
-import { AppDispatch } from "@/app/store";
+import type { AppDispatch } from "@/app/store";
 
 export const startGettingImagesToLoginAndRegisterPage = () => {
-  return async (dispatch: AppDispatch) => {
+  return async (dispatch: AppDispatch): Promise<void> => {
     try {
       dispatch(setLoadingImages(true));
 
@@ -40,7 +40,7 @@ export const startGettingImagesToLoginAndRegisterPage = () => {
 };
 
 export const startGoogleSignIn = () => {
-  return async (dispatch: AppDispatch) => {
+  return async (dispatch: AppDispatch): Promise<void> => {
     dispatch(checkingCredentials());
 
     const result = await signInWithGoogle();
@@ -57,7 +57,7 @@ export const startGoogleSignIn = () => {
 };
 
 export const startCreatingUserWithEmail = ({ email, password, username }: UserLogin) => {
-  return async (dispatch: AppDispatch) => {
+  return async (dispatch: AppDispatch): Promise<void> => {
     dispatch(checkingCredentials());
 
     const result = await registerUserWithEmail(email, password, username);
@@ -74,7 +74,7 @@ export const startCreatingUserWithEmail = ({ email, password, username }: UserLo
 };
 
 export const startLoginWithEmailPassword = ({ email, password }: UserLoginWithoutUsername) => {
-  return async (dispatch: AppDispatch) => {
+  return async (dispatch: AppDispatch): Promise<void> => {
     dispatch(checkingCredentials());
 
     const result = await loginWithEmailPassword(email, password);
@@ -91,9 +91,10 @@ export const startLoginWithEmailPassword = ({ email, password }: UserLoginWithou
 };
 
 export const startLogOutWithButton = () => {
-  return async (dispatch: AppDispatch) => {
+  return async (dispatch: AppDispatch): Promise<void> => {
     await logoutFirebase();
 
-    return dispatch(logout());
+    dispatch(logout());
+    return;
   };
 };

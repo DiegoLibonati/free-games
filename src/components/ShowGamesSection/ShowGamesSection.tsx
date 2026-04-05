@@ -1,5 +1,7 @@
 import { useMemo } from "react";
 
+import type { JSX } from "react";
+
 import DiskGame from "@/components/DiskGame/DiskGame";
 
 import { useGamesStore } from "@/hooks/useGamesStore";
@@ -8,7 +10,7 @@ import { getSliceArraySorted } from "@/helpers/getSliceArraySorted";
 
 import "@/components/ShowGamesSection/ShowGamesSection.css";
 
-const ShowGamesSection = () => {
+const ShowGamesSection = (): JSX.Element => {
   const { games } = useGamesStore();
 
   const shuffledGames = useMemo(() => getSliceArraySorted(games, 12), [games]);
@@ -22,7 +24,7 @@ const ShowGamesSection = () => {
       </article>
 
       <article className="show-games__cards">
-        {shuffledGames?.map((game) => (
+        {shuffledGames.map((game) => (
           <DiskGame
             key={game.id}
             developer={game.developer}

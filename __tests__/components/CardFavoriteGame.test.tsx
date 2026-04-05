@@ -9,10 +9,10 @@ import { useGamesStore } from "@/hooks/useGamesStore";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
   props: CardFavoriteGameProps;
-};
+}
 
 const mockHandleSetActiveGame = jest.fn();
 

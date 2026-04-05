@@ -1,8 +1,10 @@
+import type { JSX } from "react";
+
 import { useUiStore } from "@/hooks/useUiStore";
 
 import "@/components/Hamburger/Hamburger.css";
 
-const Hamburger = () => {
+const Hamburger = (): JSX.Element => {
   const { isNavBarOpen, handleOpenNavBar, handleCloseNavBar } = useUiStore();
 
   return (

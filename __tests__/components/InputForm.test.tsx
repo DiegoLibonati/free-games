@@ -5,10 +5,10 @@ import type { InputFormProps } from "@/types/props";
 
 import InputForm from "@/components/InputForm/InputForm";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
   props: InputFormProps;
-};
+}
 
 const mockOnChange = jest.fn();
 

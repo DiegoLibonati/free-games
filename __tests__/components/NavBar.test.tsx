@@ -7,7 +7,9 @@ import NavBar from "@/components/NavBar/NavBar";
 import { useAuthStore } from "@/hooks/useAuthStore";
 import { useUiStore } from "@/hooks/useUiStore";
 
-type RenderComponent = { container: HTMLElement };
+interface RenderComponent {
+  container: HTMLElement;
+}
 
 const mockHandleLogOut = jest.fn();
 const mockHandleOpenNavBar = jest.fn();

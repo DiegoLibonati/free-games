@@ -1,6 +1,6 @@
 import { collection, doc, setDoc, getDocs, deleteDoc } from "firebase/firestore/lite";
 
-import { Game } from "@/types/app";
+import type { Game } from "@/types/app";
 
 import { FirebaseDB } from "@/firebase/config";
 
@@ -13,12 +13,12 @@ import {
 } from "@/features/games/gamesSlice";
 import { openAlert } from "@/features/ui/uiSlice";
 
-import { AppDispatch, RootState } from "@/app/store";
+import type { AppDispatch, RootState } from "@/app/store";
 
 import gameService from "@/services/gameService";
 
 export const startGettingGames = () => {
-  return async (dispatch: AppDispatch) => {
+  return async (dispatch: AppDispatch): Promise<void> => {
     try {
       dispatch(setLoadingGames(true));
 
@@ -33,7 +33,7 @@ export const startGettingGames = () => {
 };
 
 export const startSaveNewGameToFavorite = (game: Game) => {
-  return async (dispatch: AppDispatch, getState: () => RootState) => {
+  return async (dispatch: AppDispatch, getState: () => RootState): Promise<void> => {
     const { user } = getState().auth;
 
     const collectionRef = collection(FirebaseDB, `${user.uid}/games/game`);
@@ -42,7 +42,7 @@ export const startSaveNewGameToFavorite = (game: Game) => {
     const gameExistInFavorite = docs.find((document) => document.data().id === game.id);
 
     if (gameExistInFavorite) {
-      return dispatch(
+      dispatch(
         openAlert({
           isOpen: true,
           title: "Favorite Game",
@@ -50,6 +50,8 @@ export const startSaveNewGameToFavorite = (game: Game) => {
           message: "¡You already have that game with favorite!",
         })
       );
+
+      return;
     }
 
     const newGame = {
@@ -63,7 +65,7 @@ export const startSaveNewGameToFavorite = (game: Game) => {
 
     await setDoc(newDoc, newGame);
 
-    return dispatch(
+    dispatch(
       openAlert({
         isOpen: true,
         title: "Favorite Game",
@@ -71,11 +73,12 @@ export const startSaveNewGameToFavorite = (game: Game) => {
         message: "¡Game added to your favorites successfully!",
       })
     );
+    return;
   };
 };
 
 export const startGettingFavoriteGames = () => {
-  return async (dispatch: AppDispatch, getState: () => RootState) => {
+  return async (dispatch: AppDispatch, getState: () => RootState): Promise<void> => {
     dispatch(setLoadingFavoritesGames(true));
 
     const { user } = getState().auth;
@@ -87,39 +90,39 @@ export const startGettingFavoriteGames = () => {
       const data = doc.data();
 
       return {
-        id: data.id,
-        developer: data.developer,
-        freetogame_profile_url: data.freetogame_profile_url,
-        game_url: data.game_url,
-        genre: data.genre,
-        platform: data.platform,
-        publisher: data.publisher,
-        release_date: data.release_date,
-        short_description: data.short_description,
-        thumbnail: data.thumbnail,
-        title: data.title,
+        id: data.id as number,
+        developer: data.developer as string,
+        freetogame_profile_url: data.freetogame_profile_url as string,
+        game_url: data.game_url as string,
+        genre: data.genre as string,
+        platform: data.platform as string,
+        publisher: data.publisher as string,
+        release_date: data.release_date as string,
+        short_description: data.short_description as string,
+        thumbnail: data.thumbnail as string,
+        title: data.title as string,
         idFirebase: doc.id,
       };
     });
 
-    dispatch(setFavoritesGames(games as Game[]));
+    dispatch(setFavoritesGames(games));
   };
 };
 
 export const startDeletingFavoriteGame = (game: Game) => {
-  return async (dispatch: AppDispatch, getState: () => RootState) => {
+  return async (dispatch: AppDispatch, getState: () => RootState): Promise<void> => {
     const { user } = getState().auth;
 
     const docRef = doc(FirebaseDB, `${user.uid}/games/game/${game.idFirebase}`);
 
     await deleteDoc(docRef);
 
-    dispatch(startGettingFavoriteGames());
+    void dispatch(startGettingFavoriteGames());
   };
 };
 
 export const startGettingGamesByCategory = (category: string) => {
-  return async (dispatch: AppDispatch) => {
+  return async (dispatch: AppDispatch): Promise<void> => {
     try {
       dispatch(setLoadingGames(true));
 

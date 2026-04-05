@@ -7,7 +7,11 @@ import {
   updateProfile,
 } from "firebase/auth";
 
-import { LoginWithEmailPassword, RegisterUserWithEmail, SignInWithGoogle } from "@/types/firebase";
+import type {
+  LoginWithEmailPassword,
+  RegisterUserWithEmail,
+  SignInWithGoogle,
+} from "@/types/firebase";
 
 import { FirebaseAuth } from "@/firebase/config";
 
@@ -57,9 +61,9 @@ export const registerUserWithEmail = async (
     return {
       ok: true,
       displayName: displayName!,
-      email: email!,
+      email: email,
       photoURL: photoURL!,
-      uid: uid!,
+      uid: uid,
     };
   } catch (error: unknown) {
     if (error instanceof FirebaseError) {
@@ -91,7 +95,7 @@ export const loginWithEmailPassword = async (
       displayName: displayName!,
       email: email,
       photoURL: photoURL!,
-      uid: uid!,
+      uid: uid,
     };
   } catch (error) {
     if (error instanceof FirebaseError) {
@@ -111,5 +115,5 @@ export const loginWithEmailPassword = async (
 };
 
 export const logoutFirebase = async (): Promise<void> => {
-  return await FirebaseAuth.signOut();
+  await FirebaseAuth.signOut();
 };

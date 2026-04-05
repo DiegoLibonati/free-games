@@ -4,10 +4,10 @@ import type { UpcomingGameProps } from "@/types/props";
 
 import UpcomingGame from "@/components/UpcomingGame/UpcomingGame";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
   props: UpcomingGameProps;
-};
+}
 
 const renderComponent = (overrides?: Partial<UpcomingGameProps>): RenderComponent => {
   const props: UpcomingGameProps = {

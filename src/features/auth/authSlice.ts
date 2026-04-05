@@ -1,7 +1,8 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-import { User } from "@/types/app";
-import { AuthState } from "@/types/states";
+import type { User } from "@/types/app";
+import type { AuthState } from "@/types/states";
 
 const initialState: AuthState = {
   images: { images: [], isLoadingImages: false },

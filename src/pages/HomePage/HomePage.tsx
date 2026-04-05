@@ -1,5 +1,7 @@
 import { Fragment, useEffect } from "react";
 
+import type { JSX } from "react";
+
 import Footer from "@/components/Footer/Footer";
 import NavBar from "@/components/NavBar/NavBar";
 import HomeImagesSection from "@/components/HomeImagesSection/HomeImagesSection";
@@ -11,23 +13,23 @@ import { useGamesStore } from "@/hooks/useGamesStore";
 
 import "@/pages/HomePage/HomePage.css";
 
-const HomePage = () => {
+const HomePage = (): JSX.Element => {
   const { handleGetGames, handleSetToInitialState } = useGamesStore();
 
   const onInit = (): void => {
-    console.log("Init - Home Page");
     handleGetGames();
   };
 
   const onDestroy = (): void => {
-    console.log("Destroy - Home Page");
     handleSetToInitialState();
   };
 
   useEffect(() => {
     onInit();
 
-    return () => onDestroy();
+    return (): void => {
+      onDestroy();
+    };
   }, []);
 
   return (

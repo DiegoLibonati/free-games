@@ -1,10 +1,12 @@
+import type { JSX } from "react";
+
 import UpcomingGame from "@/components/UpcomingGame/UpcomingGame";
 
 import { upcomingGames } from "@/constants/data";
 
 import "@/components/UpcomingGamesSection/UpcomingGamesSection.css";
 
-const UpcomingGamesSection = () => {
+const UpcomingGamesSection = (): JSX.Element => {
   return (
     <section className="upcoming-games">
       <h2 className="upcoming-games__title">Upcoming Games</h2>

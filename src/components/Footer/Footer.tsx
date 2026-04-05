@@ -1,10 +1,12 @@
 import { FaFacebook, FaInstagram, FaLinkedinIn, FaGithub } from "react-icons/fa";
 
+import type { JSX } from "react";
+
 import { theme } from "@/styles/theme";
 
 import "@/components/Footer/Footer.css";
 
-const Footer = () => {
+const Footer = (): JSX.Element => {
   return (
     <footer className="footer-wrapper">
       <svg

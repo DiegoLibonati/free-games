@@ -1,3 +1,5 @@
+import type { JSX } from "react";
+
 import HomeCard from "@/components/HomeCard/HomeCard";
 
 import { useAutoSlide } from "@/hooks/useAutoSlide";
@@ -6,7 +8,7 @@ import { imagesOfGames } from "@/constants/data";
 
 import "@/components/HomeImagesSection/HomeImagesSection.css";
 
-const HomeImagesSection = () => {
+const HomeImagesSection = (): JSX.Element => {
   const autoIndex = useAutoSlide(imagesOfGames);
 
   return (

@@ -9,7 +9,9 @@ import { useUiStore } from "@/hooks/useUiStore";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
-type RenderComponent = { container: HTMLElement };
+interface RenderComponent {
+  container: HTMLElement;
+}
 
 const mockHandleClearActiveGame = jest.fn();
 const mockHandleSetNewGameToFavorite = jest.fn();

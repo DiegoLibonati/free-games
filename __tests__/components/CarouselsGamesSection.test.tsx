@@ -8,9 +8,9 @@ import gameService from "@/services/gameService";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
-};
+}
 
 const mockedGameService = gameService as jest.Mocked<typeof gameService>;
 const mockHandleSetNewGameToFavorite = jest.fn();

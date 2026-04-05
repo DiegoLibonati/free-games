@@ -1,4 +1,4 @@
-export type Envs = {
+export interface Envs {
   xRapid: {
     apiUrl: string;
     apiKey: string;
@@ -12,4 +12,4 @@ export type Envs = {
     messagingSenderId: string;
     appId: string;
   };
-};
+}

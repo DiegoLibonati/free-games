@@ -1,14 +1,15 @@
-import { Game } from "@/types/app";
-import { CarouselGamesProps } from "@/types/props";
+import type { JSX } from "react";
+import type { Game } from "@/types/app";
+import type { CarouselGamesProps } from "@/types/props";
 
 import { useGamesStore } from "@/hooks/useGamesStore";
 
 import "@/components/CarouselGames/CarouselGames.css";
 
-const CarouselGames = ({ name, games }: CarouselGamesProps) => {
+const CarouselGames = ({ name, games }: CarouselGamesProps): JSX.Element => {
   const { handleSetNewGameToFavorite } = useGamesStore();
 
-  const handleSetFavoriteGame = (game: Game) => {
+  const handleSetFavoriteGame = (game: Game): void => {
     handleSetNewGameToFavorite(game);
   };
 
@@ -25,7 +26,9 @@ const CarouselGames = ({ name, games }: CarouselGamesProps) => {
                 className="carousel-games__btn-favorite"
                 type="button"
                 aria-label={`Add ${game.title} to favorites`}
-                onClick={() => handleSetFavoriteGame(game)}
+                onClick={() => {
+                  handleSetFavoriteGame(game);
+                }}
               >
                 Add To Fav
               </button>

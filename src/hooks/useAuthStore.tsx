@@ -1,5 +1,5 @@
-import { User, UserLogin, UserLoginWithoutUsername } from "@/types/app";
-import { UseAuthStore } from "@/types/hooks";
+import type { User, UserLogin, UserLoginWithoutUsername } from "@/types/app";
+import type { UseAuthStore } from "@/types/hooks";
 
 import {
   startCreatingUserWithEmail,
@@ -17,7 +17,7 @@ export const useAuthStore = (): UseAuthStore => {
   const dispatch = useAppDispatch();
 
   const handleLogOut = (): void => {
-    dispatch(startLogOutWithButton());
+    void dispatch(startLogOutWithButton());
   };
 
   const handleLogin = (user: User): void => {
@@ -25,19 +25,19 @@ export const useAuthStore = (): UseAuthStore => {
   };
 
   const handleLoginWithEmailAndPassword = (user: UserLoginWithoutUsername): void => {
-    dispatch(startLoginWithEmailPassword(user));
+    void dispatch(startLoginWithEmailPassword(user));
   };
 
   const handleLoginWithGoogle = (): void => {
-    dispatch(startGoogleSignIn());
+    void dispatch(startGoogleSignIn());
   };
 
   const handleCreateNewUserWithEmailAndPassword = (user: UserLogin): void => {
-    dispatch(startCreatingUserWithEmail(user));
+    void dispatch(startCreatingUserWithEmail(user));
   };
 
-  const handleGetImages = () => {
-    dispatch(startGettingImagesToLoginAndRegisterPage());
+  const handleGetImages = (): void => {
+    void dispatch(startGettingImagesToLoginAndRegisterPage());
   };
 
   return {

@@ -9,7 +9,9 @@ import { useAuthStore } from "@/hooks/useAuthStore";
 
 import { mockImages } from "@tests/__mocks__/images.mock";
 
-type RenderPage = { container: HTMLElement };
+interface RenderPage {
+  container: HTMLElement;
+}
 
 const mockHandleLoginWithEmailAndPassword = jest.fn();
 const mockHandleLoginWithGoogle = jest.fn();

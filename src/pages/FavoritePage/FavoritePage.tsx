@@ -1,5 +1,7 @@
 import { Fragment, useEffect } from "react";
 
+import type { JSX } from "react";
+
 import NavBar from "@/components/NavBar/NavBar";
 import Footer from "@/components/Footer/Footer";
 import Loader from "@/components/Loader/Loader";
@@ -9,7 +11,7 @@ import { useGamesStore } from "@/hooks/useGamesStore";
 
 import "@/pages/FavoritePage/FavoritePage.css";
 
-const FavoritePage = () => {
+const FavoritePage = (): JSX.Element => {
   const {
     favoritesGames,
     isLoadingFavoritesGames,
@@ -17,18 +19,20 @@ const FavoritePage = () => {
     handleSetToInitialState,
   } = useGamesStore();
 
-  const onInit = () => {
+  const onInit = (): void => {
     handleGetFavoriteGames();
   };
 
-  const onDestroy = () => {
+  const onDestroy = (): void => {
     handleSetToInitialState();
   };
 
   useEffect(() => {
     onInit();
 
-    return () => onDestroy();
+    return (): void => {
+      onDestroy();
+    };
   }, []);
 
   return (

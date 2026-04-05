@@ -1,7 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-import { Game } from "@/types/app";
-import { GamesState } from "@/types/states";
+import type { Game } from "@/types/app";
+import type { GamesState } from "@/types/states";
 
 const initialState: GamesState = {
   games: {

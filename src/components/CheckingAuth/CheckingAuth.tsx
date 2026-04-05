@@ -1,6 +1,8 @@
+import type { JSX } from "react";
+
 import "@/components/CheckingAuth/CheckingAuth.css";
 
-const CheckingAuth = () => {
+const CheckingAuth = (): JSX.Element => {
   return (
     <div className="loader-wrapper">
       <div className="loader-wrapper__auth"></div>

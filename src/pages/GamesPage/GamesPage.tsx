@@ -2,6 +2,8 @@ import { Fragment, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import queryString from "query-string";
 
+import type { JSX } from "react";
+
 import NavBar from "@/components/NavBar/NavBar";
 import Footer from "@/components/Footer/Footer";
 import Loader from "@/components/Loader/Loader";
@@ -13,7 +15,7 @@ import { useUiStore } from "@/hooks/useUiStore";
 
 import "@/pages/GamesPage/GamesPage.css";
 
-const GamesPage = () => {
+const GamesPage = (): JSX.Element => {
   const { games, isLoadingGames, categories, handleGetGamesByCategory, handleSetToInitialState } =
     useGamesStore();
   const { isFilterCategoriesOpen, handleOpenFilterCategories, handleCloseFilterCategories } =
@@ -35,11 +37,13 @@ const GamesPage = () => {
   }, [q]);
 
   useEffect(() => {
-    return () => onDestroy();
+    return (): void => {
+      onDestroy();
+    };
   });
 
   const handleClickFilter = (value: string): void => {
-    navigate(`?q=${value}`);
+    void navigate(`?q=${value}`);
   };
 
   return (

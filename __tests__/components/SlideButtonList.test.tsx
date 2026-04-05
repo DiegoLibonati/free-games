@@ -5,10 +5,10 @@ import type { SlideButtonListProps } from "@/types/props";
 
 import SlideButtonList from "@/components/SlideButtonList/SlideButtonList";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
   props: SlideButtonListProps;
-};
+}
 
 const mockHandleSetIndex = jest.fn();
 

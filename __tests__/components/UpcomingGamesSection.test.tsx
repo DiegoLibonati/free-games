@@ -4,9 +4,9 @@ import UpcomingGamesSection from "@/components/UpcomingGamesSection/UpcomingGame
 
 import { upcomingGames } from "@/constants/data";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
-};
+}
 
 const renderComponent = (): RenderComponent => {
   const { container } = render(<UpcomingGamesSection />);

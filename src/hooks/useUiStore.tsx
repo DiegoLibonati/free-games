@@ -1,5 +1,5 @@
-import { Alert } from "@/types/app";
-import { UseUiStore } from "@/types/hooks";
+import type { Alert } from "@/types/app";
+import type { UseUiStore } from "@/types/hooks";
 
 import {
   openNavBar,

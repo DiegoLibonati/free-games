@@ -9,7 +9,9 @@ import { useAuthStore } from "@/hooks/useAuthStore";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
-type RenderPage = { container: HTMLElement };
+interface RenderPage {
+  container: HTMLElement;
+}
 
 const mockHandleGetGamesByCategory = jest.fn();
 const mockHandleSetToInitialState = jest.fn();

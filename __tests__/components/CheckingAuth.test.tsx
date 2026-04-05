@@ -2,9 +2,9 @@ import { render } from "@testing-library/react";
 
 import CheckingAuth from "@/components/CheckingAuth/CheckingAuth";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
-};
+}
 
 const renderComponent = (): RenderComponent => {
   const { container } = render(<CheckingAuth />);

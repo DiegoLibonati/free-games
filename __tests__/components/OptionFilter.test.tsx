@@ -5,10 +5,10 @@ import type { OptionFilterProps } from "@/types/props";
 
 import OptionFilter from "@/components/OptionFilter/OptionFilter";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
   props: OptionFilterProps;
-};
+}
 
 const mockHandleClickFilter = jest.fn();
 const mockHandleClickOpenAndClose = jest.fn();

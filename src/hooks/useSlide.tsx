@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-import { UseSlide } from "@/types/hooks";
+import type { UseSlide } from "@/types/hooks";
 
-export const useSlide = <T,>(arr: T[]): UseSlide => {
-  const [index, setIndex] = useState<number>(0);
+export const useSlide = (arr: unknown[]): UseSlide => {
+  const [index, setIndex] = useState(0);
 
   const handleSetIndex = (index: number): void => {
     setIndex(index);
@@ -18,7 +18,9 @@ export const useSlide = <T,>(arr: T[]): UseSlide => {
       }
     }, 5000);
 
-    return () => clearTimeout(timeout);
+    return (): void => {
+      clearTimeout(timeout);
+    };
   }, [index, arr]);
 
   return {

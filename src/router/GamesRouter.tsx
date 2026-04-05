@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Swal, { SweetAlertIcon } from "sweetalert2";
+import type { SweetAlertIcon } from "sweetalert2";
+import Swal from "sweetalert2";
+
+import type { JSX } from "react";
 
 import CheckingAuth from "@/components/CheckingAuth/CheckingAuth";
 
@@ -17,19 +20,19 @@ import { PrivateRoute } from "@/router/PrivateRoute";
 import { PublicRoute } from "@/router/PublicRoute";
 import { useAuthStore } from "@/hooks/useAuthStore";
 
-export const GamesRouter = () => {
+export const GamesRouter = (): JSX.Element => {
   const { alert, handleCloseAlert } = useUiStore();
   const { errorMessage } = useAuthStore();
   const { status } = useCheckAuth();
 
   useEffect(() => {
-    if (errorMessage) Swal.fire("Error", errorMessage, "error");
+    if (errorMessage) void Swal.fire("Error", errorMessage, "error");
   }, [errorMessage]);
 
   useEffect(() => {
     if (!alert.isOpen) return;
 
-    Swal.fire(alert.title, alert.message, alert.type as SweetAlertIcon);
+    void Swal.fire(alert.title, alert.message, alert.type as SweetAlertIcon);
     handleCloseAlert();
   }, [alert.isOpen]);
 

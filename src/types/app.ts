@@ -1,10 +1,10 @@
-export type UpcomingGames = {
+export interface UpcomingGames {
   img: string;
   name: string;
   release_date: string;
-};
+}
 
-export type Game = {
+export interface Game {
   id: number;
   title: string;
   thumbnail: string;
@@ -17,32 +17,36 @@ export type Game = {
   release_date: string;
   freetogame_profile_url: string;
   idFirebase?: string;
-};
+}
 
-export type Alert = {
+export interface Alert {
   isOpen: boolean;
   type: AlertType;
   title: string;
   message: string;
-};
+}
 
 export type AlertType = "error" | "success" | "";
 
-export type User = {
+export interface User {
   uid: string;
   email: string;
   displayName: string;
   photoURL: string;
-};
+}
 
-export type UserLogin = { email: string; password: string; username: string };
+export interface UserLogin {
+  email: string;
+  password: string;
+  username: string;
+}
 export type UserLoginWithoutUsername = Omit<UserLogin, "username">;
 
 export type ErrorMessage = string;
 export type Status = "authenticated" | "not-authenticated" | "checking";
 
-export type Carousel<T> = {
+export interface Carousel<T> {
   name: string;
   arr: T[];
   isLoading: boolean;
-};
+}

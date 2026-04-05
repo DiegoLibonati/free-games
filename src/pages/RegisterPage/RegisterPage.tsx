@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import Wave from "react-wavify";
 
-import { FormDataRegister } from "@/types/forms";
+import type { JSX } from "react";
+import type { FormDataRegister } from "@/types/forms";
 
 import Loader from "@/components/Loader/Loader";
 import SlideButtonList from "@/components/SlideButtonList/SlideButtonList";
@@ -27,14 +28,14 @@ const formData: FormDataRegister = {
   repeatPassword: "",
 };
 
-const RegisterPage = () => {
+const RegisterPage = (): JSX.Element => {
   const { images, isLoadingImages, handleCreateNewUserWithEmailAndPassword, handleGetImages } =
     useAuthStore();
 
   const { index, handleSetIndex } = useSlide<string>(images);
-  const { formState, onInputChange } = useForm<FormDataRegister>(formData);
+  const { formState, onInputChange } = useForm(formData);
 
-  const onSubmitForm: React.FormEventHandler<HTMLFormElement> = (e) => {
+  const onSubmitForm: React.SubmitEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
 
     const email = formState.email.trim();
@@ -43,7 +44,7 @@ const RegisterPage = () => {
     const username = formState.username.trim();
 
     if (!email || !password || !repeatPassword || !username) {
-      return Swal.fire({
+      return void Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "You need to complete all the fields",
@@ -51,7 +52,7 @@ const RegisterPage = () => {
     }
 
     if (password !== repeatPassword) {
-      return Swal.fire({
+      return void Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "Passwords must be identical to each other",

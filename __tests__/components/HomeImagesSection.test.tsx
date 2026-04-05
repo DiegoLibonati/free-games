@@ -9,9 +9,9 @@ import { imagesOfGames } from "@/constants/data";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
-};
+}
 
 const mockHandleSetNewGameToFavorite = jest.fn();
 

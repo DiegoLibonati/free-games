@@ -1,5 +1,5 @@
-import { Game } from "@/types/app";
-import { UseGameStore } from "@/types/hooks";
+import type { Game } from "@/types/app";
+import type { UseGameStore } from "@/types/hooks";
 
 import {
   startDeletingFavoriteGame,
@@ -17,19 +17,19 @@ export const useGamesStore = (): UseGameStore => {
   const dispatch = useAppDispatch();
 
   const handleGetGames = (): void => {
-    dispatch(startGettingGames());
+    void dispatch(startGettingGames());
   };
 
   const handleGetGamesByCategory = (category: string): void => {
-    dispatch(startGettingGamesByCategory(category));
+    void dispatch(startGettingGamesByCategory(category));
   };
 
   const handleGetFavoriteGames = (): void => {
-    dispatch(startGettingFavoriteGames());
+    void dispatch(startGettingFavoriteGames());
   };
 
   const handleSetNewGameToFavorite = (game: Game): void => {
-    dispatch(startSaveNewGameToFavorite(game));
+    void dispatch(startSaveNewGameToFavorite(game));
   };
 
   const handleSetToInitialState = (): void => {
@@ -45,7 +45,7 @@ export const useGamesStore = (): UseGameStore => {
   };
 
   const handleDeleteFavoriteGame = (game: Game): void => {
-    dispatch(startDeletingFavoriteGame(game));
+    void dispatch(startDeletingFavoriteGame(game));
   };
 
   return {

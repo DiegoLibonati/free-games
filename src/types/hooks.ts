@@ -1,6 +1,6 @@
-import { Alert, Game, Status, User, UserLogin, UserLoginWithoutUsername } from "@/types/app";
+import type { Alert, Game, Status, User, UserLogin, UserLoginWithoutUsername } from "@/types/app";
 
-export type UseAuthStore = {
+export interface UseAuthStore {
   images: string[];
   isLoadingImages: boolean;
   isChecking: boolean;
@@ -16,19 +16,19 @@ export type UseAuthStore = {
   handleLoginWithGoogle: () => void;
   handleCreateNewUserWithEmailAndPassword: (user: UserLogin) => void;
   handleGetImages: () => void;
-};
+}
 
-export type UseCheckAuth = {
+export interface UseCheckAuth {
   status: Status;
-};
+}
 
-export type UseForm<T> = {
+export interface UseForm<T> {
   formState: T;
   onInputChange: React.ChangeEventHandler<HTMLInputElement>;
   onResetForm: () => void;
-};
+}
 
-export type UseGameStore = {
+export interface UseGameStore {
   games: Game[];
   isLoadingGames: boolean;
   categories: string[];
@@ -44,14 +44,14 @@ export type UseGameStore = {
   handleClearActiveGame: () => void;
   handleDeleteFavoriteGame: (game: Game) => void;
   handleGetGamesByCategory: (category: string) => void;
-};
+}
 
-export type UseSlide = {
+export interface UseSlide {
   index: number;
   handleSetIndex: (index: number) => void;
-};
+}
 
-export type UseUiStore = {
+export interface UseUiStore {
   alert: Alert;
   isNavBarOpen: boolean;
   isFilterCategoriesOpen: boolean;
@@ -61,4 +61,4 @@ export type UseUiStore = {
   handleCloseFilterCategories: () => void;
   handleOpenAlert: (alert: Alert) => void;
   handleCloseAlert: () => void;
-};
+}

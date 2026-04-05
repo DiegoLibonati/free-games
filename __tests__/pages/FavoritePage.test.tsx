@@ -9,7 +9,10 @@ import { useUiStore } from "@/hooks/useUiStore";
 
 import { mockGames } from "@tests/__mocks__/games.mock";
 
-type RenderPage = { container: HTMLElement; unmount: () => void };
+interface RenderPage {
+  container: HTMLElement;
+  unmount: () => void;
+}
 
 const mockHandleGetFavoriteGames = jest.fn();
 const mockHandleSetToInitialState = jest.fn();

@@ -1,8 +1,10 @@
 import { Navigate, Outlet } from "react-router-dom";
 
+import type { JSX } from "react";
+
 import { useCheckAuth } from "@/hooks/useCheckAuth";
 
-export const PublicRoute = () => {
+export const PublicRoute = (): JSX.Element => {
   const { status } = useCheckAuth();
 
   return status !== "authenticated" ? <Outlet /> : <Navigate to="/home" replace />;

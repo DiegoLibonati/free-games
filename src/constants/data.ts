@@ -1,4 +1,4 @@
-import { UpcomingGames } from "@/types/app";
+import type { UpcomingGames } from "@/types/app";
 
 import assets from "@/assets/export";
 

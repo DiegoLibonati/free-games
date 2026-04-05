@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-import { DiskGameProps } from "@/types/props";
+import type { JSX } from "react";
+import type { DiskGameProps } from "@/types/props";
 
 import { useGamesStore } from "@/hooks/useGamesStore";
 
@@ -17,28 +18,28 @@ const DiskGame = ({
   short_description,
   title,
   thumbnail,
-}: DiskGameProps) => {
-  const [isInformationOpen, setIsInformationOpen] = useState<boolean>(false);
+}: DiskGameProps): JSX.Element => {
+  const [isInformationOpen, setIsInformationOpen] = useState(false);
 
   const { games, handleSetNewGameToFavorite } = useGamesStore();
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     setIsInformationOpen(true);
   };
 
-  const handleDoubleClick = () => {
+  const handleDoubleClick = (): void => {
     setIsInformationOpen(false);
   };
 
-  const handleTouchEnd = () => {
+  const handleTouchEnd = (): void => {
     setIsInformationOpen(false);
   };
 
-  const handleTouchCancel = () => {
+  const handleTouchCancel = (): void => {
     setIsInformationOpen(false);
   };
 
-  const handleSaveGameToFavorite = (id: number) => {
+  const handleSaveGameToFavorite = (id: number): void => {
     const game = games.find((game) => game.id === id)!;
     handleSetNewGameToFavorite(game);
   };
@@ -92,7 +93,9 @@ const DiskGame = ({
 
           <button
             type="button"
-            onClick={() => handleSaveGameToFavorite(id)}
+            onClick={() => {
+              handleSaveGameToFavorite(id);
+            }}
             aria-label={`Add ${title} to favorites`}
             className="disk-game__btn-favorite"
           >

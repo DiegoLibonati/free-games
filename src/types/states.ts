@@ -1,6 +1,6 @@
-import { Alert, ErrorMessage, Game, Status, User } from "@/types/app";
+import type { Alert, ErrorMessage, Game, Status, User } from "@/types/app";
 
-export type GamesState = {
+export interface GamesState {
   games: {
     isLoading: boolean;
     games: Game[];
@@ -14,15 +14,15 @@ export type GamesState = {
     games: Game[];
   };
   activeGame: Game | null;
-};
+}
 
-export type AuthState = {
+export interface AuthState {
   images: { images: string[]; isLoadingImages: boolean };
   auth: { isChecking: boolean; status: Status; errorMessage: ErrorMessage };
   user: User;
-};
+}
 
-export type UIState = {
+export interface UIState {
   navBar: {
     isOpen: boolean;
   };
@@ -32,4 +32,4 @@ export type UIState = {
     };
   };
   alert: Alert;
-};
+}

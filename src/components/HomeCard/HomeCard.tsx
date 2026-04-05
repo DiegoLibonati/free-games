@@ -1,6 +1,7 @@
 import { Fragment, useMemo } from "react";
 
-import { Game } from "@/types/app";
+import type { JSX } from "react";
+import type { Game } from "@/types/app";
 
 import Loader from "@/components/Loader/Loader";
 
@@ -8,7 +9,7 @@ import { useGamesStore } from "@/hooks/useGamesStore";
 
 import "@/components/HomeCard/HomeCard.css";
 
-const HomeCard = () => {
+const HomeCard = (): JSX.Element => {
   const { games, handleSetNewGameToFavorite } = useGamesStore();
 
   const game = useMemo(() => {
@@ -35,7 +36,9 @@ const HomeCard = () => {
               type="button"
               aria-label="Add to favorites"
               className="home-card__btn-favorite"
-              onClick={() => handleSaveGameToFavorite(game)}
+              onClick={() => {
+                handleSaveGameToFavorite(game);
+              }}
             >
               Add to favorite
             </button>

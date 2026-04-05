@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import Wave from "react-wavify";
 
-import { FormDataAuth } from "@/types/forms";
+import type { JSX } from "react";
+import type { FormDataAuth } from "@/types/forms";
 
 import Loader from "@/components/Loader/Loader";
 import SlideButtonList from "@/components/SlideButtonList/SlideButtonList";
@@ -25,7 +26,7 @@ const formData: FormDataAuth = {
   password: "",
 };
 
-const LoginPage = () => {
+const LoginPage = (): JSX.Element => {
   const {
     images,
     isLoadingImages,
@@ -35,16 +36,16 @@ const LoginPage = () => {
   } = useAuthStore();
 
   const { index, handleSetIndex } = useSlide<string>(images);
-  const { formState, onInputChange } = useForm<FormDataAuth>(formData);
+  const { formState, onInputChange } = useForm(formData);
 
-  const onSubmitForm: React.FormEventHandler<HTMLFormElement> = (e) => {
+  const onSubmitForm: React.SubmitEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
 
     const email = formState.email.trim();
     const password = formState.password.trim();
 
     if (!email || !password) {
-      return Swal.fire({
+      return void Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "Invalid email or password",

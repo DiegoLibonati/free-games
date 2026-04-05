@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { Game, Carousel } from "@/types/app";
+import type { JSX } from "react";
+import type { Game, Carousel } from "@/types/app";
 
 import Loader from "@/components/Loader/Loader";
 import CarouselGames from "@/components/CarouselGames/CarouselGames";
@@ -13,28 +14,28 @@ import gameService from "@/services/gameService";
 
 import "@/components/CarouselsGamesSection/CarouselsGamesSection.css";
 
-const CarouselsGamesSection = () => {
+const CarouselsGamesSection = (): JSX.Element => {
   const [carousels, setCarousels] = useState<Carousel<Game>[]>([]);
 
   const { categories } = useGamesStore();
 
-  const handleGetGamesFromCategories = (categories: string[]): void => {
-    categories.forEach(async (category) => {
-      try {
-        setCarousels((state) => [...state, { name: category, isLoading: true, arr: [] }]);
-
-        const data = await gameService.getByCategory(category);
-
-        setCarousels((state) => state.filter((carousel) => !carousel.isLoading));
-        setCarousels((state) => [
-          ...state,
-          { name: category, isLoading: false, arr: data.slice(0, 20) },
-        ]);
-      } catch (e) {
-        console.log(e);
-        setCarousels((state) => state.filter((carousel) => !carousel.isLoading));
-      }
-    });
+  const handleGetGamesFromCategories = async (categories: string[]): Promise<void> => {
+    await Promise.all(
+      categories.map(async (category) => {
+        try {
+          setCarousels((state) => [...state, { name: category, isLoading: true, arr: [] }]);
+          const data = await gameService.getByCategory(category);
+          setCarousels((state) => state.filter((carousel) => !carousel.isLoading));
+          setCarousels((state) => [
+            ...state,
+            { name: category, isLoading: false, arr: data.slice(0, 20) },
+          ]);
+        } catch (e) {
+          console.log(e);
+          setCarousels((state) => state.filter((carousel) => !carousel.isLoading));
+        }
+      })
+    );
   };
 
   useEffect(() => {
@@ -42,7 +43,7 @@ const CarouselsGamesSection = () => {
 
     const randomCategories = getSliceArraySorted(categories, 5);
 
-    handleGetGamesFromCategories(randomCategories);
+    void handleGetGamesFromCategories(randomCategories);
   }, [categories]);
 
   return (

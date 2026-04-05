@@ -1,6 +1,7 @@
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
-import { OptionFilterProps } from "@/types/props";
+import type { JSX } from "react";
+import type { OptionFilterProps } from "@/types/props";
 
 import OptionFilterListItem from "@/components/OptionFilterListItem/OptionFilterListItem";
 
@@ -12,7 +13,7 @@ const OptionFilter = ({
   arr,
   handleClickFilter,
   handleClickOpenAndClose,
-}: OptionFilterProps) => {
+}: OptionFilterProps): JSX.Element => {
   return (
     <article className="option-filter">
       <div className="option-filter__header" onClick={handleClickOpenAndClose}>

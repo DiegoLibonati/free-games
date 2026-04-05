@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 
+import type { JSX } from "react";
+
 import Hamburger from "@/components/Hamburger/Hamburger";
 
 import { useAuthStore } from "@/hooks/useAuthStore";
@@ -9,7 +11,7 @@ import assets from "@/assets/export";
 
 import "@/components/NavBar/NavBar.css";
 
-const NavBar = () => {
+const NavBar = (): JSX.Element => {
   const { isNavBarOpen } = useUiStore();
   const { displayName, photoURL, handleLogOut } = useAuthStore();
 
@@ -80,7 +82,7 @@ const NavBar = () => {
             <img
               src={photoURL}
               referrerPolicy="no-referrer"
-              alt={displayName!}
+              alt={displayName}
               className="header-wrapper__avatar"
             ></img>
           ) : (
