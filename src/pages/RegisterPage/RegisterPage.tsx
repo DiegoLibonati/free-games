@@ -32,7 +32,7 @@ const RegisterPage = (): JSX.Element => {
   const { images, isLoadingImages, handleCreateNewUserWithEmailAndPassword, handleGetImages } =
     useAuthStore();
 
-  const { index, handleSetIndex } = useSlide<string>(images);
+  const { index, handleSetIndex } = useSlide(images);
   const { formState, onInputChange } = useForm(formData);
 
   const onSubmitForm: React.SubmitEventHandler<HTMLFormElement> = (e) => {

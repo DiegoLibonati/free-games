@@ -35,7 +35,7 @@ const LoginPage = (): JSX.Element => {
     handleGetImages,
   } = useAuthStore();
 
-  const { index, handleSetIndex } = useSlide<string>(images);
+  const { index, handleSetIndex } = useSlide(images);
   const { formState, onInputChange } = useForm(formData);
 
   const onSubmitForm: React.SubmitEventHandler<HTMLFormElement> = (e) => {

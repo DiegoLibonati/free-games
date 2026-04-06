@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import type { SweetAlertIcon } from "sweetalert2";
 import Swal from "sweetalert2";
 
+import type { SweetAlertIcon } from "sweetalert2";
 import type { JSX } from "react";
 
 import CheckingAuth from "@/components/CheckingAuth/CheckingAuth";

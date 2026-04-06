@@ -1,4 +1,4 @@
-import { Envs } from "@/types/envs";
+import type { Envs } from "@/types/envs";
 
 export const mockEnvs: Envs = {
   xRapid: {
