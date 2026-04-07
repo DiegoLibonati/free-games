@@ -11,9 +11,10 @@ describe("gameService", () => {
 
   describe("getAll", () => {
     it("should return games array on successful response", async () => {
+      const mockFetchJson = jest.fn();
       mockedFetch.mockResolvedValueOnce({
         ok: true,
-        json: jest.fn().mockResolvedValue(mockGames),
+        json: mockFetchJson.mockResolvedValue(mockGames),
       } as unknown as Response);
 
       const result = await gameService.getAll();
@@ -22,9 +23,10 @@ describe("gameService", () => {
     });
 
     it("should call the /api/games endpoint", async () => {
+      const mockFetchJson = jest.fn();
       mockedFetch.mockResolvedValueOnce({
         ok: true,
-        json: jest.fn().mockResolvedValue(mockGames),
+        json: mockFetchJson.mockResolvedValue(mockGames),
       } as unknown as Response);
 
       await gameService.getAll();
@@ -33,9 +35,10 @@ describe("gameService", () => {
     });
 
     it("should use GET method", async () => {
+      const mockFetchJson = jest.fn();
       mockedFetch.mockResolvedValueOnce({
         ok: true,
-        json: jest.fn().mockResolvedValue(mockGames),
+        json: mockFetchJson.mockResolvedValue(mockGames),
       } as unknown as Response);
 
       await gameService.getAll();
@@ -58,9 +61,10 @@ describe("gameService", () => {
 
   describe("getByCategory", () => {
     it("should return games array on successful response", async () => {
+      const mockFetchJson = jest.fn();
       mockedFetch.mockResolvedValueOnce({
         ok: true,
-        json: jest.fn().mockResolvedValue(mockGames),
+        json: mockFetchJson.mockResolvedValue(mockGames),
       } as unknown as Response);
 
       const result = await gameService.getByCategory("MMORPG");
@@ -69,9 +73,10 @@ describe("gameService", () => {
     });
 
     it("should call /api/games with the category query param", async () => {
+      const mockFetchJson = jest.fn();
       mockedFetch.mockResolvedValueOnce({
         ok: true,
-        json: jest.fn().mockResolvedValue(mockGames),
+        json: mockFetchJson.mockResolvedValue(mockGames),
       } as unknown as Response);
 
       await gameService.getByCategory("Strategy");
