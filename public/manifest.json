@@ -1,7 +1,7 @@
 {
-  "name": "Free To Play Games",
-  "short_name": "Free To Play Games",
-  "description": "The theme of this Tp will be free, they will have to consume some API to provide content to their application, there are many free of all kinds. A favorites section should be created, where the user can store information about that API. They will have to use Firestore to manage the database in this section and will use FireAuth for user authentication. They will also have to use a minimum of 2 custom hooks.",
+  "name": "Free Games",
+  "short_name": "Free Games",
+  "description": "Free Games is a full-stack web application that lets users discover, explore, and save free-to-play games from across all platforms and genres.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

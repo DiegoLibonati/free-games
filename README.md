@@ -1,4 +1,4 @@
-# FreeToPlayGames
+# Free Games
 
 ## Educational Purpose
 
@@ -17,11 +17,17 @@ The application will open automatically at `http://localhost:3000`
 
 ## Description
 
-The theme of this Tp will be free, they will have to consume some API to provide content to their application, there are many free of all kinds. A favorites section should be created, where the user can store information about that API. They will have to use Firestore to manage the database in this section and will use FireAuth for user authentication. They will also have to use a minimum of 2 custom hooks.
+**Free Games** is a full-stack web application that lets users discover, explore, and save free-to-play games from across all platforms and genres.
 
-The test will not be mandatory, but will give extra points if they do it.
+The app consumes the [FreeToGame API](https://www.freetogame.com/api-doc) via RapidAPI to fetch a large catalog of free-to-play titles, each with metadata such as genre, platform, publisher, developer, release date, and a direct link to the game's official page. Users can browse this catalog in several ways: a home page featuring a rotating image showcase of highlighted games alongside a spotlight card that cycles through the library, a dedicated Games page with real-time genre filtering, and a carousel-based section that groups games by category.
 
-Everything else I leave in your hands
+Authentication is handled entirely through Firebase Auth, supporting both email/password registration and login as well as Google Sign-In. Every user has a private Favorites list backed by Firestore, where they can add and remove games that interest them. The favorites persist across sessions and are tied to the authenticated user's account.
+
+The UI is organized around a persistent navigation bar with a responsive hamburger menu, a footer with social links, and a global alert system powered by SweetAlert2. Active game details open in an overlay panel — the `ActiveGame` component — that adjusts its available actions depending on the current route (add to favorites on the explore page, remove from favorites on the favorites page). A custom disk-style card component (`DiskGame`) animates on click to reveal extended game information inline.
+
+State is managed globally with Redux Toolkit across three slices: `auth` (user session, login images, error messages), `games` (full catalog, categories, favorites, active game), and `ui` (navbar open state, filter open state, SweetAlert2 alerts). Components never dispatch directly — they interact with the store exclusively through custom hooks (`useAuthStore`, `useGamesStore`, `useUiStore`), keeping the component layer clean and testable.
+
+The project is fully tested with Jest and React Testing Library, covering components, pages, services, and helpers with a minimum 70% coverage threshold across all metrics. Pre-commit hooks via Husky and lint-staged enforce ESLint and Prettier automatically on every commit.
 
 ## Technologies used
 
@@ -81,11 +87,7 @@ Everything else I leave in your hands
 
 ## Portfolio Link
 
-[`https://www.diegolibonati.com.ar/#/project/FreeToPlayGames`](https://www.diegolibonati.com.ar/#/project/FreeToPlayGames)
-
-## Video
-
-https://user-images.githubusercontent.com/99032604/199869745-843b6845-fdc8-423c-83f9-1772e6732971.mp4
+[`https://www.diegolibonati.com.ar/#/project/free-games`](https://www.diegolibonati.com.ar/#/project/free-games)
 
 ## Testing
 

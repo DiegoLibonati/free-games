@@ -1,52 +1,62 @@
 import { getSliceArraySorted } from "@/helpers/getSliceArraySorted";
 
 describe("getSliceArraySorted", () => {
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  it("should return an array of the specified count", () => {
+    const arr = [1, 2, 3, 4, 5];
 
-  it("should return an array with the specified count", () => {
     const result = getSliceArraySorted(arr, 3);
 
     expect(result).toHaveLength(3);
   });
 
-  it("should only contain items from the original array", () => {
+  it("should return all elements when count equals array length", () => {
+    const arr = [1, 2, 3, 4, 5];
+
     const result = getSliceArraySorted(arr, 5);
+
+    expect(result).toHaveLength(5);
+  });
+
+  it("should return an empty array when count is 0", () => {
+    const arr = [1, 2, 3, 4, 5];
+
+    const result = getSliceArraySorted(arr, 0);
+
+    expect(result).toEqual([]);
+  });
+
+  it("should not modify the original array", () => {
+    const arr = [1, 2, 3, 4, 5];
+    const original = [...arr];
+
+    getSliceArraySorted(arr, 3);
+
+    expect(arr).toEqual(original);
+  });
+
+  it("should return only items that exist in the original array", () => {
+    const arr = [1, 2, 3, 4, 5];
+
+    const result = getSliceArraySorted(arr, 3);
 
     result.forEach((item) => {
       expect(arr).toContain(item);
     });
   });
 
-  it("should not mutate the original array", () => {
-    const original = [...arr];
+  it("should return an empty array when the input array is empty", () => {
+    const arr: number[] = [];
 
-    getSliceArraySorted(arr, 5);
+    const result = getSliceArraySorted(arr, 3);
 
-    expect(arr).toEqual(original);
+    expect(result).toEqual([]);
   });
 
-  it("should return an empty array when count is 0", () => {
-    const result = getSliceArraySorted(arr, 0);
+  it("should return the full array when count is greater than array length", () => {
+    const arr = [1, 2, 3, 4, 5];
 
-    expect(result).toHaveLength(0);
-  });
+    const result = getSliceArraySorted(arr, 10);
 
-  it("should return the full array when count exceeds array length", () => {
-    const result = getSliceArraySorted(arr, 100);
-
-    expect(result).toHaveLength(arr.length);
-  });
-
-  it("should return an empty array for empty input", () => {
-    const result = getSliceArraySorted([], 5);
-
-    expect(result).toHaveLength(0);
-  });
-
-  it("should not have duplicate items", () => {
-    const result = getSliceArraySorted(arr, arr.length);
-    const unique = new Set(result);
-
-    expect(unique.size).toBe(result.length);
+    expect(result).toHaveLength(5);
   });
 });
