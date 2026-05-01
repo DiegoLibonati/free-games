@@ -1,9 +1,10 @@
 import type { Game } from "@/types/app";
+import type { ResponseDirect } from "@/types/responses";
 
 import envs from "@/constants/envs";
 
 const gameService = {
-  getAll: async (): Promise<Game[]> => {
+  getAll: async (): Promise<ResponseDirect<Game[]>> => {
     const response = await fetch(`/api/games`, {
       method: "GET",
       headers: {
@@ -14,11 +15,9 @@ const gameService = {
 
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-    const games: Game[] = (await response.json()) as Game[];
-
-    return games;
+    return (await response.json()) as ResponseDirect<Game[]>;
   },
-  getByCategory: async (category: string): Promise<Game[]> => {
+  getByCategory: async (category: string): Promise<ResponseDirect<Game[]>> => {
     const response = await fetch(`/api/games?category=${category}`, {
       method: "GET",
       headers: {
@@ -29,9 +28,7 @@ const gameService = {
 
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-    const user: Game[] = (await response.json()) as Game[];
-
-    return user;
+    return (await response.json()) as ResponseDirect<Game[]>;
   },
 };
 
