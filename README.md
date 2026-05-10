@@ -6,15 +6,6 @@ This project was created primarily for **educational and learning purposes**.
 While it is well-structured and could technically be used in production, it is **not intended for commercialization**.  
 The main goal is to explore and demonstrate best practices, patterns, and technologies in software development.
 
-## Getting Started
-
-1. Clone the repository
-2. Navigate to the project folder
-3. Execute: `npm install`
-4. Execute: `npm run dev`
-
-The application will open automatically at `http://localhost:3000`
-
 ## Description
 
 **Free Games** is a full-stack web application that lets users discover, explore, and save free-to-play games from across all platforms and genres.
@@ -86,11 +77,21 @@ The project is fully tested with Jest and React Testing Library, covering compon
 "vite": "^7.1.6"
 ```
 
-## Portfolio Link
+## Getting Started
 
-[`https://www.diegolibonati.com.ar/#/project/free-games`](https://www.diegolibonati.com.ar/#/project/free-games)
+With the stack outlined above, follow these steps to run the project locally:
+
+1. Clone the repository
+2. Navigate to the project folder
+3. Execute: `npm install`
+4. Copy `.env.example` to `.env` and fill in your RapidAPI and Firebase credentials
+5. Execute: `npm run dev`
+
+The application will open automatically at `http://localhost:3000`.
 
 ## Testing
+
+With the app running locally, you can verify everything works by exercising the test suite.
 
 1. Navigate to the project folder
 2. Execute: `npm test`
@@ -101,7 +102,9 @@ For coverage report:
 npm run test:coverage
 ```
 
-## Security
+## Security Audit
+
+Beyond functional tests, the project ships with tooling to audit dependencies and overall code health.
 
 ### npm audit
 
@@ -128,3 +131,7 @@ npm run doctor -- --verbose
 ## Known Issues
 
 None at the moment.
+
+## Portfolio Link
+
+[`https://www.diegolibonati.com.ar/#/project/free-games`](https://www.diegolibonati.com.ar/#/project/free-games)
